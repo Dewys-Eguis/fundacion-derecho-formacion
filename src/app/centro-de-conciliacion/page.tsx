@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Matters } from "@/components/interior/Selectors";
 import { PageBanner } from "@/components/layout/PageBanner";
 import { MinjusticiaBadge } from "@/components/ui/MinjusticiaBadge";
-import { Accent, Eyebrow, Pending } from "@/components/ui/typography";
+import { Accent, Eyebrow } from "@/components/ui/typography";
 import { BANNERS } from "@/content/banners";
 import { ILLUSTRATIVE } from "@/content/images";
 import { CONCILIATION } from "@/content/interior";
@@ -106,9 +106,7 @@ export default function ConciliacionPage() {
             <li key={s.title} data-reveal className="tarjeta-hover rounded-[26px] border border-linea p-6 md:p-7">
               <span className="text-xs font-extrabold text-naranja-texto">0{i + 1}</span>
               <h3 className="mt-2 text-xl leading-tight font-extrabold">{s.title}</h3>
-              <p className="mt-2.5 text-[15px] leading-[1.55] text-texto-2">
-                {s.text} {"pending" in s && <Pending>{s.pending}</Pending>}
-              </p>
+              <p className="mt-2.5 text-[15px] leading-[1.55] text-texto-2">{s.text}</p>
             </li>
           ))}
         </ul>

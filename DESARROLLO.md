@@ -52,32 +52,42 @@ apunte el dominio.
   y el script la omite. La n.º 3 no se entregó (el WordPress la referencia en
   `/wp-content/uploads/2025/09/Oficina_Fundacion_Tejido_Humano_3.webp`: pedir el archivo).
   Se usan en Nuestras oficinas (banner + galería con visor) y en la galería de Inicio («Oficinas en Bogotá»).
-- `media/imagenes-web/`: 8 imágenes ilustrativas (IA). Siempre con el rótulo «Imagen ilustrativa»
-  (`ILLUSTRATIVE` en `src/content/images.ts`): banners de los 5 servicios, proyectos solar, Alma Mater y
-  desarrollo social, y la tarjeta «Centro de Conciliación» de la galería de Inicio.
+- `media/imagenes-web/`: imágenes ilustrativas generadas con IA, registradas en `ILLUSTRATIVE`
+  (`src/content/images.ts`, `illustrative: true`). Desde oct. 2026 no llevan rótulo visible (decisión de la
+  Fundación): su carácter ilustrativo consta en el texto alternativo («Imagen ilustrativa: …») y en este
+  registro. No usarlas como evidencia de proyectos ejecutados, instalaciones ni integrantes reales.
+  Primera entrega: banners de los 5 servicios, proyectos solar, Alma Mater y desarrollo social, y la tarjeta
+  «Centro de Conciliación» de la galería de Inicio. La imagen solar sustituye también a la foto antigua de
+  baja resolución (`foto-paneles-sitio-actual.jpg`) en la galería de Inicio y en la página del proyecto.
 - `media/logos/vigilado-minjusticia.png`: distintivo oficial, servido sin recomprimir (PNG original) en el
   pie de página y en Centro de Conciliación. **Validar** que la Fundación está autorizada a usar esta versión.
 
 ### Imágenes ilustrativas (segunda entrega, PNG)
 
-Integradas con rótulo «Imagen ilustrativa» y variantes WebP (el PNG original no se publica):
+Integradas en variantes WebP (el PNG original no se publica):
 encabezados de Contáctenos, Proyectos, Quiénes somos, Gobierno corporativo y Diplomados; las dos imágenes
 de la composición «Visión 2035» de Inicio; y el proyecto «Diplomado Fuerza Pública y Construcción de Paz»
 (Proyectos, fila de Inicio y galería de Inicio).
 
 ### Espacios que siguen pendientes
 
-| Espacio                                                               | Motivo                                             |
-| --------------------------------------------------------------------- | -------------------------------------------------- |
-| Banner Staff, tarjetas y perfiles del equipo, «[Foto] Staff jurídico» | Solo fotografías reales de la Fundación            |
-| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                 | Archivos oficiales y permisos pendientes           |
-| Proyecto solar: plano real del lote, fotos de dron                    | Material documental: solo fotografías reales       |
-| Oficinas: foto n.º 3                                                  | Existe en WordPress, pendiente de entregar archivo |
+| Espacio                                                                  | Motivo                                             |
+| ------------------------------------------------------------------------ | -------------------------------------------------- |
+| Banner Staff, tarjetas y perfiles del equipo, «Staff jurídico» (galería) | Solo fotografías reales de la Fundación            |
+| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                    | Archivos oficiales y permisos pendientes           |
+| Proyecto solar: plano real del lote, fotos de dron                       | Material documental: solo fotografías reales       |
+| Oficinas: foto n.º 3                                                     | Existe en WordPress, pendiente de entregar archivo |
 
 Para integrarlas: guardar el WebP en `media/imagenes-web/`, añadirlo a `ILLUSTRATIVE` y pasarlo como
 `image` (banners) o en el contenido correspondiente.
 
 ## Integraciones pendientes
+
+- Avisos técnicos retirados de la interfaz (oct. 2026): rótulos «[Foto…]», «Imagen ilustrativa», aviso de
+  fotografías provisionales, logos de aliados y logo OEA pendientes, horario por confirmar, notas internas
+  sobre el sitio de WordPress. Se conservan los avisos que informan al usuario: documentos «Por cargar»,
+  formulario sin servicio de envío, donaciones sin pasarela y política de datos (pie de página).
+- Selector ES/EN retirado: el sitio se publica solo en español.
 
 - Formulario de contacto: valida, pero no hay servicio de recepción; ofrece enviar por correo (`mailto:`).
   Para conectarlo (p. ej. Formspree/Resend/Web3Forms), cambiar `submit` en `ContactPanel.tsx`.
@@ -95,8 +105,10 @@ Para integrarlas: guardar el WebP en `media/imagenes-web/`, añadirlo a `ILLUSTR
 - Capacidad de la planta: el sitio actual dice «15 MW»; el estudio técnico (PDF oficial) selecciona
   11,05 MWp como configuración óptima. El sitio muestra 11,05 MWp rotulado «configuración óptima».
 - Estatus OEA: «2023» (diseño) frente a «CP/RES. 759 (1217/99)» (sitio actual).
-- Presentación en Washington: fecha, lugar y entidad `[por confirmar]`.
-- Proyecto solar: resumen financiero y sitio del proyecto siguen `[enlace por confirmar]`; plano real del lote.
+- Presentación en Washington: fecha, lugar y entidad sin confirmar. La tarjeta «Presentación del proyecto»
+  se retiró de la página; añadirla de nuevo (`SOLAR_WASHINGTON`) cuando haya datos verificados.
+- Proyecto solar: resumen financiero y sitio del proyecto sin enlace verificado: sus tarjetas se retiraron
+  de «Documentos» (datos en `SOLAR_DOCS.pending`); plano real del lote.
   - WordPress (`/proyectos/`) enlaza `…/2026/09/San-Francisco-Granja-Solar-Resumen-Financiero-1.pdf`, pero el
     PDF está marcado «Privileged and Confidential» y describe otra ubicación y capacidad (Manaure, Guajira ·
     23,652 MWp). No se enlaza hasta que la Fundación lo confirme.

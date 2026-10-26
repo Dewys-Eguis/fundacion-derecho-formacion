@@ -6,7 +6,7 @@ import { useCallback, useEffect, useRef, useState, type PointerEvent as RPointer
 import { Logo } from "@/components/brand/Logo";
 import { MOTION_OK, ScrollTrigger, useGSAP } from "@/components/motion/gsap";
 import { ButtonLink } from "@/components/ui/Button";
-import { ChevronDown, HeartIcon, MenuIcon, SunIcon } from "@/components/ui/icons";
+import { ChevronDown, HeartIcon, MenuIcon } from "@/components/ui/icons";
 import { ROUTES, sectionForPath, type NavSection } from "@/content/routes";
 import { CTA } from "@/content/site";
 import { MEGA_WIDTH, MegaMenuPanel, type MegaKey } from "./MegaMenu";
@@ -247,13 +247,6 @@ export function Header() {
                 </span>
               </Link>
               <span className="flex gap-2">
-                <Link
-                  href={ROUTES.proyectoSolar}
-                  aria-label="Proyecto destacado: Planta solar San Francisco"
-                  className="flex size-11 items-center justify-center rounded-pildora bg-durazno transition-transform duration-300 active:scale-95 motion-safe:hover:rotate-45"
-                >
-                  <SunIcon />
-                </Link>
                 <button
                   type="button"
                   aria-label="Abrir menú"

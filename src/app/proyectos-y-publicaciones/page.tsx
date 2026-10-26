@@ -4,9 +4,8 @@ import Link from "next/link";
 import { PageBanner } from "@/components/layout/PageBanner";
 import { ProjectsList } from "@/components/projects/ProjectsList";
 import { ButtonLink } from "@/components/ui/Button";
-import { Eyebrow, Pending } from "@/components/ui/typography";
+import { Eyebrow } from "@/components/ui/typography";
 import { BANNERS } from "@/content/banners";
-import { IllustrativeLabel } from "@/components/ui/placeholders";
 import { ILLUSTRATIVE } from "@/content/images";
 import { FEATURED, PUBLICATIONS } from "@/content/projects";
 import { ROUTES } from "@/content/routes";
@@ -40,7 +39,6 @@ export default function ProyectosPage() {
               className="h-full w-full zoom-suave object-cover"
               style={{ objectPosition: ILLUSTRATIVE.solar.pos }}
             />
-            <IllustrativeLabel className="absolute bottom-4 left-4" />
           </span>
           <span className="flex flex-col justify-center gap-4.5 p-6 md:p-12">
             <span className="self-start rounded-pildora bg-naranja px-3.5 py-2 text-[11px] font-extrabold tracking-[.06em] text-azul uppercase md:text-xs">
@@ -75,7 +73,7 @@ export default function ProyectosPage() {
               {PUBLICATIONS.title}
             </h2>
             <p data-reveal className="mt-3 max-w-160 text-[15px] leading-[1.6] text-texto-2 md:text-base">
-              {PUBLICATIONS.text} <Pending>{PUBLICATIONS.pending}</Pending>
+              {PUBLICATIONS.text}
             </p>
           </div>
           <ButtonLink href={ROUTES.contacto} variant="dark" className="shrink-0 self-start lg:self-auto">

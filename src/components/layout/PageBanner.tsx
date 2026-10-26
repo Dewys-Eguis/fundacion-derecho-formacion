@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IllustrativeLabel } from "@/components/ui/placeholders";
 import type { SiteImage } from "@/content/images";
 import { ROUTES } from "@/content/routes";
 
@@ -118,7 +117,6 @@ export function PageBanner({ crumb, parents = [], eyebrow, heading, lead, photo,
                   className="h-full w-full zoom-suave object-cover"
                   style={{ objectPosition: image.pos }}
                 />
-                {image.illustrative && <IllustrativeLabel className="absolute right-3 bottom-3" />}
               </div>
             ) : (
               <div
@@ -126,11 +124,7 @@ export function PageBanner({ crumb, parents = [], eyebrow, heading, lead, photo,
                 aria-label={`Fotografía pendiente: ${photo}`}
                 data-pending=""
                 className="relative aspect-[460/360] w-full overflow-hidden rounded-tarjeta marcador-foto shadow-[0_30px_60px_rgba(11,42,79,.12)]"
-              >
-                <span className="absolute inset-x-5 bottom-4 rounded-xl bg-white/95 px-3.5 py-2.5 text-[12.5px] font-semibold text-texto-cuerpo">
-                  [Fotografía: {photo}]
-                </span>
-              </div>
+              ></div>
             )}
           </div>
         </div>

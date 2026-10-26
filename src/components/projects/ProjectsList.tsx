@@ -76,12 +76,6 @@ export function ProjectsList() {
               <span className="absolute top-3.5 left-3.5 rounded-pildora bg-white px-3 py-1.5 text-xs font-bold text-accion">
                 {p.cat}
               </span>
-              <span
-                data-pending={p.image ? undefined : ""}
-                className="absolute bottom-3.5 left-3.5 rounded-lg bg-white/92 px-2.5 py-1.5 text-[11.5px] font-semibold text-texto-2"
-              >
-                {p.image ? p.imageNote : `[${p.imageNote}]`}
-              </span>
             </div>
             <div className="px-2 pb-3 md:px-3 lg:px-0 lg:py-4 lg:pr-6">
               <p className="text-[13px] font-bold text-naranja-texto">{p.partner}</p>

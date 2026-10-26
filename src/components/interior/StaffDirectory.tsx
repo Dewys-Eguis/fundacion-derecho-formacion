@@ -3,7 +3,6 @@
 import { useRef, useState } from "react";
 import { gsap, MOTION_OK, useGSAP } from "@/components/motion/gsap";
 import { PillGroup } from "@/components/ui/PillGroup";
-import { Pending } from "@/components/ui/typography";
 import { STAFF, STAFF_FILTERS, type StaffGroup } from "@/content/interior";
 
 type Filter = "all" | StaffGroup;
@@ -19,12 +18,6 @@ function Portrait({ ini, big = false }: { ini: string; big?: boolean }) {
         }`}
       >
         {ini}
-      </span>
-      <span
-        data-pending=""
-        className="absolute bottom-3 left-3 rounded-lg bg-white px-2 py-1 text-[11px] font-semibold text-texto-2"
-      >
-        [Foto del sitio actual]
       </span>
     </span>
   );
@@ -89,7 +82,7 @@ export function StaffDirectory() {
             </h2>
             <p className="perfil-in mt-2 text-base font-bold text-durazno-claro md:text-[17px]">{p.role}</p>
             <p className="perfil-in mt-4 max-w-190 text-[15px] leading-[1.65] text-sobre-oscuro md:text-base">
-              {p.bio} {p.bioPending && <Pending>{p.bioPending}</Pending>}
+              {p.bio}
             </p>
             {p.record && (
               <div className="perfil-in mt-6 border-t border-white/14 pt-5">

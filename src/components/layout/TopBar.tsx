@@ -1,10 +1,9 @@
 import { SITE } from "@/content/site";
 import { MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
-import { LangSwitch } from "./LangSwitch";
 
 /**
  * Barra superior azul (Header.dc.html · 44 px; Mobile.dc.html · 36 px).
- * Escritorio: teléfono, correo, dirección, sello OEA y ES/EN.
+ * Escritorio: teléfono, correo, dirección y sello OEA (sitio solo en español).
  * En anchos intermedios se ocultan primero la dirección y luego el correo.
  */
 export function TopBar() {
@@ -41,7 +40,6 @@ export function TopBar() {
           <span className="flex items-center gap-2 rounded-pildora bg-naranja/18 px-3 py-1.25 text-xs font-semibold text-sello">
             {SITE.oeaSeal}
           </span>
-          <LangSwitch />
         </div>
       </div>
     </div>

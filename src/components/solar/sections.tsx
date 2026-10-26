@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { AmericasMap } from "@/components/home/AmericasMap";
 import { ButtonLink } from "@/components/ui/Button";
-import { Accent, Eyebrow, Pending } from "@/components/ui/typography";
-import { IMAGES } from "@/content/images";
+import { Accent, Eyebrow } from "@/components/ui/typography";
+import { ILLUSTRATIVE } from "@/content/images";
 import { ROUTES } from "@/content/routes";
 import {
   SOLAR_CONNECTION,
@@ -37,19 +37,14 @@ export function Summary() {
         </p>
         <figure data-reveal className="group relative mt-8 h-60 overflow-hidden rounded-tarjeta md:mt-9 md:h-85">
           <Image
-            src={IMAGES.panelesSitioActual.src}
-            width={IMAGES.panelesSitioActual.width}
-            height={IMAGES.panelesSitioActual.height}
-            alt="Paneles solares fotovoltaicos (imagen del sitio actual)"
+            src={ILLUSTRATIVE.solar.src}
+            width={ILLUSTRATIVE.solar.width}
+            height={ILLUSTRATIVE.solar.height}
+            alt={ILLUSTRATIVE.solar.alt}
             sizes="(min-width: 1280px) 680px, 100vw"
             className="h-full w-full zoom-suave object-cover"
+            style={{ objectPosition: ILLUSTRATIVE.solar.pos }}
           />
-          <figcaption
-            data-pending=""
-            className="absolute right-4 bottom-4 left-4 w-fit rounded-[10px] bg-white/92 px-3 py-2 text-xs font-semibold text-texto-cuerpo"
-          >
-            {SOLAR_SUMMARY.photoNote}
-          </figcaption>
         </figure>
       </div>
       <div className="flex flex-col gap-3.5 xl:pt-8.5">
@@ -133,9 +128,7 @@ function LotScheme() {
       <div className="absolute right-4 bottom-14 max-w-[70%] rounded-xl border border-linea bg-white px-3.5 py-2.5 text-xs font-bold shadow-[0_10px_20px_rgba(11,42,79,.08)] md:right-6 md:bottom-22.5">
         {SOLAR_LOCATION.substation}
       </div>
-      <p className="absolute bottom-4 left-4 text-xs text-texto-2 md:bottom-5 md:left-6">
-        {SOLAR_LOCATION.note} <Pending>{SOLAR_LOCATION.pendingNote}</Pending>
-      </p>
+      <p className="absolute bottom-4 left-4 text-xs text-texto-2 md:bottom-5 md:left-6">{SOLAR_LOCATION.note}</p>
     </div>
   );
 }
@@ -349,14 +342,6 @@ export function Washington() {
             <p data-reveal className="mt-5 text-[15px] leading-[1.65] text-sobre-oscuro md:text-[17px]">
               {SOLAR_WASHINGTON.body}
             </p>
-            <div data-reveal className="mt-8 rounded-[20px] border border-white/14 bg-white/8 p-5.5">
-              <div className="text-xs font-extrabold tracking-[.08em] text-naranja uppercase">
-                {SOLAR_WASHINGTON.presentationLabel}
-              </div>
-              <div className="mt-2 text-base font-bold md:text-lg">
-                {SOLAR_WASHINGTON.presentation} <Pending>{SOLAR_WASHINGTON.presentationPending}</Pending>
-              </div>
-            </div>
           </div>
           <div className="relative hidden aspect-[592/677] w-full xl:absolute xl:top-0 xl:right-20 xl:block xl:w-140">
             <AmericasMap id="mapa-solar" />
@@ -412,23 +397,6 @@ export function Documents() {
             <span className="sr-only"> (PDF, se abre en una pestaña nueva)</span>
           </a>
         </li>
-        {SOLAR_DOCS.pending.map((d) => (
-          <li
-            key={d.title}
-            data-reveal
-            className="flex items-center gap-4 rounded-[22px] bg-bruma p-5 md:gap-5 md:px-7 md:py-6"
-          >
-            <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white text-[13px] font-extrabold text-accion">
-              {d.badge}
-            </span>
-            <span className="flex-1">
-              <span className="block text-base font-extrabold md:text-[19px]">{d.title}</span>
-              <span className="mt-1 block text-[13px] text-texto-2">
-                Enlazado en el sitio actual · <Pending>enlace por confirmar</Pending>
-              </span>
-            </span>
-          </li>
-        ))}
       </ul>
     </section>
   );

@@ -4,7 +4,7 @@
  * (pág. 1 escritorio, pág. 4 móvil). Textos: los del PDF y de los .dc.html aprobados.
  * Narrativa del proyecto: siempre «De Washington a Ciudad Bolívar» (CLAUDE.md).
  */
-import { ILLUSTRATIVE, IMAGES, type SiteImage } from "./images";
+import { ILLUSTRATIVE, type SiteImage } from "./images";
 import { OFFICE_PHOTOS } from "./interior";
 import { ROUTES } from "./routes";
 
@@ -188,9 +188,9 @@ export type GalleryItem = { caption: string; image?: SiteImage; pos?: string; al
 export const GALLERY: GalleryItem[] = [
   {
     caption: "Planta solar · energía renovable",
-    image: IMAGES.panelesSitioActual,
-    pos: "50% 50%",
-    alt: "Paneles solares fotovoltaicos (imagen del sitio actual)",
+    image: ILLUSTRATIVE.solar,
+    pos: ILLUSTRATIVE.solar.pos,
+    alt: ILLUSTRATIVE.solar.alt,
   },
   {
     caption: "Centro de Conciliación",
@@ -204,13 +204,10 @@ export const GALLERY: GalleryItem[] = [
     pos: ILLUSTRATIVE.fuerzaPublica.pos,
     alt: ILLUSTRATIVE.fuerzaPublica.alt,
   },
-  { caption: "[Foto] Staff jurídico" },
+  { caption: "Staff jurídico" },
   // Fotografía real de la sede (media/Oficinas)
   { caption: "Oficinas en Bogotá", image: OFFICE_PHOTOS[0].image, pos: "50% 50%", alt: OFFICE_PHOTOS[0].image.alt },
 ];
-
-export const GALLERY_NOTE =
-  "Fotografías provisionales: la Fundación debe entregar imágenes en alta resolución de su trabajo.";
 
 /* ---------- Proyectos ---------- */
 export const FEATURED_PROJECT = {

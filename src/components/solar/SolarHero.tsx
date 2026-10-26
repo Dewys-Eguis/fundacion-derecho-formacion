@@ -3,7 +3,7 @@ import Link from "next/link";
 import { CountUp } from "@/components/motion/CountUp";
 import { ButtonLink } from "@/components/ui/Button";
 import { DownloadIcon } from "@/components/ui/icons";
-import { IMAGES } from "@/content/images";
+import { ILLUSTRATIVE } from "@/content/images";
 import { PDF_PLANTA_SOLAR, SOLAR_HERO, SOLAR_KPIS } from "@/content/solar";
 import { SOLAR_SCENE_SVG, SOLAR_SCENE_VIEWBOX } from "@/content/solar-illustration";
 
@@ -98,13 +98,14 @@ export function SolarHero() {
       <div className="md:hidden">
         <div className="sobre-oscuro relative isolate flex min-h-140 flex-col justify-end overflow-hidden rounded-tarjeta bg-azul p-5.5 text-white">
           <Image
-            src={IMAGES.panelesSitioActual.src}
-            width={IMAGES.panelesSitioActual.width}
-            height={IMAGES.panelesSitioActual.height}
+            src={ILLUSTRATIVE.solar.src}
+            width={ILLUSTRATIVE.solar.width}
+            height={ILLUSTRATIVE.solar.height}
             alt=""
             preload
             sizes="100vw"
             className="absolute inset-0 -z-10 h-full w-full object-cover"
+            style={{ objectPosition: ILLUSTRATIVE.solar.pos }}
           />
           <span
             aria-hidden

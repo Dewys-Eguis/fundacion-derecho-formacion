@@ -75,14 +75,3 @@ export function PhotoPlaceholder({
     </div>
   );
 }
-
-/** Rótulo obligatorio de las imágenes ilustrativas generadas con IA. */
-export function IllustrativeLabel({ className = "" }: { className?: string }) {
-  return (
-    <span
-      className={`inline-flex rounded-pildora bg-white/92 px-2.5 py-1 text-[11px] font-semibold text-texto-cuerpo shadow-[0_4px_12px_rgba(11,42,79,.12)] backdrop-blur-sm ${className}`}
-    >
-      Imagen ilustrativa
-    </span>
-  );
-}

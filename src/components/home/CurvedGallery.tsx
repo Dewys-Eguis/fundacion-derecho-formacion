@@ -7,7 +7,7 @@ import { InertiaPlugin } from "gsap/InertiaPlugin";
 import { gsap, MOTION_OK, useGSAP } from "@/components/motion/gsap";
 import { ArrowButton } from "@/components/ui/ArrowButton";
 import { Accent, Eyebrow } from "@/components/ui/typography";
-import { GALLERY, GALLERY_NOTE, type GalleryItem } from "@/content/home";
+import { GALLERY, type GalleryItem } from "@/content/home";
 import type { ReactNode } from "react";
 
 if (typeof window !== "undefined") gsap.registerPlugin(Draggable, InertiaPlugin);
@@ -48,7 +48,7 @@ export function CurvedGallery({
       El tejido en <Accent>imágenes.</Accent>
     </>
   ),
-  note = GALLERY_NOTE,
+  note,
   shape = "portrait",
   onOpen,
 }: CurvedGalleryProps = {}) {
@@ -200,10 +200,6 @@ export function CurvedGallery({
               )}
               <figcaption className="pointer-events-none absolute right-3 bottom-12 left-3 rounded-xl bg-white/95 px-3.5 py-2.5 text-xs font-bold text-azul shadow-[0_6px_16px_rgba(11,42,79,.08)] transition-transform duration-500 ease-(--ease-salida) group-hover:-translate-y-1 md:right-4 md:bottom-14 md:left-4 md:text-[13px]">
                 {g.caption}
-                {/* La curva superior tapa las esquinas: el rótulo va en el pie de foto. */}
-                {g.image?.illustrative && (
-                  <span className="mt-0.5 block text-[11px] font-semibold text-texto-2">Imagen ilustrativa</span>
-                )}
               </figcaption>
             </figure>
           ))}

@@ -208,7 +208,7 @@ export const OFFICE_PHOTOS = [
 export const OFFICE = {
   map: {
     label: "Fundación Derecho y Formación",
-    note: "Mapa ilustrativo · integrar mapa interactivo en desarrollo.",
+    note: "Mapa ilustrativo.",
     pending: "El sitio menciona «Torre Davivienda»: confirmar",
     googleMaps:
       "https://www.google.com/maps/search/?api=1&query=Calle%2012B%20%23%208A-34%2C%20Bogot%C3%A1%2C%20Colombia",

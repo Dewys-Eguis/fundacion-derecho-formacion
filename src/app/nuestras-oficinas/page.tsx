@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { OfficeGallery } from "@/components/interior/OfficeGallery";
 import { PageBanner } from "@/components/layout/PageBanner";
 import { ButtonLink } from "@/components/ui/Button";
-import { Pending } from "@/components/ui/typography";
 import { BANNERS } from "@/content/banners";
 import { OFFICE, OFFICE_PHOTOS } from "@/content/interior";
 import { ROUTES } from "@/content/routes";
@@ -51,7 +50,7 @@ function IllustrativeMap() {
         </svg>
       </div>
       <p className="absolute inset-x-4 bottom-4 rounded-xl bg-white/95 px-4 py-2.5 text-xs text-texto-cuerpo">
-        {OFFICE.map.note} <Pending>{OFFICE.map.pending}</Pending>{" "}
+        {OFFICE.map.note}{" "}
         <a
           href={OFFICE.map.googleMaps}
           target="_blank"
@@ -97,7 +96,6 @@ export default function OficinasPage() {
         </a>
       ),
     },
-    { label: "Horario", value: <Pending className="font-normal text-sobre-oscuro">{OFFICE.hoursPending}</Pending> },
   ];
   return (
     <>
@@ -136,14 +134,6 @@ export default function OficinasPage() {
 
       <section aria-labelledby="oea" className="contenedor pt-16 md:pt-24">
         <div className="flex flex-col gap-6 rounded-tarjeta border border-linea p-6 md:flex-row md:items-center md:rounded-banda md:p-9">
-          <div
-            role="img"
-            aria-label="Logo OEA pendiente"
-            data-pending=""
-            className="flex size-22 shrink-0 items-center justify-center rounded-2xl marcador-foto text-xs font-semibold text-texto-2"
-          >
-            [{OFFICE.oea.logoPending}]
-          </div>
           <div className="flex-1">
             <h2 id="oea" data-reveal className="text-xl font-extrabold tracking-[-.01em] md:text-[26px]">
               {OFFICE.oea.title}

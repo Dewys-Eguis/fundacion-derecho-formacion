@@ -6,7 +6,6 @@ import { ScrubText } from "@/components/motion/ScrubText";
 import { ButtonLink } from "@/components/ui/Button";
 import { CourseCard, ProjectRow, ServiceCard, TeamCard } from "@/components/ui/cards";
 import { Chip } from "@/components/ui/Chip";
-import { IllustrativeLabel } from "@/components/ui/placeholders";
 import { Accent, Eyebrow } from "@/components/ui/typography";
 import {
   ALLIES,
@@ -176,7 +175,6 @@ function PhotoComposition() {
         <Parallax amount={3}>
           <CompositionPhoto image={ILLUSTRATIVE.vision1} sizes="(min-width: 1280px) 400px, 72vw" />
         </Parallax>
-        <IllustrativeLabel className="absolute bottom-4 left-4 z-10" />
       </div>
       <div className="absolute right-0 bottom-0 h-[55.8%] w-[52.2%] overflow-hidden rounded-[30px] border-8 border-white bg-white">
         <div className="relative h-full w-full overflow-hidden rounded-[22px] bg-ph">
@@ -184,7 +182,6 @@ function PhotoComposition() {
             <CompositionPhoto image={ILLUSTRATIVE.vision2} sizes="(min-width: 1280px) 290px, 52vw" />
           </Parallax>
         </div>
-        <IllustrativeLabel className="absolute bottom-3 left-3 z-10" />
       </div>
       <div
         data-reveal
@@ -366,7 +363,7 @@ export function Projects() {
           data-reveal
           className="group sobre-oscuro relative block h-105 tarjeta-hover overflow-hidden rounded-tarjeta bg-azul text-white no-underline md:h-130 md:rounded-banda xl:h-155"
         >
-          {/* Imagen ilustrativa (generada con IA): siempre con su rótulo. */}
+          {/* Imagen ilustrativa (generada con IA): su carácter consta en el texto alternativo. */}
           <Image
             src={p.image.src}
             width={p.image.width}
@@ -376,7 +373,6 @@ export function Projects() {
             className="absolute inset-0 h-full w-full zoom-suave object-cover"
             style={{ objectPosition: p.image.pos }}
           />
-          <IllustrativeLabel className="absolute top-5 right-5 md:top-6 md:right-6" />
           <span
             aria-hidden
             className="absolute inset-x-0 bottom-0 h-[62%] bg-[linear-gradient(180deg,rgba(11,42,79,0),rgba(11,42,79,.9))]"
@@ -497,15 +493,6 @@ export function Allies() {
             className="flex min-h-24 items-center justify-center rounded-tarjeta-sm border border-linea px-3 py-4 text-sm font-extrabold transition-[border-color,background-color] duration-300 hover:border-borde-boton hover:bg-bruma md:h-35.5 md:px-4 md:text-[16.5px]"
           >
             {a}
-          </li>
-        ))}
-        {ALLIES.map((_, i) => (
-          <li
-            key={`logo-${i}`}
-            data-pending=""
-            className="flex min-h-20 items-center justify-center rounded-tarjeta-sm border border-dashed border-borde-boton px-3 text-xs text-texto-2 md:h-27.5 md:text-[13.5px]"
-          >
-            [Logo aliado del sitio actual ·{i + 1}]
           </li>
         ))}
       </ul>

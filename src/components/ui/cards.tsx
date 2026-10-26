@@ -153,7 +153,7 @@ export function CourseCard({ cat, title, href }: { cat: string; title: string; h
 /**
  * Integrante del staff. Nunca retratos generados: sin `initials` muestra la silueta
  * neutra «Foto pendiente»; con `initials` usa el placeholder celeste de la Home del
- * diseño aprobado (iniciales + «[Foto del sitio actual]»).
+ * diseño aprobado (iniciales sobre fondo celeste hasta tener la foto real).
  */
 export function TeamCard({
   name,
@@ -178,12 +178,6 @@ export function TeamCard({
             className="flex size-24 items-center justify-center rounded-pildora bg-white text-[30px] font-extrabold tracking-[-.02em] text-accion shadow-[0_10px_30px_rgba(11,42,79,.08)] transition-transform duration-500 ease-(--ease-salida) group-hover:scale-105"
           >
             {initials}
-          </span>
-          <span
-            data-pending=""
-            className="absolute top-3.5 left-3.5 rounded-lg bg-white px-2 py-1 text-[11.5px] font-semibold text-texto-2"
-          >
-            [Foto del sitio actual]
           </span>
         </span>
         <span className="block p-5">
@@ -243,11 +237,6 @@ export function ProjectRow({
             className="h-full w-full zoom-suave object-cover"
             style={{ objectPosition: image.pos }}
           />
-          {image.illustrative && (
-            <span className="absolute inset-x-1.5 bottom-1.5 rounded-md bg-white/92 px-1.5 py-0.5 text-center text-[9.5px] font-semibold text-texto-cuerpo sm:inset-x-2 sm:bottom-2 sm:text-[10.5px]">
-              Imagen ilustrativa
-            </span>
-          )}
         </span>
       ) : (
         <span

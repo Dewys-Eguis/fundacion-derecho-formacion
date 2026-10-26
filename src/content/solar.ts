@@ -50,7 +50,6 @@ export const SOLAR_SECTIONS = [
 export const SOLAR_SUMMARY = {
   lead: "En el marco de la iniciativa de desarrollo de fuentes de energía renovables no convencionales en Colombia, se tiene previsto el desarrollo del proyecto de generación solar FV denominado",
   accent: "«Planta solar fotovoltaica San Francisco».",
-  photoNote: "Imagen del sitio actual · reemplazar por foto en alta resolución",
   objectives: [
     "Desarrollar una fuente de energía renovable no convencional en Colombia.",
     "Atender la demanda de energías alternativas.",
@@ -183,9 +182,6 @@ export const SOLAR_IMPACT = [
 export const SOLAR_WASHINGTON = {
   chip: "Proyección internacional",
   body: "El proyecto se presenta en Washington D.C., sede de la Organización de los Estados Americanos —ante la cual la Fundación tiene estatus consultivo— y del Centro de Consultoría y Litigio Internacional (CECOLI), aliado de la Fundación. Su destino es Ciudad Bolívar, donde la energía solar se convierte en oportunidad para la población vulnerable.",
-  presentationLabel: "Presentación del proyecto",
-  presentation: "Washington D.C. ·",
-  presentationPending: "Fecha, lugar y entidad por confirmar",
 } as const;
 
 export const SOLAR_DOCS = {

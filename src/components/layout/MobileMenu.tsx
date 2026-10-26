@@ -6,7 +6,6 @@ import { Logo } from "@/components/brand/Logo";
 import { CloseIcon } from "@/components/ui/icons";
 import { ROUTES } from "@/content/routes";
 import { CTA, MOBILE_QUE, MOBILE_QUIENES } from "@/content/site";
-import { LangSwitch } from "./LangSwitch";
 
 /**
  * Menú móvil a pantalla completa (MobileMenu.dc.html). Diálogo modal:
@@ -177,9 +176,6 @@ export function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose
         >
           {CTA.agenda.label}
         </Link>
-        <span className="text-center text-[13px] font-extrabold">
-          <LangSwitch activeClass="text-accion" className="font-extrabold" />
-        </span>
       </div>
     </div>
   );
