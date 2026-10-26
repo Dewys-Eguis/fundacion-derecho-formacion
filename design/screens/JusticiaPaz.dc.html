@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Justicia especial para la paz — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>body{margin:0;background:#FFFFFF}</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="que" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Justicia especial para la paz" eyebrow="Qué hacemos" heading="Justicia especial para la paz." lead="Promueve el acceso a la justicia transicional de los actores del conflicto armado en Colombia." photo="justicia transicional" art="paz" hint-size="1440px,512px"></dc-import>
+
+<section style="padding: 88px 48px 0; display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 24px; align-items: start">
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+      <button type="button" onClick="{{t.pick}}" style="padding: 24px 26px; display: flex; gap: 16px; align-items: center; border: 2px solid {{t.bd}}; border-radius: 22px; background: {{t.bg}}; color: {{t.fg}}; font: inherit; text-align: left; cursor: pointer">
+        <span style="font-size: 14px; font-weight: 800; color: #F4914D">{{t.num}}</span>
+        <span style="font-size: 19px; font-weight: 800; line-height: 1.25">{{t.title}}</span>
+      </button>
+    </sc-for>
+  </div>
+  <div style="position: relative; overflow: hidden; min-height: 460px; padding: 56px; background: #F3F8FE; border-radius: 32px">
+    <svg aria-hidden="true" width="760" height="460" viewBox="0 0 760 460" fill="none" style="position: absolute; right: -40px; bottom: -40px"><circle cx="600" cy="360" r="200" fill="#FFFFFF"></circle><path d="M0 420 C 200 360, 400 470, 760 360" stroke="#F4914D" stroke-width="2"></path></svg>
+    <div style="position: relative">
+      <div style="font-size: 60px; font-weight: 800; color: #F4914D; letter-spacing: -.04em">{{cur.num}}</div>
+      <h2 style="margin: 12px 0 0; font-size: 44px; line-height: 1.08; font-weight: 800; letter-spacing: -.03em">{{cur.title}}</h2>
+      <p style="margin: 20px 0 0; max-width: 720px; font-size: 19px; line-height: 1.7; color: #34465F">{{cur.text}}</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 72px 48px 0">
+  <a href="Staff.dc.html" style="padding: 36px 44px; border: 1px solid #DCE6F2; border-radius: 32px; display: flex; gap: 28px; align-items: center; text-decoration: none; color: #0B2A4F">
+    <span style="flex: 0 0 80px; height: 80px; border-radius: 999px; overflow: hidden; background: #E9EFF6; display: flex; align-items: flex-end; justify-content: center"><svg width="64" height="70" viewBox="0 0 190 230" fill="none" aria-hidden="true"><circle cx="95" cy="80" r="46" fill="#C9D6E6"></circle><path d="M10 230 C 10 160, 50 140, 95 140 C 140 140, 180 160, 180 230 Z" fill="#C9D6E6"></path></svg></span>
+    <span style="flex: 1"><span style="display: block; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #B5531A">Equipo · Jurisdicción Especial para la Paz</span><span style="display: block; margin-top: 6px; font-size: 24px; font-weight: 800">Lina María Munar Guevara</span><span style="display: block; margin-top: 4px; font-size: 15px; color: #51617A">Experiencia de apoyo en la Sala de Amnistía o Indulto de la JEP (2019).</span></span>
+    <span style="height: 52px; padding: 0 22px; display: flex; align-items: center; background: #0B2A4F; color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 700">Ver staff →</span>
+  </a>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { s: 0 }; }
+  renderVals() {
+    const S = [
+      ['Litigio de procesos ante la JEP', 'Representación y defensa de las partes en los casos ante la Jurisdicción Especial para la Paz, con énfasis en el debido proceso, la verdad y la reparación.'],
+      ['Competencias y jurisdicción', 'La JEP investiga, juzga y sanciona conductas vinculadas al conflicto armado, incluidas graves violaciones a los derechos humanos. Su alcance comprende a excombatientes, agentes del Estado y terceros.'],
+      ['Enfoque en las víctimas', 'Las víctimas están en el centro de los procesos, con derecho a la verdad, a la reparación integral y a la participación.'],
+      ['Sanciones y mecanismos restaurativos', 'El sistema combina justicia restaurativa y retributiva, según el nivel de verdad aportada y la responsabilidad asumida.']
+    ];
+    const s = this.state.s;
+    return {
+      tabs: S.map(([title], i) => ({ title, num: '0' + (i + 1), bg: i === s ? '#0B2A4F' : '#FFFFFF', fg: i === s ? '#FFFFFF' : '#0B2A4F', bd: i === s ? '#0B2A4F' : '#DCE6F2', pick: () => this.setState({ s: i }) })),
+      cur: { num: '0' + (s + 1), title: S[s][0], text: S[s][1] }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Estudio legal, consultoría y portafolio jurídico — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(11,42,79,.1)}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="que" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Estudio legal y consultoría" eyebrow="Qué hacemos" heading="Estudio legal, consultoría y portafolio jurídico." lead="Promueve el ejercicio del desarrollo del derecho y la jurisprudencia, con consultoría en procesos penales, civiles, laborales, comerciales, constitucionales y administrativos." photo="asesoría jurídica" art="justicia" hint-size="1440px,512px"></dc-import>
+
+<section style="padding: 88px 48px 0">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Áreas de práctica</div>
+      <h2 style="margin: 14px 0 0; font-size: 50px; font-weight: 800; letter-spacing: -.03em">Portafolio <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">jurídico</span></h2>
+    </div>
+    <p style="margin: 0; max-width: 420px; font-size: 15px; line-height: 1.6; color: #51617A">Seleccione un área para ver las acciones y procesos que acompañamos.</p>
+  </div>
+  <div role="tablist" aria-label="Áreas de práctica" style="margin-top: 36px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px">
+    <sc-for list="{{areas}}" as="a" hint-placeholder-count="5">
+      <button type="button" role="tab" onClick="{{a.pick}}" style="padding: 22px; text-align: left; border: 2px solid {{a.bd}}; border-radius: 22px; background: {{a.bg}}; color: {{a.fg}}; font: inherit; cursor: pointer">
+        <span style="display: block; font-size: 13px; font-weight: 800; color: #F4914D">{{a.num}}</span>
+        <span style="display: block; margin-top: 8px; font-size: 20px; font-weight: 800">{{a.label}}</span>
+      </button>
+    </sc-for>
+  </div>
+  <div style="margin-top: 16px; padding: 48px; background: #F3F8FE; border-radius: 32px; display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 48px">
+    <div>
+      <h3 style="margin: 0; font-size: 40px; font-weight: 800; letter-spacing: -.02em">{{cur.label}}</h3>
+      <p style="margin: 16px 0 0; font-size: 17px; line-height: 1.7; color: #34465F">{{cur.def}}</p>
+      <a href="Contacto.dc.html" style="margin-top: 28px; height: 54px; padding: 0 24px; display: inline-flex; align-items: center; gap: 10px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none">Solicitar asesoría →</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-content: start">
+      <sc-for list="{{cur.actions}}" as="x" hint-placeholder-count="8">
+        <div class="card" style="padding: 18px 20px; background: #FFFFFF; border-radius: 16px; display: flex; gap: 12px; align-items: center; font-size: 15px; font-weight: 700"><span style="flex: 0 0 8px; height: 8px; border-radius: 999px; background: #1E64C8"></span>{{x}}</div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 104px 16px 0">
+  <div style="padding: 64px; background: #0B2A4F; color: #FFFFFF; border-radius: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+    <div style="grid-column: span 2">
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #F4914D">En alianza con CECOLI · Washington D.C.</div>
+      <h2 style="margin: 14px 0 0; font-size: 46px; font-weight: 800; letter-spacing: -.03em">Alcance internacional</h2>
+    </div>
+    <a href="Litigio.dc.html" class="card" style="padding: 36px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 26px; color: #FFFFFF; text-decoration: none"><div style="font-size: 26px; font-weight: 800">Litigio estratégico</div><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: #C9DAF0">Representación ante tribunales en casos emblemáticos de derechos humanos, en particular represión política, criminalización de la protesta y violencia estructural.</p><div style="margin-top: 20px; font-weight: 800; color: #F4914D">Ver más →</div></a>
+    <a href="Litigio.dc.html" class="card" style="padding: 36px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14); border-radius: 26px; color: #FFFFFF; text-decoration: none"><div style="font-size: 26px; font-weight: 800">Derecho internacional y derechos humanos</div><p style="margin: 12px 0 0; font-size: 16px; line-height: 1.6; color: #C9DAF0">Representación ante tribunales internacionales junto con el Centro de Consultoría y Litigio Internacional (CECOLI).</p><div style="margin-top: 20px; font-weight: 800; color: #F4914D">Ver más →</div></a>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { a: 0 }; }
+  renderVals() {
+    const A = [
+      { label: 'Derecho penal', def: 'Regula el poder punitivo del Estado: qué conductas son delito, qué penas se aplican y cómo se adelantan los procesos, con garantías para el procesado y para las víctimas.', actions: ['Denuncia penal', 'Querella', 'Investigación formal', 'Imputación de cargos', 'Acusación', 'Preacuerdos', 'Principio de oportunidad', 'Incidente de reparación integral', 'Revisión de sentencias', 'Tutela en materia penal'] },
+      { label: 'Derecho civil', def: 'Rige las relaciones entre personas en materia de estado civil, bienes y familia.', actions: ['Cumplimiento de contrato', 'Proceso ejecutivo', 'Resolución de contrato', 'Nulidad', 'Reivindicación', 'Acciones posesorias', 'Pertenencia', 'Responsabilidad civil', 'División y partición', 'Simulación', 'Sucesión', 'Impugnación de actos jurídicos'] },
+      { label: 'Derecho comercial', def: 'Regula la actividad empresarial, a los comerciantes y las operaciones mercantiles.', actions: ['Contratos mercantiles', 'Ejecución de títulos valores', 'Insolvencia empresarial', 'Liquidación', 'Responsabilidad de administradores', 'Impugnación de decisiones societarias', 'Competencia desleal', 'Propiedad intelectual'] },
+      { label: 'Derecho constitucional', def: 'Comprende la organización del Estado, la distribución del poder público y los derechos fundamentales.', actions: ['Acción de tutela', 'Hábeas corpus', 'Acción de cumplimiento', 'Acción popular', 'Acción de grupo', 'Acción de inconstitucionalidad', 'Incidente de desacato'] },
+      { label: 'Derecho administrativo', def: 'Abarca la administración pública y las relaciones entre la ciudadanía y el Estado.', actions: ['Nulidad simple', 'Nulidad y restablecimiento del derecho', 'Reparación directa', 'Controversias contractuales', 'Acción de repetición', 'Nulidad electoral', 'Medidas cautelares', 'Desacato contra entidades públicas'] }
+    ];
+    const s = this.state.a;
+    return {
+      areas: A.map((a, i) => ({ label: a.label, num: '0' + (i + 1), bg: i === s ? '#0B2A4F' : '#FFFFFF', fg: i === s ? '#FFFFFF' : '#0B2A4F', bd: i === s ? '#0B2A4F' : '#DCE6F2', pick: () => this.setState({ a: i }) })),
+      cur: A[s]
+    };
+  }
+}
+</script>
+</body>
+</html>

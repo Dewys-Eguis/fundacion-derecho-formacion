@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Staff jurídico — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(11,42,79,.12)}
+.ph{background-color:#D3E3F5;background-image:repeating-linear-gradient(135deg,rgba(11,42,79,.06) 0 1px,transparent 1px 14px)}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="quienes" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Staff jurídico" eyebrow="Staff jurídico" heading="Un equipo con trayectoria." lead="Profesionales multi e interdisciplinarios, con destacada trayectoria en los ámbitos judiciales, académicos y de investigación científica, en los sectores público y privado." photo="staff de la Fundación" art="tejido" hint-size="1440px,512px"></dc-import>
+
+<!-- Selected profile -->
+<section style="padding: 72px 48px 0">
+  <div style="display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 0; overflow: hidden; border-radius: 32px; background: #0B2A4F; color: #FFFFFF">
+    <div style="position: relative; min-height: 420px; display: flex; align-items: flex-end; justify-content: center; background: #E9EFF6">
+      <svg width="260" height="320" viewBox="0 0 190 230" fill="none" aria-hidden="true"><circle cx="95" cy="80" r="46" fill="#C9D6E6"></circle><path d="M10 230 C 10 160, 50 140, 95 140 C 140 140, 180 160, 180 230 Z" fill="#C9D6E6"></path></svg>
+      <span style="position: absolute; left: 16px; top: 16px; padding: 7px 12px; background: #FFFFFF; border-radius: 999px; font-size: 11px; font-weight: 700; color: #51617A">Foto pendiente</span>
+    </div>
+    <div style="padding: 56px; display: flex; flex-direction: column; justify-content: center">
+      <span style="align-self: flex-start; padding: 7px 12px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase">{{sel.group}}</span>
+      <h2 style="margin: 18px 0 0; font-size: 44px; line-height: 1.08; font-weight: 800; letter-spacing: -.025em">{{sel.name}}</h2>
+      <div style="margin-top: 10px; font-size: 17px; font-weight: 700; color: #FFC9A3">{{sel.role}}</div>
+      <p style="margin: 20px 0 0; max-width: 760px; font-size: 17px; line-height: 1.7; color: #C9DAF0">{{sel.bio}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- Filters + grid -->
+<section style="padding: 56px 48px 0">
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <h2 style="margin: 0; font-size: 36px; font-weight: 800; letter-spacing: -.02em">Conózcalos</h2>
+    <div role="tablist" aria-label="Filtrar equipo" style="display: flex; gap: 4px; padding: 5px; background: #F3F8FE; border-radius: 999px">
+      <sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+        <button type="button" role="tab" onClick="{{f.pick}}" style="height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: {{f.bg}}; color: {{f.fg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{f.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+    <sc-for list="{{people}}" as="m" hint-placeholder-count="8">
+      <button type="button" onClick="{{m.pick}}" class="card" style="padding: 0; text-align: left; overflow: hidden; border: 2px solid {{m.bd}}; border-radius: 28px; background: #F3F8FE; color: #0B2A4F; font: inherit; cursor: pointer">
+        <span style="height: 240px; display: flex; align-items: flex-end; justify-content: center; position: relative; background: #E9EFF6"><svg width="150" height="182" viewBox="0 0 190 230" fill="none" aria-hidden="true"><circle cx="95" cy="80" r="46" fill="#C9D6E6"></circle><path d="M10 230 C 10 160, 50 140, 95 140 C 140 140, 180 160, 180 230 Z" fill="#C9D6E6"></path></svg><span style="position: absolute; left: 12px; top: 12px; padding: 5px 10px; background: #FFFFFF; border-radius: 999px; font-size: 10.5px; font-weight: 700; color: #51617A">Foto pendiente</span></span>
+        <span style="display: block; padding: 20px">
+          <span style="display: block; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #B5531A">{{m.group}}</span>
+          <span style="display: block; margin-top: 8px; font-size: 18px; font-weight: 800; line-height: 1.2">{{m.name}}</span>
+          <span style="display: block; margin-top: 8px; font-size: 13px; line-height: 1.45; color: #51617A">{{m.role}}</span>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { f: 'all', sel: 0 }; }
+  renderVals() {
+    const st = this.state;
+    const S = [
+      { g: 'dir', group: 'Dirección', ini: 'JA', name: 'Jesús Enrique Archila Guio', role: 'CEO y Representante Legal de la Fundación DFTH', bio: 'Abogado penalista enfocado en la resolución pacífica de conflictos, la política criminal y las ciencias forenses. Docente de derecho penal y doctor en educación; se desempeñó como fiscal. Lideró la obtención del estatus consultivo de la Fundación ante la OEA en 2023.' },
+      { g: 'dir', group: 'Dirección', ini: 'LR', name: 'Leydi Yesenia Ramírez Aristizabal', role: 'Directora General · Conciliadora y Atención a Víctimas en Derecho (2025)', bio: 'Abogada conciliadora con experiencia en atención a víctimas, derecho comercial y gerencia de proyectos. Fue directora ejecutiva de la Fundación entre 2023 y 2025 y es coautora de un texto de derecho penal.' },
+      { g: 'aca', group: 'Equipo interdisciplinario', ini: 'PM', name: 'Pedro Octavio Munar Cadena', role: 'Presidente de la Corte Suprema de Justicia de Colombia (2010)', bio: 'Magistrado de la Corte Suprema de Justicia entre 2003 y 2011, de la que fue presidente, y magistrado del Consejo Superior de la Judicatura. Árbitro, docente universitario y conferencista internacional.' },
+      { g: 'aca', group: 'Equipo interdisciplinario', ini: 'LM', name: 'Lina María Munar Guevara', role: 'Jurisdicción Especial para la Paz', bio: 'Abogada con experiencia editorial e investigativa en derecho y periodismo. En 2019 apoyó a un magistrado de la Sala de Amnistía o Indulto de la JEP en asuntos de justicia transicional.' },
+      { g: 'aca', group: 'Equipo interdisciplinario', ini: 'YC', name: 'Yazmin Cadena Camargo', role: 'Profesora · Decana encargada de la Facultad de Medicina, Universidad Javeriana (2025)', bio: 'Médica con formación doctoral en salud global y antropología médica, y formación en salud pública en Israel. Trabaja en promoción de la salud y ha acompañado a familias desplazadas en un proyecto interdisciplinario.' },
+      { g: 'aca', group: 'Equipo interdisciplinario', ini: 'AR', name: 'Ángela Margarita Rey Anaya', role: 'Profesora · CEO de la Fundación United For Justice', bio: 'Abogada en derechos humanos con dos maestrías y exdiplomática colombiana que lideró delegaciones ante instancias internacionales de derechos humanos y la Corte Penal Internacional. Fundó y dirige United for Justice, ONG de litigio estratégico para víctimas.' },
+      { g: 'con', group: 'Conciliación', ini: 'JR', name: 'José Ricardo Archila Guio', role: 'Director del Centro de Conciliación de la Fundación D.F.T.H.', bio: 'Abogado y conciliador especializado en mecanismos alternativos de solución de conflictos, insolvencia y derechos humanos, con experiencia en litigio laboral, penal, civil y de familia. Fue representante legal de la Fundación.' },
+      { g: 'con', group: 'Conciliación', ini: 'KR', name: 'Kelly Yojara Ramírez Aristizabal', role: 'Directora Ejecutiva del Centro de Conciliación de la Fundación DFTH', bio: 'Abogada con experiencia en mecanismos alternativos de justicia. Asesora en derecho civil y comercial y consultora en litigios inmobiliarios.' },
+      { g: 'cons', group: 'Consultoría y docencia', ini: 'CM', name: 'Carlos Gustavo Muñoz Díaz', role: 'Consultoría y Estudio Legal en Derecho Penal, Lavado de Activos y Extinción de Dominio', bio: 'Abogado penalista con experiencia en lavado de activos, extinción del derecho de dominio y acciones constitucionales. Especializado en derecho procesal y en derecho penal y ciencias forenses.' },
+      { g: 'cons', group: 'Consultoría y docencia', ini: 'WF', name: 'William Armando Fonseca Flórez', role: 'Docencia Universitaria y Gerencia de Proyectos · Asesor de la Alta Consejería para la Reintegración', bio: 'Administrador policial con 18 años en la Policía Nacional, donde alcanzó el grado de Mayor. Trabajó en seguridad privada y durante 14 años asesoró a las agencias presidenciales de reintegración.' },
+      { g: 'cons', group: 'Consultoría y docencia', ini: 'JG', name: 'Juan Miguel González Velasco', role: 'Docencia Universitaria y Consultor Internacional de Proyectos', bio: 'Doctor en educación (Universidad Mayor de San Andrés y Universidad de Bremen). [Biografía por confirmar: en el sitio actual aparece duplicada con otro perfil]' }
+    ];
+    const F = [['all', 'Todos'], ['dir', 'Dirección'], ['aca', 'Equipo interdisciplinario'], ['con', 'Conciliación'], ['cons', 'Consultoría']];
+    const people = S.map((p, i) => ({ ...p, i, bd: i === st.sel ? '#F4914D' : 'transparent', pick: () => this.setState({ sel: i }) })).filter((p) => st.f === 'all' || p.g === st.f);
+    return {
+      sel: S[st.sel], people,
+      filters: F.map(([k, label]) => ({ label, bg: k === st.f ? '#0B2A4F' : 'transparent', fg: k === st.f ? '#FFFFFF' : '#0B2A4F', pick: () => this.setState({ f: k }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

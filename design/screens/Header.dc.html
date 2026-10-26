@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Encabezado — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div style="width: 1440px; position: relative; z-index: 50; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+  <!-- Top bar -->
+  <div style="height: 44px; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; background: #0B2A4F; color: #DCE8F7; font-size: 13px">
+    <div style="display: flex; gap: 28px; align-items: center">
+      <a href="tel:+573209038228" style="display: flex; gap: 8px; align-items: center; color: inherit; text-decoration: none"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 2h2.5l1.2 3-1.6 1a8 8 0 0 0 3.9 3.9l1-1.6 3 1.2V12a2 2 0 0 1-2 2A10.5 10.5 0 0 1 2 4a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.3"></path></svg>320 903 8228</a>
+      <a href="mailto:contacto@fundacionderechoyformacion.org" style="display: flex; gap: 8px; align-items: center; color: inherit; text-decoration: none"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3.5" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.3"></rect><path d="M2.5 4.5L8 9l5.5-4.5" stroke="currentColor" stroke-width="1.3"></path></svg>contacto@fundacionderechoyformacion.org</a>
+      <span style="display: flex; gap: 8px; align-items: center"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 14s5-4.2 5-8A5 5 0 0 0 3 6c0 3.8 5 8 5 8z" stroke="currentColor" stroke-width="1.3"></path><circle cx="8" cy="6" r="1.8" stroke="currentColor" stroke-width="1.3"></circle></svg>Calle 12B # 8A-34, int. 13 · Bogotá D.C.</span>
+    </div>
+    <div style="display: flex; gap: 20px; align-items: center">
+      <span style="display: flex; align-items: center; gap: 8px; padding: 5px 12px; background: rgba(244,145,77,.18); color: #FFD3B3; border-radius: 999px; font-size: 12px; font-weight: 600">Organización con estatus consultivo ante la OEA</span>
+      <span style="font-weight: 600"><span style="color: #FFFFFF">ES</span> <span style="opacity: .5">/</span> EN</span>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <nav aria-label="Principal" style="height: 84px; padding: 0 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #DCE6F2; background: #FFFFFF">
+    <a href="Main.dc.html" aria-label="Fundación Derecho y Formación — Inicio" style="display: flex; align-items: center; text-decoration: none">
+      <dc-import name="Logo" tone="light" size="md" hint-size="360px,48px"></dc-import>
+    </a>
+    <div style="display: flex; align-items: center; gap: 2px; font-size: 14.5px; font-weight: 600">
+      <button type="button" onClick="{{openQuienes}}" aria-expanded="{{isQuienes}}" style="padding: 12px 10px; display: flex; gap: 6px; align-items: center; background: transparent; border: 0; border-bottom: 2px solid {{b.quienes}}; color: {{n.quienes}}; font: inherit; cursor: pointer">Quiénes somos <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5"></path></svg></button>
+      <button type="button" onClick="{{openQue}}" aria-expanded="{{isQue}}" style="padding: 12px 10px; display: flex; gap: 6px; align-items: center; background: transparent; border: 0; border-bottom: 2px solid {{b.que}}; color: {{n.que}}; font: inherit; cursor: pointer">Qué hacemos <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5"></path></svg></button>
+      <a href="Proyectos.dc.html" style="padding: 12px 10px; color: {{n.proyectos}}; text-decoration: none; border-bottom: 2px solid {{b.proyectos}}">Proyectos</a>
+      <a href="Diplomados.dc.html" style="padding: 12px 10px; color: {{n.diplomados}}; text-decoration: none; border-bottom: 2px solid {{b.diplomados}}">Diplomados</a>
+      <a href="Contacto.dc.html" style="padding: 12px 10px; color: {{n.contacto}}; text-decoration: none; border-bottom: 2px solid {{b.contacto}}">Contáctenos</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px">
+      <a href="Contacto.dc.html" style="height: 46px; padding: 0 20px; display: flex; align-items: center; gap: 8px; border: 1.5px solid #C9DBEF; border-radius: 999px; color: #0B2A4F; font-size: 14px; font-weight: 700; text-decoration: none"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13.5S2 10 2 5.8A3 3 0 0 1 8 4.3a3 3 0 0 1 6 1.5C14 10 8 13.5 8 13.5z" stroke="#F4914D" stroke-width="1.6"></path></svg>Donar</a>
+      <a href="Contacto.dc.html" style="height: 46px; padding: 0 22px; display: flex; align-items: center; gap: 8px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 14px; font-weight: 800; text-decoration: none">Agenda tu cita <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"></path></svg></a>
+    </div>
+  </nav>
+
+  <!-- Mega menu: Quiénes somos -->
+  <sc-if value="{{isQuienes}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 400px; top: 136px; width: 640px; padding: 24px; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DCE6F2; border-radius: 24px; box-shadow: 0 30px 60px rgba(11,42,79,.16); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+      <a href="QuienesSomos.dc.html" style="padding: 16px; border-radius: 16px; background: #F3F8FE; color: inherit; text-decoration: none"><div style="font-weight: 700">Quiénes somos</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Propósito, misión y visión 2035</div></a>
+      <a href="Staff.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Staff jurídico</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Equipo interdisciplinario</div></a>
+      <a href="Oficinas.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Nuestras oficinas</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Sede en Bogotá D.C.</div></a>
+      <a href="Gobierno.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Gobierno corporativo</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Transparencia y documentos</div></a>
+    </div>
+  </sc-if>
+
+  <!-- Mega menu: Qué hacemos -->
+  <sc-if value="{{isQue}}" hint-placeholder-val="{{ false }}">
+    <div style="position: absolute; left: 400px; top: 136px; width: 880px; padding: 24px; box-sizing: border-box; background: #FFFFFF; border: 1px solid #DCE6F2; border-radius: 24px; box-shadow: 0 30px 60px rgba(11,42,79,.16); display: grid; grid-template-columns: 1fr 1fr 280px; gap: 8px">
+      <a href="EstudioLegal.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Estudio legal y consultoría</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Penal, civil, comercial, constitucional, administrativo</div></a>
+      <a href="Litigio.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Litigio estratégico</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Derechos humanos con CECOLI · Washington D.C.</div></a>
+      <a href="ProyectoSolar.dc.html" style="grid-row: span 3; padding: 20px; border-radius: 18px; background: #0B2A4F; color: #FFFFFF; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between"><span style="align-self: flex-start; padding: 5px 10px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase">Proyecto destacado</span><span style="font-size: 22px; font-weight: 800; line-height: 1.15">Planta solar fotovoltaica San Francisco</span><span style="font-size: 13px; color: #BFD6F2">11,05 MWp · Ciudad Bolívar →</span></a>
+      <a href="Conciliacion.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Centro de Conciliación</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Adscrito al Ministerio de Justicia y del Derecho</div></a>
+      <a href="Educacion.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Educación para la paz</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Complejidad y desarrollo social</div></a>
+      <a href="JusticiaPaz.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Justicia especial para la paz</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Acceso a la justicia transicional</div></a>
+      <a href="Proyectos.dc.html" style="padding: 16px; border-radius: 16px; color: inherit; text-decoration: none"><div style="font-weight: 700">Proyectos y publicaciones</div><div style="margin-top: 4px; font-size: 13px; color: #51617A">Proyectos para la implementación de la paz</div></a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"active":{"editor":"enum","options":["inicio","quienes","que","proyectos","diplomados","contacto"],"default":"inicio"},"$preview":{"width":1440,"height":128}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { open: null }; }
+  renderVals() {
+    const a = this.props.active ?? 'inicio';
+    const keys = ['inicio', 'quienes', 'que', 'proyectos', 'diplomados', 'contacto'];
+    const n = {}, b = {};
+    keys.forEach((k) => { n[k] = k === a ? '#1E64C8' : '#0B2A4F'; b[k] = k === a ? '#F4914D' : 'transparent'; });
+    const o = this.state.open;
+    return {
+      n, b,
+      isQuienes: o === 'quienes', isQue: o === 'que',
+      openQuienes: () => this.setState({ open: o === 'quienes' ? null : 'quienes' }),
+      openQue: () => this.setState({ open: o === 'que' ? null : 'que' })
+    };
+  }
+}
+</script>
+</body>
+</html>

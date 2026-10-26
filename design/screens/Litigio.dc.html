@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Litigio estratégico — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>body{margin:0;background:#FFFFFF}</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="que" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Litigio estratégico" eyebrow="Qué hacemos · con CECOLI" heading="Litigio estratégico en derechos humanos." lead="Representación directa ante tribunales internacionales en casos emblemáticos de represión política, criminalización de la protesta y violencia estructural." photo="audiencia o trabajo jurídico" art="justicia" hint-size="1440px,512px"></dc-import>
+
+<section style="padding: 72px 48px 0">
+  <div style="padding: 36px 44px; background: #0B2A4F; color: #FFFFFF; border-radius: 32px; display: flex; align-items: center; gap: 32px">
+    <div style="flex: 0 0 88px; height: 88px; border-radius: 24px; background: #F4914D; color: #0B2A4F; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800">DC</div>
+    <div style="flex: 1"><div style="font-size: 26px; font-weight: 800">Centro de Consultoría y Litigio Internacional (CECOLI)</div><div style="margin-top: 6px; font-size: 16px; color: #C9DAF0">Aliado de la Fundación con sede en Washington D.C.</div></div>
+    <a href="Contacto.dc.html" style="height: 54px; padding: 0 24px; display: flex; align-items: center; background: #FFFFFF; color: #0B2A4F; border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none">Consultar un caso</a>
+  </div>
+</section>
+
+<section style="padding: 72px 48px 0; display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 48px; align-items: start">
+  <div>
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Líneas de trabajo</div>
+    <h2 style="margin: 14px 0 0; font-size: 46px; line-height: 1.06; font-weight: 800; letter-spacing: -.03em">Seis frentes de <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">defensa.</span></h2>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <sc-for list="{{lines}}" as="l" hint-placeholder-count="6">
+      <div style="border-radius: 24px; background: {{l.bg}}; border: 1px solid #DCE6F2">
+        <button type="button" onClick="{{l.toggle}}" aria-expanded="{{l.open}}" style="width: 100%; padding: 24px 28px; display: flex; gap: 20px; align-items: center; background: transparent; border: 0; color: #0B2A4F; font: inherit; text-align: left; cursor: pointer">
+          <span style="flex: 0 0 52px; height: 52px; border-radius: 16px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; color: #F4914D; border: 1px solid #DCE6F2">{{l.num}}</span>
+          <span style="flex: 1; font-size: 22px; font-weight: 800">{{l.title}}</span>
+          <span style="width: 44px; height: 44px; border-radius: 999px; background: #0B2A4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 22px">{{l.icon}}</span>
+        </button>
+        <sc-if value="{{l.open}}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 0 28px 28px 100px">
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #34465F">{{l.desc}}</p>
+            <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+              <sc-for list="{{l.items}}" as="it" hint-placeholder-count="4">
+                <div style="padding: 14px 16px; background: #FFFFFF; border-radius: 14px; font-size: 14px; font-weight: 600; line-height: 1.45">{{it}}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { o: 0 }; }
+  renderVals() {
+    const L = [
+      ['Litigio internacional en derechos humanos', 'Representación directa ante tribunales internacionales en casos emblemáticos.', ['Sistema Interamericano: peticiones individuales, medidas cautelares y provisionales, audiencias temáticas y casos ante la CIDH y la Corte IDH', 'Sistema ONU: litigio ante los comités de tratados (CCPR, CEDAW, CAT, CRC, CERD), informes alternativos y exámenes periódicos', 'Áreas especializadas: derechos políticos, libertad de expresión, derechos de las mujeres y debido proceso', 'INTERPOL: solicitudes de eliminación de notificaciones rojas en casos de persecución política']],
+      ['Representación judicial nacional', 'Acompañamiento jurídico especializado ante autoridades nacionales.', ['Litigio contencioso administrativo ante juzgados y el Consejo de Estado por daños atribuibles al Estado', 'Procesos penales complejos con enfoque de derechos humanos y coordinación con la justicia transicional']],
+      ['Empresas y derechos humanos', 'Apoyo a empresas que adoptan prácticas responsables.', ['Defensa jurídica y mitigación de riesgos', 'Auditorías jurídicas retrospectivas y remediación no judicial', 'Evaluaciones de impacto en derechos humanos (HRIA)', 'Diseño de políticas, sistemas de monitoreo y capacitación']],
+      ['Consulta previa y derechos colectivos', 'Asistencia jurídica en consulta libre, previa e informada.', ['Comunidades indígenas, afrodescendientes y campesinas', 'Defensa frente a megaproyectos extractivos y de infraestructura']],
+      ['Formación, investigación y asesoría estratégica', 'Cursos, diplomados, seminarios y capacitaciones.', ['Litigio internacional', 'Derechos de las mujeres', 'Justicia ambiental y mecanismos de protección', 'Informes jurídicos y materiales de incidencia']],
+      ['Asistencia migratoria integral en Estados Unidos', 'Asistencia técnica no legal para trámites migratorios.', ['Peticiones familiares (I-130)', 'Visas U y VAWA (I-918, I-360)', 'Asilo (I-589)', 'Ajuste de estatus y naturalización (I-485, N-400)', 'Permisos de trabajo (I-765)', 'Visas de no inmigrante y de estudiante (DS-160, F-1)', 'Solicitudes FOIA y antecedentes (FBI Identity History Summary)']]
+    ];
+    const o = this.state.o;
+    const R = ['I', 'II', 'III', 'IV', 'V', 'VI'];
+    return {
+      lines: L.map(([title, desc, items], i) => ({ title, desc, items, num: R[i], open: i === o, icon: i === o ? '–' : '+', bg: i === o ? '#F3F8FE' : '#FFFFFF', toggle: () => this.setState({ o: i === o ? -1 : i }) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

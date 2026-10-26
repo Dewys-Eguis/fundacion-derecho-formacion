@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Educación para la paz — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(11,42,79,.1)}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="que" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Educación para la paz" eyebrow="Qué hacemos" heading="Educación para la paz, complejidad y desarrollo social." lead="Acompañamos a los sectores público y privado, a las comunidades y a la población vulnerable con gestión del conocimiento, capacidades ciudadanas, derechos humanos, convivencia y cultura de la legalidad." photo="jornada de formación" art="educacion" hint-size="1440px,512px"></dc-import>
+
+<section style="padding: 88px 48px 0">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Productos y servicios</div>
+      <h2 style="margin: 14px 0 0; font-size: 48px; font-weight: 800; letter-spacing: -.03em">Construimos paz <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">desde la educación.</span></h2>
+    </div>
+    <div role="tablist" aria-label="Tipo de servicio" style="display: flex; gap: 4px; padding: 5px; background: #F3F8FE; border-radius: 999px">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+        <button type="button" role="tab" onClick="{{t.pick}}" style="height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: {{t.bg}}; color: {{t.fg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{t.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+  <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px">
+    <sc-for list="{{items}}" as="i" hint-placeholder-count="12">
+      <div class="card" style="padding: 28px; min-height: 180px; box-sizing: border-box; background: {{i.bg}}; border-radius: 24px; display: flex; flex-direction: column; justify-content: space-between">
+        <span style="font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: {{i.tag}}">{{i.cat}}</span>
+        <span style="margin-top: 18px; font-size: 19px; font-weight: 700; line-height: 1.4">{{i.t}}</span>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section style="padding: 104px 16px 0">
+  <a href="Diplomados.dc.html" style="padding: 56px 64px; background: #FFF1E6; border-radius: 32px; display: flex; justify-content: space-between; align-items: center; text-decoration: none; color: #0B2A4F">
+    <span style="display: flex; align-items: center; gap: 32px"><span style="font-size: 110px; font-weight: 800; letter-spacing: -.05em; line-height: .9">21</span><span><span style="display: block; font-size: 32px; font-weight: 800">diplomados virtuales gratuitos</span><span style="display: block; margin-top: 6px; font-size: 16px; color: #34465F">Inscripción y estudio sin costo; solo se paga el certificado.</span></span></span>
+    <span style="height: 58px; padding: 0 26px; display: flex; align-items: center; background: #0B2A4F; color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 700">Ver catálogo →</span>
+  </a>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { t: 'all' }; }
+  renderVals() {
+    const I = [
+      ['for', 'Cursos, seminarios y diplomados en métodos alternativos de solución de conflictos, derecho penal, lavado de activos, extinción de dominio y financiación del terrorismo'],
+      ['pro', 'Diseño, acompañamiento y evaluación de planes y proyectos para organizaciones públicas, privadas e internacionales'],
+      ['inv', 'Diagnósticos, mapeos y análisis de problemáticas comunitarias'],
+      ['pro', 'Modelos pedagógicos y académicos para políticas públicas y privadas'],
+      ['for', 'Formación de líderes, familias y comunidades'],
+      ['pro', 'Metodologías de tejido social, construcción de paz y convivencia ciudadana'],
+      ['for', 'Capacitación presencial y virtual a equipos de trabajo en temas multidisciplinarios'],
+      ['pro', 'Plataformas especializadas y apoyo a población vulnerable'],
+      ['for', 'Capacitación en mejora continua de procesos, proyectos y políticas'],
+      ['inv', 'Modelos estadísticos de seguimiento a programas sociales'],
+      ['inv', 'Investigación y estudios técnicos'],
+      ['for', 'Organización de seminarios, talleres, congresos y espacios de aprendizaje colaborativo']
+    ];
+    const CAT = { for: 'Formación', pro: 'Proyectos y políticas', inv: 'Investigación' };
+    const t = this.state.t;
+    const T = [['all', 'Todos'], ['for', 'Formación'], ['pro', 'Proyectos y políticas'], ['inv', 'Investigación']];
+    return {
+      tabs: T.map(([k, label]) => ({ label, bg: k === t ? '#0B2A4F' : 'transparent', fg: k === t ? '#FFFFFF' : '#0B2A4F', pick: () => this.setState({ t: k }) })),
+      items: I.filter(([k]) => t === 'all' || k === t).map(([k, txt]) => ({ t: txt, cat: CAT[k], bg: k === 'pro' ? '#FFF1E6' : '#F3F8FE', tag: k === 'pro' ? '#B5531A' : '#1E64C8' }))
+    };
+  }
+}
+</script>
+</body>
+</html>

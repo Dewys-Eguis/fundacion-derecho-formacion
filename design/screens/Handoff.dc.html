@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Handoff frontend — Fundación Derecho y Formación</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>body{margin:0;background:#FFFFFF}</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; padding: 80px 64px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 40px; border-bottom: 1px solid #DCE6F2">
+    <div>
+      <dc-import name="Logo" tone="light" size="md" hint-size="360px,48px"></dc-import>
+      <h1 style="margin: 28px 0 0; font-size: 72px; line-height: .95; font-weight: 800; letter-spacing: -.04em">Handoff <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">frontend</span></h1>
+    </div>
+    <div style="text-align: right; font-size: 14px; line-height: 1.7; color: #51617A">Iteración 2 · 25 de octubre de 2026<br>Desktop 1440 · Móvil 390<br>14 páginas · 4 componentes compartidos</div>
+  </div>
+
+  <!-- Tokens -->
+  <section style="margin-top: 56px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+    <div style="padding: 28px; background: #F3F8FE; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Color</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{colors}}" as="c" hint-placeholder-count="9">
+          <div style="display: grid; grid-template-columns: 36px 1fr auto; gap: 12px; align-items: center; font-size: 13px"><span style="width: 36px; height: 36px; border-radius: 10px; background: {{c.hex}}; border: 1px solid #DCE6F2"></span><span><b>{{c.name}}</b><br><span style="color: #51617A">{{c.use}}</span></span><code style="font-size: 12px">{{c.hex}}</code></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="padding: 28px; background: #F3F8FE; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Tipografía</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{type}}" as="t" hint-placeholder-count="9">
+          <div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #DCE6F2; font-size: 13px"><b>{{t.k}}</b><span style="color: #34465F; text-align: right">{{t.v}}</span></div>
+        </sc-for>
+      </div>
+      <p style="margin: 14px 0 0; font-size: 12px; line-height: 1.6; color: #51617A">Plus Jakarta Sans (400–800) + Instrument Serif itálica solo para la palabra clave de los titulares. Google Fonts, display=swap.</p>
+    </div>
+    <div style="padding: 28px; background: #F3F8FE; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Espaciado · radios · sombras</div>
+      <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px">
+        <sc-for list="{{layout}}" as="t" hint-placeholder-count="9">
+          <div style="display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #DCE6F2; font-size: 13px"><b>{{t.k}}</b><span style="color: #34465F; text-align: right">{{t.v}}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Routes + components -->
+  <section style="margin-top: 16px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 16px">
+    <div style="padding: 28px; border: 1px solid #DCE6F2; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Mapa de rutas</div>
+      <div style="margin-top: 14px">
+        <sc-for list="{{routes}}" as="r" hint-placeholder-count="14">
+          <div style="display: grid; grid-template-columns: 1.1fr 1.3fr 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid #EEF3F9; font-size: 13px"><b>{{r.page}}</b><code style="color: #1E64C8">{{r.path}}</code><span style="color: #51617A">{{r.board}}</span></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="padding: 28px; border: 1px solid #DCE6F2; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Componentes</div>
+      <div style="margin-top: 14px">
+        <sc-for list="{{components}}" as="c" hint-placeholder-count="12">
+          <div style="padding: 9px 0; border-bottom: 1px solid #EEF3F9; font-size: 13px; line-height: 1.5"><b>{{c.k}}</b> — <span style="color: #34465F">{{c.v}}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactions + a11y -->
+  <section style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px">
+    <div style="padding: 28px; background: #0B2A4F; color: #FFFFFF; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #F4914D">Interacción y motion</div>
+      <div style="margin-top: 14px">
+        <sc-for list="{{motion}}" as="m" hint-placeholder-count="8">
+          <div style="padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.12); font-size: 13px; line-height: 1.5"><b>{{m.k}}</b> — <span style="color: #C9DAF0">{{m.v}}</span></div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="padding: 28px; background: #FFF1E6; border-radius: 26px">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Accesibilidad y responsive</div>
+      <div style="margin-top: 14px">
+        <sc-for list="{{a11y}}" as="m" hint-placeholder-count="7">
+          <div style="padding: 9px 0; border-bottom: 1px solid rgba(11,42,79,.1); font-size: 13px; line-height: 1.5"><b>{{m.k}}</b> — <span style="color: #34465F">{{m.v}}</span></div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Assets -->
+  <section style="margin-top: 16px; padding: 28px; border: 1px solid #DCE6F2; border-radius: 26px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Imágenes temporales → reemplazo</div>
+      <span style="font-size: 12px; color: #51617A">Visualizaciones 3D fotorrealistas (conceptuales, rotuladas como tales en la interfaz) y foto real del sitio. Indicaciones para sustituirlas por fotografía real.</span>
+    </div>
+    <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+      <sc-for list="{{assets}}" as="a" hint-placeholder-count="9">
+        <div style="display: grid; grid-template-columns: 110px 1fr; gap: 14px; padding: 12px; background: #F3F8FE; border-radius: 18px">
+          <img src="{{a.url}}" alt="" style="width: 110px; height: 82px; object-fit: cover; border-radius: 12px; display: block">
+          <div style="font-size: 12px; line-height: 1.5"><b style="font-size: 13px">{{a.slot}}</b><br><span style="color: #34465F">{{a.prompt}}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Pending -->
+  <section style="margin-top: 16px; padding: 28px; background: #F3F8FE; border-radius: 26px">
+    <div style="font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #B5531A">Pendientes de contenido (no inventar · confirmar con la Fundación)</div>
+    <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px">
+      <sc-for list="{{pending}}" as="p" hint-placeholder-count="14">
+        <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 13px; line-height: 1.5"><span style="flex: 0 0 18px; height: 18px; margin-top: 1px; border: 2px solid #1E64C8; border-radius: 5px; box-sizing: border-box"></span>{{p}}</div>
+      </sc-for>
+    </div>
+  </section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const kv = (a) => a.map(([k, v]) => ({ k, v }));
+    return {
+      colors: [
+        { name: 'Azul institucional', hex: '#0B2A4F', use: 'Texto principal, bandas, pie' },
+        { name: 'Azul acción', hex: '#1E64C8', use: 'Énfasis, enlaces, logo' },
+        { name: 'Naranja suave', hex: '#F4914D', use: 'CTA, sellos, logo' },
+        { name: 'Naranja texto', hex: '#B5531A', use: 'Rótulos sobre claro (AA)' },
+        { name: 'Cielo', hex: '#EAF3FD', use: 'Banners, secciones' },
+        { name: 'Bruma', hex: '#F3F8FE', use: 'Tarjetas, pestañas' },
+        { name: 'Durazno', hex: '#FFF1E6', use: 'Fondos cálidos' },
+        { name: 'Línea', hex: '#DCE6F2', use: 'Bordes y divisores' },
+        { name: 'Texto secundario', hex: '#51617A', use: 'Descripciones' }
+      ],
+      type: kv([['H1 banner', '82 / 70 / 62 px · 800 · −0.04em'], ['H2 sección', '52 / 46 px · 800 · −0.03em'], ['H3 tarjeta', '24–34 px · 800'], ['Lead', '18–19 px · 1.6'], ['Cuerpo', '15–17 px · 1.6'], ['Rótulo', '12–13 px · 800 · mayúsculas · 0.12em'], ['Botón', '14–16 px · 700–800'], ['Móvil H1', '36–38 px'], ['Móvil H2', '26–32 px']]),
+      layout: kv([['Contenedor', '1440 px · gutter 48 px'], ['Bandas inset', 'margen 16 px · radio 32 px'], ['Sección', '104–120 px vertical (móvil 48–64)'], ['Tarjetas', 'radio 22–28 px · padding 24–36 px'], ['Botones', 'alto 46–60 px · píldora 999 px'], ['Pestañas', 'contenedor Bruma · activa azul'], ['Sombra', '0 24px 48px rgba(11,42,79,.12)'], ['Hover tarjeta', 'translateY(−6px) · 300 ms'], ['Grid', '12 columnas · gap 16 px']]),
+      routes: [
+        { page: 'Inicio', path: '/', board: '01 · Main' },
+        { page: 'Proyecto solar', path: '/proyectos/planta-solar-san-francisco', board: '02 · ProyectoSolar' },
+        { page: 'Proyectos', path: '/proyectos-y-publicaciones', board: '03 · Proyectos' },
+        { page: 'Quiénes somos', path: '/quienes-somos', board: '04 · QuienesSomos' },
+        { page: 'Staff jurídico', path: '/equipo-juridico', board: '05 · Staff' },
+        { page: 'Oficinas', path: '/nuestras-oficinas', board: '06 · Oficinas' },
+        { page: 'Gobierno corporativo', path: '/gobierno-corporativo', board: '07 · Gobierno' },
+        { page: 'Estudio legal', path: '/estudio-legal-consultoria', board: '08 · EstudioLegal' },
+        { page: 'Litigio estratégico', path: '/litigio-estrategico', board: '09 · Litigio' },
+        { page: 'Centro de Conciliación', path: '/centro-de-conciliacion', board: '10 · Conciliacion' },
+        { page: 'Educación para la paz', path: '/educacion-para-la-paz', board: '11 · Educacion' },
+        { page: 'Justicia para la paz', path: '/justicia-para-la-paz', board: '12 · JusticiaPaz' },
+        { page: 'Diplomados', path: '/diplomados', board: '13 · Diplomados' },
+        { page: 'Contáctenos', path: '/contactenos', board: '14 · Contacto' }
+      ],
+      components: kv([['Logo', 'tono claro/oscuro · tamaños lg, md, sm, xs (apilado en móvil)'], ['Header', 'barra superior + navegación + mega menús «Quiénes somos» y «Qué hacemos»; sticky al hacer scroll'], ['PageBanner', 'props: crumb, eyebrow, heading, lead, art (ilustración)'], ['Footer', 'columnas, sellos institucionales, redes'], ['HeroSlider', '3 banners, autoplay 8 s, pestañas y flecha'], ['FocusBand', 'mapa Washington → Ciudad Bolívar'], ['CurvedGallery', 'carrusel con máscara curva superior e inferior'], ['TechConfigurator', '4 configuraciones del PDF + barras comparativas'], ['Tabs / Filters', 'pestañas tipo píldora'], ['Accordion', 'litigio, preguntas, menú móvil'], ['Calendar', 'agenda conectada al sistema de reservas actual'], ['Forms', 'contacto (nombre, correo, mensaje), donación, voluntariado']]),
+      motion: kv([['Hero', 'cross-fade 900 ms; capas cielo/cerros/paneles en parallax'], ['Paneles', 'brillo que recorre las filas en bucle lento'], ['Mapa', 'el arco Washington → Ciudad Bolívar se dibuja al entrar (stroke-dashoffset)'], ['Revelado', 'secciones fade-up 24 px, stagger 80 ms'], ['Tarjetas', 'elevación −6 px en hover'], ['Galería', 'arrastre con inercia y snap'], ['Mega menú', 'aparición 200 ms con desplazamiento 8 px'], ['Reducido', 'prefers-reduced-motion desactiva parallax y autoplay']]),
+      a11y: kv([['Contraste', 'AA: naranja #B5531A para texto pequeño; #F4914D solo como fondo con texto azul'], ['Foco', 'anillo 3 px #1E64C8 visible en todos los controles'], ['Objetivos', 'mínimo 44 × 44 px'], ['Semántica', 'header/nav/main/footer; pestañas con role=tab; acordeones con aria-expanded'], ['Imágenes', 'alt descriptivo; ilustraciones decorativas con alt vacío'], ['Breakpoints', '≥1280 escritorio · 768–1279 tableta (grids a 2 columnas) · <768 móvil'], ['Idioma', 'ES por defecto; EN preparado en la barra superior']]),
+      assets: [
+        { slot: 'Hero 1 · Ciudad Bolívar al anochecer', url: '../assets/render-hero-ciudad-bolivar.jpg', prompt: 'Render 3D (Blender Cycles) 1920×980. Mantener o sustituir por foto aérea real de la ladera y del lote.' },
+        { slot: 'Hero 2 · Vista elevada', url: '../assets/render-vista-elevada.jpg', prompt: 'Render 3D. Ideal: foto de drone del lote de 23,1 ha al atardecer.' },
+        { slot: 'Hero 3 · Reflejo en paneles', url: '../assets/render-paneles-reflejo.jpg', prompt: 'Render 3D. Ideal: foto real de paneles bifaciales con reflejo urbano.' },
+        { slot: 'Cierre · Ladera iluminada', url: '../assets/render-ladera.jpg', prompt: 'Recorte del render 1. Ideal: foto nocturna real de Ciudad Bolívar.' },
+        { slot: 'Galería · Foto real', url: '../assets/foto-paneles-sitio-actual.jpg', prompt: 'Única foto real disponible (sitio actual). Pedir versión en alta resolución.' },
+        { slot: 'Proyectos educación / paz / alimentaria', url: '../assets/render-vista-elevada.jpg', prompt: 'Sin imagen inventada: usar proyecto_3_3.jpg, proyecto_4.jpg y logo Alliance del sitio actual.' },
+        { slot: 'Banners interiores', url: '../assets/render-ladera.jpg', prompt: 'Recortes de los renders. Sustituir por fotos reales de cada servicio cuando existan.' },
+        { slot: 'Oficinas', url: '../assets/render-hero-ciudad-bolivar.jpg', prompt: 'Usar las 5 fotos reales de la oficina publicadas en el sitio actual.' },
+        { slot: 'Staff', url: '../assets/render-hero-ciudad-bolivar.jpg', prompt: 'Solo fotos reales de las 11 personas; nunca retratos generados.' }
+      ],
+      pending: [
+        'Logo oficial en vector (SVG/AI) para reemplazar la recreación adaptada',
+        'Fotos reales del staff jurídico (11 personas), sin retratos generados',
+        'Fotografías en alta resolución del proyecto solar y de Ciudad Bolívar',
+        'Confirmar capacidad: el sitio dice 15 MW; el estudio indica 11,05 MWp óptimos',
+        'Fecha, lugar y entidad de la presentación en Washington D.C.',
+        'Horarios de atención',
+        'Enlaces de los documentos de gobierno corporativo',
+        'Enlace o pasarela de donaciones y montos sugeridos',
+        'Identificar los 8 logos de aliados (conv_*) y sus permisos de uso',
+        'URLs de Facebook, LinkedIn y YouTube',
+        'Biografía de Juan Miguel González (duplicada en el sitio actual)',
+        'Texto de «Adjudicación de apoyos» (el sitio muestra otro contenido)',
+        'Política de tratamiento de datos',
+        'Traducción al inglés para la versión EN'
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

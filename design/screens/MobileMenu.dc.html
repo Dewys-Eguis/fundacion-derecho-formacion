@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Menú móvil — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+<style>body{margin:0;background:#FFFFFF}</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+  <div style="height: 76px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #DCE6F2">
+    <a href="Mobile.dc.html" aria-label="Inicio" style="display: flex; text-decoration: none"><dc-import name="Logo" tone="light" size="xs" hint-size="210px,52px"></dc-import></a>
+    <a href="Mobile.dc.html" aria-label="Cerrar menú" style="width: 44px; height: 44px; border-radius: 999px; background: #F3F8FE; display: flex; align-items: center; justify-content: center"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13" stroke="#0B2A4F" stroke-width="1.8"></path></svg></a>
+  </div>
+  <nav aria-label="Menú" style="padding: 12px 16px; display: flex; flex-direction: column; gap: 4px">
+    <a href="Mobile.dc.html" style="padding: 14px 12px; font-size: 22px; font-weight: 800; color: #0B2A4F; text-decoration: none">Inicio</a>
+    <button type="button" onClick="{{tQ}}" aria-expanded="{{oQ}}" style="padding: 14px 12px; display: flex; justify-content: space-between; align-items: center; border: 0; border-radius: 16px; background: {{bgQ}}; color: #0B2A4F; font: inherit; font-size: 22px; font-weight: 800; text-align: left; cursor: pointer">Quiénes somos <span style="color: #F4914D">{{iQ}}</span></button>
+    <sc-if value="{{oQ}}" hint-placeholder-val="{{ false }}">
+      <div style="padding: 0 12px 8px 24px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; font-weight: 600">
+        <a href="QuienesSomos.dc.html" style="color: #34465F; text-decoration: none">Misión y visión</a><a href="Staff.dc.html" style="color: #34465F; text-decoration: none">Staff jurídico</a><a href="Oficinas.dc.html" style="color: #34465F; text-decoration: none">Nuestras oficinas</a><a href="Gobierno.dc.html" style="color: #34465F; text-decoration: none">Gobierno corporativo</a>
+      </div>
+    </sc-if>
+    <button type="button" onClick="{{tH}}" aria-expanded="{{oH}}" style="padding: 14px 12px; display: flex; justify-content: space-between; align-items: center; border: 0; border-radius: 16px; background: {{bgH}}; color: #0B2A4F; font: inherit; font-size: 22px; font-weight: 800; text-align: left; cursor: pointer">Qué hacemos <span style="color: #F4914D">{{iH}}</span></button>
+    <sc-if value="{{oH}}" hint-placeholder-val="{{ true }}">
+      <div style="padding: 0 12px 8px 24px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; font-weight: 600">
+        <a href="EstudioLegal.dc.html" style="color: #34465F; text-decoration: none">Estudio legal y consultoría</a><a href="Litigio.dc.html" style="color: #34465F; text-decoration: none">Litigio estratégico</a><a href="Conciliacion.dc.html" style="color: #34465F; text-decoration: none">Centro de Conciliación</a><a href="Educacion.dc.html" style="color: #34465F; text-decoration: none">Educación para la paz</a><a href="JusticiaPaz.dc.html" style="color: #34465F; text-decoration: none">Justicia especial para la paz</a>
+      </div>
+    </sc-if>
+    <a href="Proyectos.dc.html" style="padding: 14px 12px; font-size: 22px; font-weight: 800; color: #0B2A4F; text-decoration: none">Proyectos</a>
+    <a href="Diplomados.dc.html" style="padding: 14px 12px; font-size: 22px; font-weight: 800; color: #0B2A4F; text-decoration: none">Diplomados</a>
+    <a href="Contacto.dc.html" style="padding: 14px 12px; font-size: 22px; font-weight: 800; color: #0B2A4F; text-decoration: none">Contáctenos</a>
+  </nav>
+  <div style="margin-top: auto; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+    <a href="MobileSolar.dc.html" style="padding: 16px 18px; background: #0B2A4F; color: #FFFFFF; border-radius: 20px; text-decoration: none"><span style="display: block; font-size: 11px; font-weight: 800; color: #F4914D; text-transform: uppercase">Proyecto destacado</span><span style="display: block; margin-top: 4px; font-size: 16px; font-weight: 800">Planta solar San Francisco →</span></a>
+    <a href="Contacto.dc.html" style="height: 54px; display: flex; align-items: center; justify-content: center; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none">Agenda tu cita</a>
+    <span style="text-align: center; font-size: 13px; font-weight: 800"><span style="color: #1E64C8">ES</span> / EN</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { o: 'h' }; }
+  renderVals() {
+    const o = this.state.o;
+    const tog = (k) => () => this.setState({ o: o === k ? null : k });
+    return {
+      oQ: o === 'q', oH: o === 'h', iQ: o === 'q' ? '–' : '+', iH: o === 'h' ? '–' : '+',
+      bgQ: o === 'q' ? '#F3F8FE' : 'transparent', bgH: o === 'h' ? '#F3F8FE' : 'transparent',
+      tQ: tog('q'), tH: tog('h')
+    };
+  }
+}
+</script>
+</body>
+</html>

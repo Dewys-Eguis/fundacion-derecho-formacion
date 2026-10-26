@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio — Fundación Derecho y Formación</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(11,42,79,.14)}
+.fade{transition:opacity .9s ease}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+
+<dc-import name="Header" active="inicio" hint-size="1440px,128px"></dc-import>
+
+<!-- ================= HERO CINEMATOGRÁFICO ================= -->
+<section style="position: relative; height: 900px; overflow: hidden; background: #050E1A; color: #FFFFFF">
+  <img class="fade" src="../assets/render-hero-ciudad-bolivar.jpg" alt="Visualización 3D: planta solar frente a la ladera iluminada de Ciudad Bolívar al anochecer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{o0}}">
+  <img class="fade" src="../assets/render-vista-elevada.jpg" alt="Visualización 3D: vista elevada de la planta solar y Ciudad Bolívar al anochecer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{o1}}">
+  <img class="fade" src="../assets/render-paneles-reflejo.jpg" alt="Visualización 3D: la ciudad reflejada en los paneles solares" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: {{o2}}">
+  <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,14,26,.82) 0%, rgba(5,14,26,.45) 45%, rgba(5,14,26,0) 75%)"></div>
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 260px; background: linear-gradient(180deg, rgba(5,14,26,0), rgba(5,14,26,.7))"></div>
+
+  <div style="position: absolute; left: 64px; top: 120px; width: 820px">
+    <div style="display: flex; gap: 10px; align-items: center">
+      <span style="padding: 9px 16px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">{{s.chip}}</span>
+      <span style="padding: 9px 16px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; font-size: 12px; font-weight: 700; letter-spacing: .04em">{{s.chip2}}</span>
+    </div>
+    <h1 style="margin: 30px 0 0; font-size: 96px; line-height: .94; font-weight: 800; letter-spacing: -.045em">{{s.t1}}<br><span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFC9A3; letter-spacing: -.02em">{{s.t2}}</span></h1>
+    <p style="margin: 28px 0 0; max-width: 600px; min-height: 90px; font-size: 20px; line-height: 1.55; color: #DCE8F7">{{s.body}}</p>
+    <div style="margin-top: 32px; display: flex; gap: 12px">
+      <a href="{{s.href1}}" style="height: 62px; padding: 0 30px; display: flex; align-items: center; gap: 12px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 16px; font-weight: 800; text-decoration: none">{{s.cta1}} <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"></path></svg></a>
+      <a href="{{s.href2}}" style="height: 62px; padding: 0 28px; display: flex; align-items: center; gap: 10px; background: #FFFFFF; color: #0B2A4F; border-radius: 999px; font-size: 16px; font-weight: 700; text-decoration: none">{{s.cta2}}</a>
+    </div>
+  </div>
+
+  <span style="position: absolute; right: 64px; top: 120px; padding: 7px 12px; background: rgba(5,14,26,.55); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; font-size: 11px; font-weight: 600; color: #C9DAF0">Visualización 3D conceptual · no es una fotografía del proyecto</span>
+
+  <!-- slider controls -->
+  <div style="position: absolute; left: 64px; bottom: 168px; display: flex; gap: 28px">
+    <sc-for list="{{slides}}" as="sl" hint-placeholder-count="3">
+      <button type="button" onClick="{{sl.go}}" style="width: 220px; padding: 14px 0 0; background: transparent; border: 0; text-align: left; cursor: pointer; color: {{sl.fg}}; font: inherit; position: relative">
+        <span style="position: absolute; left: 0; right: 0; top: 0; height: 3px; border-radius: 3px; background: rgba(255,255,255,.22)"></span>
+        <span style="position: absolute; left: 0; top: 0; height: 3px; border-radius: 3px; width: {{sl.w}}; background: #F4914D"></span>
+        <span style="display: block; font-size: 12px; font-weight: 800; letter-spacing: .1em">{{sl.num}}</span>
+        <span style="display: block; margin-top: 4px; font-size: 14px; font-weight: 700">{{sl.label}}</span>
+      </button>
+    </sc-for>
+  </div>
+
+  <!-- white KPI bar (contrast with page) -->
+  <div style="position: absolute; left: 48px; right: 48px; bottom: 32px; height: 112px; padding: 0 40px; box-sizing: border-box; background: #FFFFFF; color: #0B2A4F; border-radius: 28px; box-shadow: 0 30px 60px rgba(0,0,0,.35); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)) 230px; align-items: center">
+    <div><div style="font-size: 36px; font-weight: 800; letter-spacing: -.03em">11,05 <span style="font-size: 17px">MWp</span></div><div style="font-size: 13px; font-weight: 600; color: #51617A">Capacidad · configuración óptima</div></div>
+    <div style="padding-left: 28px; border-left: 1px solid #DCE6F2"><div style="font-size: 36px; font-weight: 800; letter-spacing: -.03em">16.744</div><div style="font-size: 13px; font-weight: 600; color: #51617A">Módulos bifaciales</div></div>
+    <div style="padding-left: 28px; border-left: 1px solid #DCE6F2"><div style="font-size: 36px; font-weight: 800; letter-spacing: -.03em">23,1 <span style="font-size: 17px">ha</span></div><div style="font-size: 13px; font-weight: 600; color: #51617A">Lote en Ciudad Bolívar</div></div>
+    <div style="padding-left: 28px; border-left: 1px solid #DCE6F2"><div style="font-size: 36px; font-weight: 800; letter-spacing: -.03em; color: #B5531A">OEA</div><div style="font-size: 13px; font-weight: 600; color: #51617A">Organización con estatus consultivo</div></div>
+    <a href="ProyectoSolar.dc.html" style="height: 60px; display: flex; align-items: center; justify-content: center; gap: 10px; background: #0B2A4F; color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none">Ver el proyecto →</a>
+  </div>
+</section>
+
+<!-- ================= CONFIANZA ================= -->
+<section style="padding: 40px 48px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px">
+  <div style="display: flex; gap: 14px; align-items: center"><span style="flex: 0 0 10px; height: 10px; border-radius: 999px; background: #F4914D"></span><span style="font-size: 14px; line-height: 1.4"><b>Estatus consultivo ante la OEA</b><br><span style="color: #51617A">CP/RES. 759 (1217/99)</span></span></div>
+  <div style="display: flex; gap: 14px; align-items: center"><span style="flex: 0 0 10px; height: 10px; border-radius: 999px; background: #1E64C8"></span><span style="font-size: 14px; line-height: 1.4"><b>Adscrito al Ministerio de Justicia</b><br><span style="color: #51617A">Centro de Conciliación · Res. 0026/2014</span></span></div>
+  <div style="display: flex; gap: 14px; align-items: center"><span style="flex: 0 0 10px; height: 10px; border-radius: 999px; background: #F4914D"></span><span style="font-size: 14px; line-height: 1.4"><b>Alianza con CECOLI</b><br><span style="color: #51617A">Sede en Washington D.C.</span></span></div>
+  <div style="display: flex; gap: 14px; align-items: center"><span style="flex: 0 0 10px; height: 10px; border-radius: 999px; background: #1E64C8"></span><span style="font-size: 14px; line-height: 1.4"><b>Corporación Universitaria Alliance</b><br><span style="color: #51617A">Proyecto Alma Mater</span></span></div>
+</section>
+
+<!-- ================= MANIFIESTO ================= -->
+<section style="padding: 128px 48px 0">
+  <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Fundación Derecho y Formación · Tejido Humano</div>
+  <p style="margin: 22px 0 0; max-width: 1240px; font-size: 64px; line-height: 1.06; font-weight: 800; letter-spacing: -.035em">Asesoría legal, conciliación y educación para la paz, <span style="color: #9AAFC8">fortaleciendo el tejido social con</span> <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">ética y compromiso.</span></p>
+  <div style="margin-top: 72px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid #0B2A4F">
+    <div style="padding: 28px 28px 0 0"><div style="font-size: 72px; font-weight: 800; letter-spacing: -.05em; line-height: 1">2014</div><div style="margin-top: 12px; font-size: 15px; line-height: 1.5; color: #34465F">Centro de Conciliación adscrito al Ministerio de Justicia y del Derecho.</div></div>
+    <div style="padding: 28px 28px 0; border-left: 1px solid #DCE6F2"><div style="font-size: 72px; font-weight: 800; letter-spacing: -.05em; line-height: 1">2023</div><div style="margin-top: 12px; font-size: 15px; line-height: 1.5; color: #34465F">Estatus consultivo ante la Organización de los Estados Americanos.</div></div>
+    <div style="padding: 28px 28px 0; border-left: 1px solid #DCE6F2"><div style="font-size: 72px; font-weight: 800; letter-spacing: -.05em; line-height: 1; color: #B5531A">21</div><div style="margin-top: 12px; font-size: 15px; line-height: 1.5; color: #34465F">Diplomados virtuales con inscripción y estudio gratuitos.</div></div>
+    <div style="padding: 28px 0 0 28px; border-left: 1px solid #DCE6F2"><div style="font-size: 72px; font-weight: 800; letter-spacing: -.05em; line-height: 1; color: #1E64C8">2035</div><div style="margin-top: 12px; font-size: 15px; line-height: 1.5; color: #34465F">Visión: conocimiento jurídico y académico de alto impacto.</div></div>
+  </div>
+  <div style="margin-top: 40px; display: flex; gap: 12px">
+    <a href="QuienesSomos.dc.html" style="height: 54px; padding: 0 26px; display: flex; align-items: center; gap: 10px; background: #0B2A4F; color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none">Conózcanos →</a>
+    <a href="Staff.dc.html" style="height: 54px; padding: 0 26px; display: flex; align-items: center; border: 1.5px solid #C9DBEF; color: #0B2A4F; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none">Staff jurídico</a>
+  </div>
+</section>
+
+<!-- ================= FOCO: DE WASHINGTON A CIUDAD BOLÍVAR ================= -->
+<section style="margin-top: 128px; position: relative; height: 820px; overflow: hidden; background: #050E1A; color: #FFFFFF">
+  <img src="../assets/render-paneles-reflejo.jpg" alt="Visualización 3D: reflejo de la ciudad en los paneles solares" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,14,26,.92) 0%, rgba(5,14,26,.78) 48%, rgba(5,14,26,.35) 100%)"></div>
+  <svg aria-hidden="true" width="600" height="700" viewBox="-40 -20 560 640" style="position: absolute; right: 70px; top: 60px">
+    <defs><marker id="arrM" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#F4914D"></path></marker></defs>
+    <path d="M2 5h0M15 5h0M28 5h0M40 5h0M52 5h0M65 5h0M78 5h0M90 5h0M102 5h0M115 5h0M128 5h0M140 5h0M152 5h0M165 5h0M178 5h0M190 5h0M202 5h0M215 5h0M228 5h0M252 5h0M265 5h0M278 5h0M290 5h0M302 5h0M315 5h0M328 5h0M340 5h0M2 18h0M15 18h0M28 18h0M40 18h0M52 18h0M65 18h0M78 18h0M90 18h0M102 18h0M115 18h0M128 18h0M140 18h0M152 18h0M165 18h0M178 18h0M190 18h0M202 18h0M215 18h0M228 18h0M252 18h0M265 18h0M278 18h0M290 18h0M302 18h0M315 18h0M328 18h0M340 18h0M352 18h0M28 30h0M40 30h0M52 30h0M65 30h0M78 30h0M90 30h0M102 30h0M115 30h0M128 30h0M140 30h0M152 30h0M165 30h0M178 30h0M190 30h0M202 30h0M215 30h0M228 30h0M240 30h0M252 30h0M265 30h0M278 30h0M290 30h0M302 30h0M352 30h0M28 42h0M40 42h0M52 42h0M65 42h0M78 42h0M90 42h0M102 42h0M115 42h0M128 42h0M140 42h0M152 42h0M165 42h0M178 42h0M190 42h0M202 42h0M215 42h0M228 42h0M240 42h0M252 42h0M265 42h0M278 42h0M302 42h0M315 42h0M365 42h0M28 55h0M40 55h0M52 55h0M65 55h0M78 55h0M90 55h0M102 55h0M115 55h0M128 55h0M140 55h0M152 55h0M165 55h0M178 55h0M190 55h0M202 55h0M215 55h0M228 55h0M240 55h0M252 55h0M265 55h0M278 55h0M290 55h0M302 55h0M315 55h0M328 55h0M28 68h0M40 68h0M52 68h0M65 68h0M78 68h0M90 68h0M102 68h0M115 68h0M128 68h0M140 68h0M152 68h0M165 68h0M178 68h0M190 68h0M202 68h0M215 68h0M228 68h0M240 68h0M252 68h0M265 68h0M278 68h0M28 80h0M40 80h0M52 80h0M65 80h0M78 80h0M90 80h0M102 80h0M115 80h0M128 80h0M140 80h0M152 80h0M165 80h0M178 80h0M190 80h0M202 80h0M215 80h0M228 80h0M240 80h0M252 80h0M265 80h0M28 92h0M40 92h0M52 92h0M65 92h0M78 92h0M90 92h0M102 92h0M115 92h0M128 92h0M140 92h0M152 92h0M165 92h0M178 92h0M190 92h0M202 92h0M215 92h0M228 92h0M240 92h0M252 92h0M40 105h0M52 105h0M65 105h0M78 105h0M90 105h0M102 105h0M115 105h0M128 105h0M140 105h0M152 105h0M165 105h0M178 105h0M190 105h0M202 105h0M215 105h0M228 105h0M240 105h0M252 105h0M65 118h0M78 118h0M90 118h0M102 118h0M115 118h0M128 118h0M140 118h0M152 118h0M165 118h0M178 118h0M190 118h0M202 118h0M215 118h0M228 118h0M65 130h0M78 130h0M90 130h0M102 130h0M115 130h0M128 130h0M140 130h0M152 130h0M165 130h0M178 130h0M190 130h0M215 130h0M228 130h0M78 142h0M90 142h0M102 142h0M115 142h0M128 142h0M140 142h0M152 142h0M228 142h0M102 155h0M115 155h0M128 155h0M140 155h0M252 155h0M115 168h0M128 168h0M140 168h0M240 168h0M115 180h0M128 180h0M140 180h0M152 180h0M190 180h0M202 180h0M252 180h0M265 180h0M140 192h0M152 192h0M165 192h0M178 192h0M190 192h0M178 205h0M190 205h0M202 205h0M215 205h0M215 218h0M290 218h0M265 230h0M278 230h0M290 230h0M302 230h0M315 230h0M328 230h0M240 242h0M252 242h0M265 242h0M278 242h0M290 242h0M302 242h0M315 242h0M328 242h0M340 242h0M265 255h0M278 255h0M290 255h0M302 255h0M315 255h0M328 255h0M340 255h0M352 255h0M365 255h0M378 255h0M252 268h0M265 268h0M278 268h0M290 268h0M302 268h0M315 268h0M328 268h0M340 268h0M352 268h0M365 268h0M378 268h0M240 280h0M252 280h0M265 280h0M278 280h0M290 280h0M302 280h0M315 280h0M328 280h0M340 280h0M352 280h0M365 280h0M378 280h0M390 280h0M240 292h0M252 292h0M265 292h0M278 292h0M290 292h0M302 292h0M315 292h0M328 292h0M340 292h0M352 292h0M365 292h0M378 292h0M390 292h0M402 292h0M415 292h0M240 305h0M252 305h0M265 305h0M278 305h0M290 305h0M302 305h0M315 305h0M328 305h0M340 305h0M352 305h0M365 305h0M378 305h0M390 305h0M402 305h0M415 305h0M428 305h0M440 305h0M452 305h0M252 318h0M265 318h0M278 318h0M290 318h0M302 318h0M315 318h0M328 318h0M340 318h0M352 318h0M365 318h0M378 318h0M390 318h0M402 318h0M415 318h0M428 318h0M440 318h0M452 318h0M465 318h0M252 330h0M265 330h0M278 330h0M290 330h0M302 330h0M315 330h0M328 330h0M340 330h0M352 330h0M365 330h0M378 330h0M390 330h0M402 330h0M415 330h0M428 330h0M440 330h0M452 330h0M265 342h0M278 342h0M290 342h0M302 342h0M315 342h0M328 342h0M340 342h0M352 342h0M365 342h0M378 342h0M390 342h0M402 342h0M415 342h0M428 342h0M440 342h0M265 355h0M278 355h0M290 355h0M302 355h0M315 355h0M328 355h0M340 355h0M352 355h0M365 355h0M378 355h0M390 355h0M402 355h0M415 355h0M428 355h0M440 355h0M290 368h0M302 368h0M315 368h0M328 368h0M340 368h0M352 368h0M365 368h0M378 368h0M390 368h0M402 368h0M415 368h0M428 368h0M440 368h0M290 380h0M302 380h0M315 380h0M328 380h0M340 380h0M352 380h0M365 380h0M378 380h0M390 380h0M402 380h0M415 380h0M428 380h0M290 392h0M302 392h0M315 392h0M328 392h0M340 392h0M352 392h0M365 392h0M378 392h0M390 392h0M402 392h0M415 392h0M428 392h0M290 405h0M302 405h0M315 405h0M328 405h0M340 405h0M352 405h0M365 405h0M378 405h0M390 405h0M290 418h0M302 418h0M315 418h0M328 418h0M340 418h0M352 418h0M365 418h0M378 418h0M390 418h0M290 430h0M302 430h0M315 430h0M328 430h0M340 430h0M352 430h0M365 430h0M378 430h0M290 442h0M302 442h0M315 442h0M328 442h0M340 442h0M352 442h0M365 442h0M378 442h0M290 455h0M302 455h0M315 455h0M328 455h0M340 455h0M278 468h0M290 468h0M302 468h0M315 468h0M328 468h0M340 468h0M352 468h0M278 480h0M290 480h0M302 480h0M315 480h0M328 480h0M278 492h0M290 492h0M302 492h0M315 492h0M278 505h0M290 505h0M302 505h0M278 518h0M290 518h0M302 518h0M278 530h0M290 530h0M278 542h0M290 542h0M290 555h0M302 555h0" stroke="#7DB6F5" stroke-opacity=".5" stroke-width="5.5" stroke-linecap="round"></path>
+    <path d="M255 86 C 345 112, 355 200, 278 248" stroke="#F4914D" stroke-width="3" stroke-dasharray="6 7" fill="none" marker-end="url(#arrM)"></path>
+    <circle cx="255" cy="86" r="24" fill="#FFFFFF" fill-opacity=".22"></circle><circle cx="255" cy="86" r="8" fill="#FFFFFF"></circle>
+    <circle cx="270" cy="257" r="26" fill="#F4914D" fill-opacity=".3"></circle><circle cx="270" cy="257" r="9" fill="#F4914D"></circle>
+  </svg>
+  <div style="position: absolute; right: 140px; top: 112px; padding: 12px 16px; background: #FFFFFF; color: #0B2A4F; border-radius: 14px; font-size: 13px; line-height: 1.35; box-shadow: 0 16px 32px rgba(0,0,0,.3)"><span style="font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1E64C8">01 · Presentación</span><br><b>Washington D.C.</b><br><span style="color: #51617A">OEA · CECOLI</span></div>
+  <div style="position: absolute; right: 44px; top: 380px; padding: 12px 16px; background: #F4914D; color: #0B2A4F; border-radius: 14px; font-size: 13px; line-height: 1.35; box-shadow: 0 16px 32px rgba(0,0,0,.3)"><span style="font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">02 · Impacto</span><br><b>Ciudad Bolívar</b><br>Bogotá D.C.</div>
+
+  <div style="position: relative; padding: 104px 64px; width: 700px">
+    <span style="display: inline-flex; padding: 9px 16px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">Proyecto destacado</span>
+    <h2 style="margin: 26px 0 0; font-size: 72px; line-height: .98; font-weight: 800; letter-spacing: -.04em">De Washington a <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFC9A3">Ciudad Bolívar.</span></h2>
+    <p style="margin: 24px 0 0; font-size: 18px; line-height: 1.65; color: #C9DAF0">En Washington D.C. —sede de la OEA, ante la cual la Fundación tiene estatus consultivo, y de su aliado CECOLI— se presenta la Planta solar fotovoltaica San Francisco. Su destino es Ciudad Bolívar: energía renovable con carácter social para la población vulnerable de la localidad.</p>
+    <div style="margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+      <div style="padding: 18px; border: 1px solid rgba(255,255,255,.2); border-radius: 18px"><div style="font-size: 30px; font-weight: 800">3</div><div style="font-size: 12px; color: #C9DAF0">subproyectos de menos de 5 MW</div></div>
+      <div style="padding: 18px; border: 1px solid rgba(255,255,255,.2); border-radius: 18px"><div style="font-size: 30px; font-weight: 800">ENEL</div><div style="font-size: 12px; color: #C9DAF0">confirmó viabilidad de conexión</div></div>
+      <div style="padding: 18px; border: 1px solid rgba(255,255,255,.2); border-radius: 18px"><div style="font-size: 30px; font-weight: 800">GD</div><div style="font-size: 12px; color: #C9DAF0">generación distribuida</div></div>
+    </div>
+    <div style="margin-top: 36px; display: flex; gap: 12px">
+      <a href="ProyectoSolar.dc.html" style="height: 58px; padding: 0 28px; display: flex; align-items: center; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 15px; font-weight: 800; text-decoration: none">Ver el proyecto completo →</a>
+      <a href="https://allianceedu.co/wp-content/uploads/2026/04/2.2-PROYECTO-PLANTA-SOLAR-FOTOVOLTAICA-CIUDAD-BOLIVAR-BOGOTA-.pdf" style="height: 58px; padding: 0 26px; display: flex; align-items: center; border: 1.5px solid rgba(255,255,255,.4); color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none">Descargar documento</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= QUÉ HACEMOS ================= -->
+<section style="padding: 128px 48px 0">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Qué hacemos</div>
+      <h2 style="margin: 16px 0 0; font-size: 56px; line-height: 1.02; font-weight: 800; letter-spacing: -.035em">Servicios que fortalecen<br>el <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">tejido social.</span></h2>
+    </div>
+    <p style="margin: 0; max-width: 420px; font-size: 16px; line-height: 1.6; color: #51617A">Asesoría, educación e investigación: consultoría jurídica, litigio estratégico, conciliación y educación para la paz.</p>
+  </div>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+    <sc-for list="{{services}}" as="sv" hint-placeholder-count="6">
+      <a href="{{sv.href}}" class="card" style="padding: 32px; min-height: 280px; box-sizing: border-box; background: {{sv.bg}}; color: {{sv.fg}}; border: 1px solid #DCE6F2; border-radius: 28px; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between">
+        <span style="display: flex; justify-content: space-between; align-items: center"><span style="font-size: 48px; font-weight: 800; letter-spacing: -.04em; color: #F4914D">{{sv.num}}</span><span style="width: 44px; height: 44px; border-radius: 999px; border: 1.5px solid {{sv.line}}; display: flex; align-items: center; justify-content: center"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6" stroke="currentColor" stroke-width="1.8"></path></svg></span></span>
+        <span><span style="display: block; font-size: 25px; font-weight: 800; line-height: 1.15; letter-spacing: -.01em">{{sv.title}}</span><span style="display: block; margin-top: 10px; font-size: 15px; line-height: 1.55; color: {{sv.muted}}">{{sv.desc}}</span></span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ================= GALERÍA CURVA ================= -->
+<section style="padding: 128px 0 0">
+  <div style="padding: 0 48px; display: flex; justify-content: space-between; align-items: flex-end">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Galería</div>
+      <h2 style="margin: 16px 0 0; font-size: 56px; line-height: 1.02; font-weight: 800; letter-spacing: -.035em">El proyecto en <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">imágenes.</span></h2>
+    </div>
+    <div style="display: flex; gap: 10px">
+      <button type="button" aria-label="Anterior" onClick="{{galPrev}}" style="width: 58px; height: 58px; border: 1.5px solid #C9DBEF; border-radius: 999px; background: #FFFFFF; color: #0B2A4F; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="1.8"></path></svg></button>
+      <button type="button" aria-label="Siguiente" onClick="{{galNext}}" style="width: 58px; height: 58px; border: 0; border-radius: 999px; background: #0B2A4F; color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"></path></svg></button>
+    </div>
+  </div>
+  <div style="position: relative; margin-top: 48px; height: 600px; overflow: hidden; background: #050E1A">
+    <div style="position: absolute; left: 0; top: 20px; display: flex; gap: 14px; transform: translateX({{galX}}); transition: transform .6s cubic-bezier(.2,.8,.2,1)">
+      <sc-for list="{{gallery}}" as="g" hint-placeholder-count="8">
+        <div style="position: relative; flex: 0 0 340px; height: 560px; overflow: hidden; background: #0B2A4F">
+          <img src="{{g.img}}" alt="{{g.alt}}" style="width: 100%; height: 100%; object-fit: cover; object-position: {{g.pos}}; display: block">
+          <span style="position: absolute; left: 16px; right: 16px; bottom: 76px; padding: 10px 14px; background: rgba(255,255,255,.94); border-radius: 12px; font-size: 13px; font-weight: 700; color: #0B2A4F">{{g.caption}}</span>
+        </div>
+      </sc-for>
+    </div>
+    <svg aria-hidden="true" width="1440" height="600" viewBox="0 0 1440 600" preserveAspectRatio="none" style="position: absolute; inset: 0; pointer-events: none">
+      <path d="M0 0 H1440 V60 Q720 150 0 60 Z" fill="#FFFFFF"></path>
+      <path d="M0 600 V520 Q720 440 1440 520 V600 Z" fill="#FFFFFF"></path>
+    </svg>
+  </div>
+  <p style="margin: 10px 48px 0; font-size: 13px; color: #51617A">Visualizaciones 3D conceptuales e imagen del sitio actual. Reemplazar por fotografías reales cuando estén disponibles.</p>
+</section>
+
+<!-- ================= PROYECTOS ================= -->
+<section style="padding: 112px 48px 0">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Proyectos para la implementación de la paz</div>
+      <h2 style="margin: 16px 0 0; font-size: 56px; line-height: 1.02; font-weight: 800; letter-spacing: -.035em">Proyectos que <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">transforman.</span></h2>
+    </div>
+    <a href="Proyectos.dc.html" style="height: 54px; padding: 0 24px; display: flex; align-items: center; gap: 10px; border: 1.5px solid #C9DBEF; color: #0B2A4F; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none">Todos los proyectos →</a>
+  </div>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px">
+    <a href="ProyectoSolar.dc.html" class="card" style="position: relative; height: 640px; overflow: hidden; border-radius: 32px; text-decoration: none; color: #FFFFFF; display: block; background: #050E1A">
+      <img src="../assets/render-vista-elevada.jpg" alt="Visualización 3D de la planta solar" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+      <span style="position: absolute; inset: auto 0 0 0; height: 70%; background: linear-gradient(180deg, rgba(5,14,26,0), rgba(5,14,26,.92))"></span>
+      <span style="position: absolute; left: 24px; top: 24px; padding: 8px 14px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase">Energía · Destacado</span>
+      <span style="position: absolute; left: 32px; right: 32px; bottom: 32px">
+        <span style="display: block; font-size: 38px; font-weight: 800; line-height: 1.08; letter-spacing: -.02em">Desarrollo de una planta solar fotovoltaica en la zona sur de Bogotá D.C.</span>
+        <span style="display: block; margin-top: 12px; font-size: 15px; line-height: 1.55; color: #D6E4F5">Planta solar fotovoltaica San Francisco, en el marco del desarrollo de fuentes de energía renovables no convencionales en Colombia.</span>
+      </span>
+    </a>
+    <div style="display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <sc-for list="{{projects}}" as="p" hint-placeholder-count="3">
+        <a href="Proyectos.dc.html" class="card" style="position: relative; padding: 28px 30px; background: {{p.bg}}; color: {{p.fg}}; border-radius: 28px; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden">
+          <span style="position: absolute; right: 22px; top: 6px; font-size: 120px; font-weight: 800; letter-spacing: -.06em; line-height: 1; color: {{p.ghost}}">{{p.num}}</span>
+          <span style="position: relative; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: {{p.tag}}">{{p.cat}}</span>
+          <span style="position: relative; font-size: 22px; font-weight: 800; line-height: 1.2; max-width: 380px">{{p.title}}</span>
+          <span style="position: relative; font-size: 13px; font-weight: 800; color: {{p.tag}}">Descargar proyecto ↓</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STAFF ================= -->
+<section style="padding: 112px 48px 0">
+  <div style="display: flex; justify-content: space-between; align-items: flex-end">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Staff jurídico</div>
+      <h2 style="margin: 16px 0 0; max-width: 780px; font-size: 56px; line-height: 1.02; font-weight: 800; letter-spacing: -.035em">Trayectoria judicial, académica e <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">investigativa.</span></h2>
+    </div>
+    <a href="Staff.dc.html" style="height: 54px; padding: 0 24px; display: flex; align-items: center; background: #0B2A4F; color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none">Conózcalos</a>
+  </div>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+    <sc-for list="{{staff}}" as="m" hint-placeholder-count="4">
+      <a href="Staff.dc.html" class="card" style="border-radius: 28px; overflow: hidden; background: #F3F8FE; text-decoration: none; color: #0B2A4F; display: block">
+        <span style="height: 300px; display: flex; align-items: flex-end; justify-content: center; position: relative; background: #E9EFF6"><svg width="190" height="230" viewBox="0 0 190 230" fill="none" aria-hidden="true"><circle cx="95" cy="80" r="46" fill="#C9D6E6"></circle><path d="M10 230 C 10 160, 50 140, 95 140 C 140 140, 180 160, 180 230 Z" fill="#C9D6E6"></path></svg><span style="position: absolute; left: 14px; top: 14px; padding: 6px 10px; background: #FFFFFF; border-radius: 999px; font-size: 11px; font-weight: 700; color: #51617A">Foto pendiente</span></span>
+        <span style="display: block; padding: 20px"><span style="display: block; font-size: 18px; font-weight: 800; line-height: 1.2">{{m.name}}</span><span style="display: block; margin-top: 8px; font-size: 13px; line-height: 1.45; color: #51617A">{{m.role}}</span></span>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- ================= DIPLOMADOS ================= -->
+<section style="padding: 112px 16px 0">
+  <div style="padding: 64px; background: #FFF1E6; border-radius: 32px; display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 48px; align-items: center">
+    <div>
+      <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Diplomados virtuales gratis</div>
+      <div style="margin-top: 16px; font-size: 140px; line-height: .85; font-weight: 800; letter-spacing: -.06em">21</div>
+      <h2 style="margin: 12px 0 0; font-size: 36px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">diplomados para educadores.</h2>
+      <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.6; color: #34465F">La inscripción y el estudio son gratuitos; solo se paga el certificado.</p>
+      <a href="Diplomados.dc.html" style="margin-top: 28px; height: 54px; padding: 0 24px; display: inline-flex; align-items: center; gap: 10px; background: #0B2A4F; color: #FFFFFF; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none">Ver catálogo →</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px">
+      <sc-for list="{{courses}}" as="c" hint-placeholder-count="4">
+        <a href="Diplomados.dc.html" class="card" style="padding: 24px; background: #FFFFFF; border-radius: 24px; text-decoration: none; color: #0B2A4F; display: flex; flex-direction: column; gap: 14px; min-height: 170px; box-sizing: border-box; justify-content: space-between">
+          <span style="font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #1E64C8">{{c.cat}}</span>
+          <span style="font-size: 21px; font-weight: 800; line-height: 1.2">{{c.title}}</span>
+          <span style="font-size: 13px; font-weight: 700; color: #B5531A">Inscribirme gratis →</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALIADOS ================= -->
+<section style="padding: 112px 48px 0; text-align: center">
+  <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Nuestros aliados</div>
+  <h2 style="margin: 14px 0 0; font-size: 40px; font-weight: 800; letter-spacing: -.02em">Instituciones que tejen con nosotros</h2>
+  <div style="margin-top: 40px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px">
+    <div style="height: 110px; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid #DCE6F2; border-radius: 22px; font-size: 16px; font-weight: 800">Corporación Universitaria Alliance</div>
+    <div style="height: 110px; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid #DCE6F2; border-radius: 22px; font-size: 16px; font-weight: 800">CECOLI · Washington D.C.</div>
+    <div style="height: 110px; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid #DCE6F2; border-radius: 22px; font-size: 16px; font-weight: 800">Ministerio de Justicia y del Derecho</div>
+    <div style="height: 110px; display: flex; align-items: center; justify-content: center; padding: 16px; border: 1px solid #DCE6F2; border-radius: 22px; font-size: 16px; font-weight: 800">Organización de los Estados Americanos</div>
+  </div>
+</section>
+
+<!-- ================= CIERRE CINEMATOGRÁFICO ================= -->
+<section style="margin-top: 112px; position: relative; height: 620px; overflow: hidden; background: #050E1A; color: #FFFFFF">
+  <img src="../assets/render-ladera.jpg" alt="Visualización 3D: ladera iluminada de Ciudad Bolívar al anochecer" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
+  <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,14,26,.25), rgba(5,14,26,.78))"></div>
+  <div style="position: absolute; left: 64px; right: 64px; bottom: 72px; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px">
+    <h2 style="margin: 0; font-size: 76px; line-height: .98; font-weight: 800; letter-spacing: -.045em">Estamos del lado de la<br><span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFC9A3">ciudadanía colombiana.</span></h2>
+    <div style="display: flex; gap: 12px; flex: 0 0 auto">
+      <a href="Contacto.dc.html" style="height: 62px; padding: 0 30px; display: flex; align-items: center; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 16px; font-weight: 800; text-decoration: none">Agenda tu cita</a>
+      <a href="Contacto.dc.html" style="height: 62px; padding: 0 30px; display: flex; align-items: center; background: #FFFFFF; color: #0B2A4F; border-radius: 999px; font-size: 16px; font-weight: 700; text-decoration: none">Donar</a>
+    </div>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":8900}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { slide: 0, gal: 0 }; }
+  componentDidMount() { this.t = setInterval(() => this.setState({ slide: (this.state.slide + 1) % 3 }), 7000); }
+  componentWillUnmount() { clearInterval(this.t); }
+  renderVals() {
+    const st = this.state;
+    const set = (o) => () => this.setState(o);
+    const S = [
+      { label: 'De Washington a Ciudad Bolívar', chip: 'Proyecto destacado', chip2: 'Presentación en Washington D.C.', t1: 'De Washington a', t2: 'Ciudad Bolívar.', body: 'Planta solar fotovoltaica San Francisco: energía renovable con carácter social para la población vulnerable de la localidad.', cta1: 'Conocer el proyecto', href1: 'ProyectoSolar.dc.html', cta2: 'Descargar documento', href2: 'https://allianceedu.co/wp-content/uploads/2026/04/2.2-PROYECTO-PLANTA-SOLAR-FOTOVOLTAICA-CIUDAD-BOLIVAR-BOGOTA-.pdf' },
+      { label: 'Energía limpia', chip: 'Planta solar San Francisco', chip2: 'Zona sur de Bogotá D.C.', t1: '11,05 MWp de', t2: 'energía limpia.', body: '16.744 módulos bifaciales sobre seguidores solares en un lote de 23,1 hectáreas, con conexión directa a la red de distribución.', cta1: 'Ver ficha técnica', href1: 'ProyectoSolar.dc.html', cta2: 'Todos los proyectos', href2: 'Proyectos.dc.html' },
+      { label: 'La Fundación', chip: 'Fundación Derecho y Formación', chip2: 'Tejido Humano', t1: 'Justicia, formación', t2: 'y cultura de paz.', body: 'Asesoría legal, conciliación y educación para la paz, fortaleciendo el tejido social con ética y compromiso.', cta1: 'Conózcanos', href1: 'QuienesSomos.dc.html', cta2: 'Agenda tu cita', href2: 'Contacto.dc.html' }
+    ];
+    const SV = [
+      ['Estudio legal y consultoría', 'Consultoría en procesos penales, civiles, laborales, comerciales, constitucionales y administrativos.', 'EstudioLegal.dc.html'],
+      ['Litigio estratégico', 'Litigio internacional en derechos humanos con CECOLI, con sede en Washington D.C.', 'Litigio.dc.html'],
+      ['Centro de Conciliación', 'Conciliación, mediación e insolvencia. Adscrito al Ministerio de Justicia y del Derecho.', 'Conciliacion.dc.html'],
+      ['Educación para la paz', 'Gestión del conocimiento, capacidades ciudadanas y cultura de paz.', 'Educacion.dc.html'],
+      ['Proyectos para la paz', 'Educación, energía, seguridad alimentaria y construcción de paz.', 'Proyectos.dc.html'],
+      ['Justicia especial para la paz', 'Acceso a la justicia transicional de los actores del conflicto armado.', 'JusticiaPaz.dc.html']
+    ];
+    const G = [
+      { caption: 'Ciudad Bolívar al anochecer · visualización 3D', img: '../assets/render-ladera.jpg', pos: '50% 50%', alt: 'Visualización 3D de la ladera iluminada' },
+      { caption: 'Seguidores solares · visualización 3D', img: '../assets/render-hero-ciudad-bolivar.jpg', pos: '78% 80%', alt: 'Visualización 3D de paneles solares' },
+      { caption: 'Imagen del sitio actual', img: '../assets/foto-paneles-sitio-actual.jpg', pos: '50% 50%', alt: 'Paneles solares fotovoltaicos' },
+      { caption: 'La ciudad en los paneles · visualización 3D', img: '../assets/render-paneles-reflejo.jpg', pos: '70% 60%', alt: 'Visualización 3D de reflejos' },
+      { caption: 'Vista elevada · visualización 3D', img: '../assets/render-vista-elevada.jpg', pos: '40% 50%', alt: 'Visualización 3D elevada' },
+      { caption: 'Reflejos de la ciudad · visualización 3D', img: '../assets/render-paneles-reflejo.jpg', pos: '60% 50%', alt: 'Visualización 3D de reflejos en los paneles' },
+      { caption: 'Ladera y filas · visualización 3D', img: '../assets/render-hero-ciudad-bolivar.jpg', pos: '20% 50%', alt: 'Visualización 3D de la planta y la ladera' }
+    ];
+    return {
+      s: S[st.slide], o0: st.slide === 0 ? 1 : 0, o1: st.slide === 1 ? 1 : 0, o2: st.slide === 2 ? 1 : 0,
+      slides: S.map((x, i) => ({ label: x.label, num: '0' + (i + 1), w: i === st.slide ? '100%' : '0%', fg: i === st.slide ? '#FFFFFF' : '#9FB5CF', go: set({ slide: i }) })),
+      services: SV.map(([title, desc, href], i) => { const d = i === 2; return { title, desc, href, num: '0' + (i + 1), bg: d ? '#0B2A4F' : '#FFFFFF', fg: d ? '#FFFFFF' : '#0B2A4F', muted: d ? '#C9DAF0' : '#51617A', line: d ? 'rgba(255,255,255,.3)' : '#C9DBEF' }; }),
+      gallery: G, galX: (-st.gal * 354 + 48) + 'px',
+      galPrev: set({ gal: Math.max(0, st.gal - 1) }), galNext: set({ gal: Math.min(G.length - 4, st.gal + 1) }),
+      projects: [
+        { num: '01', cat: 'Educación · Alliance', title: 'Alma Mater en escenarios de convivencia y paz', bg: '#0B2A4F', fg: '#FFFFFF', tag: '#FFC9A3', ghost: 'rgba(255,255,255,.07)' },
+        { num: '02', cat: 'Desarrollo social', title: 'Rescate de la población vulnerable mediante seguridad alimentaria', bg: '#EAF3FD', fg: '#0B2A4F', tag: '#1E64C8', ghost: 'rgba(30,100,200,.1)' },
+        { num: '03', cat: 'Construcción de paz', title: 'Diplomado «Fuerza Pública y Construcción de Paz»', bg: '#FFF1E6', fg: '#0B2A4F', tag: '#B5531A', ghost: 'rgba(181,83,26,.1)' }
+      ],
+      staff: [
+        { name: 'Jesús Enrique Archila Guio', role: 'CEO y Representante Legal de la Fundación' },
+        { name: 'Leydi Yesenia Ramírez Aristizabal', role: 'Directora General · Conciliadora y Atención a Víctimas' },
+        { name: 'Pedro Octavio Munar Cadena', role: 'Presidente de la Corte Suprema de Justicia de Colombia (2010)' },
+        { name: 'Ángela Margarita Rey Anaya', role: 'Profesora · CEO de la Fundación United For Justice' }
+      ],
+      courses: [
+        { cat: 'IA y educación', title: 'IA en la educación' },
+        { cat: 'Inclusión', title: 'Diseño Universal para el Aprendizaje' },
+        { cat: 'Pedagogía', title: 'Aprendizaje Basado en Proyectos' },
+        { cat: 'Tecnología', title: 'Principios de la Robótica Educativa' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

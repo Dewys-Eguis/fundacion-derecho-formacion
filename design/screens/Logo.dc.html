@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Logo — Fundación Derecho y Formación</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<span style="display: inline-flex; align-items: center; gap: {{gap}}; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: {{ink}}; line-height: 1">
+  <svg role="img" aria-label="Fundación Derecho y Formación — Tejido Humano" width="{{mark}}" height="{{mark}}" viewBox="0 0 48 48" fill="none">
+    <circle cx="24" cy="24" r="21" stroke="{{ring1}}" stroke-width="4" stroke-linecap="round" stroke-dasharray="104 28" transform="rotate(-120 24 24)"></circle>
+    <circle cx="24" cy="24" r="14" stroke="{{ring2}}" stroke-width="4" stroke-linecap="round" stroke-dasharray="64 24" transform="rotate(-40 24 24)"></circle>
+    <circle cx="24" cy="24" r="7" stroke="{{ring3}}" stroke-width="3.6" stroke-linecap="round" stroke-dasharray="32 12" transform="rotate(150 24 24)"></circle>
+    <circle cx="13.5" cy="5.8" r="3.3" fill="{{node}}" stroke="{{ring1}}" stroke-width="2"></circle>
+    <circle cx="34.7" cy="15" r="3.1" fill="{{node}}" stroke="{{ring2}}" stroke-width="2"></circle>
+    <circle cx="20.4" cy="44.6" r="3" fill="{{node}}" stroke="{{ring1}}" stroke-width="2"></circle>
+  </svg>
+  <span style="display: flex; flex-direction: column; gap: {{rowGap}}">
+    <span style="font-size: {{nameSize}}; font-weight: 800; letter-spacing: -.015em; line-height: 1.12; white-space: {{nameWs}}; max-width: {{nameMax}}">Fundación Derecho y Formación</span>
+    <span style="display: flex; align-items: center; gap: 8px">
+      <span style="width: 18px; height: 2px; border-radius: 2px; background: {{ring2}}"></span>
+      <span style="font-size: {{subSize}}; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: {{sub}}; white-space: nowrap">Tejido Humano</span>
+    </span>
+  </span>
+</span>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"tone":{"editor":"enum","options":["light","dark"],"default":"light"},"size":{"editor":"enum","options":["md","sm","lg","xs"],"default":"md"},"$preview":{"width":420,"height":80}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const dark = (this.props.tone ?? 'light') === 'dark';
+    const sz = this.props.size ?? 'md';
+    const S = { xs: [36, 14, 8, 9, 4], sm: [34, 14, 8.5, 10, 3], md: [46, 18, 10, 12, 5], lg: [72, 30, 14, 18, 8] }[sz] || [46, 18, 10, 12, 5];
+    return {
+      nameWs: sz === 'xs' ? 'normal' : 'nowrap', nameMax: sz === 'xs' ? '150px' : 'none',
+      mark: S[0], nameSize: S[1] + 'px', subSize: S[2] + 'px', gap: S[3] + 'px', rowGap: S[4] + 'px',
+      ink: dark ? '#FFFFFF' : '#0B2A4F',
+      sub: dark ? '#9CC6F2' : '#1E64C8',
+      ring1: dark ? '#5FA3EE' : '#1E64C8',
+      ring2: '#F4914D',
+      ring3: dark ? '#FFFFFF' : '#0B2A4F',
+      node: dark ? '#0B2A4F' : '#FFFFFF'
+    };
+  }
+}
+</script>
+</body>
+</html>

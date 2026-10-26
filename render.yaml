@@ -1,0 +1,86 @@
+# Render Blueprint · Static Site (plan gratuito). Aún no desplegado.
+# Render ejecuta el build en cada push a la rama configurada y publica la carpeta out/.
+services:
+  - type: web
+    runtime: static
+    name: fundacion-derecho-formacion
+    branch: main
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+    headers:
+      # Recursos con hash de Next.js: caché larga
+      - path: /_next/static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /images/*
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+    # Redirecciones 301 de las URL del sitio WordPress actual (menú y pie de
+    # fundacionderechoyformacion.org) a su equivalente en el sitio nuevo. Solo tienen efecto
+    # cuando el dominio apunte a Render. Las rutas que no cambian (/quienes-somos/,
+    # /equipo-juridico/, /nuestras-oficinas/, /justicia-para-la-paz/, /proyectos-y-publicaciones/,
+    # /diplomados/, /contactenos/) no necesitan regla.
+    # Sin destino equivalente (no se redirigen): /wp-booking-calendar/ (ver DESARROLLO.md) y /wp-content/*.
+    routes:
+      - { type: redirect, source: /misio-y-vison-new, destination: "/quienes-somos/#mision-vision" }
+      - { type: redirect, source: /misio-y-vison-new/, destination: "/quienes-somos/#mision-vision" }
+      - { type: redirect, source: /gobierno-corporativo-new, destination: /gobierno-corporativo/ }
+      - { type: redirect, source: /gobierno-corporativo-new/, destination: /gobierno-corporativo/ }
+      - {
+          type: redirect,
+          source: /estudio-legal-consultoria-y-portafolio-juridico-new,
+          destination: /estudio-legal-consultoria/,
+        }
+      - {
+          type: redirect,
+          source: /estudio-legal-consultoria-y-portafolio-juridico-new/,
+          destination: /estudio-legal-consultoria/,
+        }
+      - {
+          type: redirect,
+          source: /estudio-legal-consultoria-y-portafolio-juridico,
+          destination: /estudio-legal-consultoria/,
+        }
+      - {
+          type: redirect,
+          source: /estudio-legal-consultoria-y-portafolio-juridico/,
+          destination: /estudio-legal-consultoria/,
+        }
+      - { type: redirect, source: /litigio-estrategico-new, destination: /litigio-estrategico/ }
+      - { type: redirect, source: /litigio-estrategico-new/, destination: /litigio-estrategico/ }
+      - { type: redirect, source: /centro-de-conciliacion-new, destination: /centro-de-conciliacion/ }
+      - { type: redirect, source: /centro-de-conciliacion-new/, destination: /centro-de-conciliacion/ }
+      - { type: redirect, source: /centro-conciliacion, destination: /centro-de-conciliacion/ }
+      - { type: redirect, source: /centro-conciliacion/, destination: /centro-de-conciliacion/ }
+      - {
+          type: redirect,
+          source: /educacion-para-la-paz-complejidad-y-desarrollo-social-new,
+          destination: /educacion-para-la-paz/,
+        }
+      - {
+          type: redirect,
+          source: /educacion-para-la-paz-complejidad-y-desarrollo-social-new/,
+          destination: /educacion-para-la-paz/,
+        }
+      - {
+          type: redirect,
+          source: /educacion-para-la-paz-complejidad-y-desarrollo-social,
+          destination: /educacion-para-la-paz/,
+        }
+      - {
+          type: redirect,
+          source: /educacion-para-la-paz-complejidad-y-desarrollo-social/,
+          destination: /educacion-para-la-paz/,
+        }
+      - { type: redirect, source: /proyectos, destination: /proyectos-y-publicaciones/ }
+      - { type: redirect, source: /proyectos/, destination: /proyectos-y-publicaciones/ }

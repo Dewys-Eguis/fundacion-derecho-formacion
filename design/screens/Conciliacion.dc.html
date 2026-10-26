@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Centro de Conciliación — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(11,42,79,.1)}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="que" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Centro de Conciliación" eyebrow="Adscrito al Ministerio de Justicia y del Derecho" heading="Centro de Conciliación." lead="Promovemos la solución alternativa de conflictos mediante conciliación y mediación, procesos de insolvencia y adjudicación de apoyos según la Ley 1996 de 2019." photo="audiencia de conciliación" art="dialogo" hint-size="1440px,512px"></dc-import>
+
+<!-- Accreditation -->
+<section style="padding: 56px 48px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+  <div style="padding: 28px; background: #0B2A4F; color: #FFFFFF; border-radius: 26px"><div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #F4914D">Resolución</div><div style="margin-top: 8px; font-size: 22px; font-weight: 800; line-height: 1.25">0026 del 16 de enero de 2014</div><div style="margin-top: 6px; font-size: 14px; color: #C9DAF0">Ministerio de Justicia y del Derecho</div></div>
+  <div style="padding: 28px; background: #F3F8FE; border-radius: 26px"><div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1E64C8">Correo del Centro</div><a href="mailto:centroconciliacionth@gmail.com" style="display: block; margin-top: 8px; font-size: 20px; font-weight: 800; color: #0B2A4F; text-decoration: none">centroconciliacionth@gmail.com</a></div>
+  <a href="Contacto.dc.html" class="card" style="padding: 28px; background: #F4914D; color: #0B2A4F; border-radius: 26px; text-decoration: none; display: flex; flex-direction: column; justify-content: space-between"><span style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">Atención</span><span style="font-size: 24px; font-weight: 800">Agenda tu cita →</span></a>
+</section>
+
+<!-- Qué es -->
+<section style="padding: 104px 48px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center">
+  <div>
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">¿Qué es la conciliación?</div>
+    <h2 style="margin: 14px 0 0; font-size: 48px; line-height: 1.06; font-weight: 800; letter-spacing: -.03em">Un acuerdo con el diálogo como <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">punto de partida.</span></h2>
+    <p style="margin: 20px 0 0; font-size: 18px; line-height: 1.7; color: #34465F">Es un mecanismo de solución de conflictos civiles, de familia y comerciales, en el que un conciliador facilita el diálogo entre las partes para llegar a un acuerdo definitivo sin acudir a un proceso judicial.</p>
+    <div style="margin-top: 24px; padding: 22px 24px; border-left: 4px solid #F4914D; background: #FFF1E6; border-radius: 0 18px 18px 0; font-size: 16px; line-height: 1.6; font-weight: 600">Los acuerdos son definitivos y vinculantes: hacen tránsito a cosa juzgada y pueden exigirse ante la autoridad competente.</div>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+    <sc-for list="{{advantages}}" as="a" hint-placeholder-count="6">
+      <div class="card" style="padding: 24px; background: #F3F8FE; border-radius: 22px"><div style="font-size: 28px; font-weight: 800; color: #F4914D">{{a.n}}</div><div style="margin-top: 10px; font-size: 17px; font-weight: 800">{{a.t}}</div></div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- Asuntos conciliables -->
+<section style="padding: 104px 16px 0">
+  <div style="padding: 64px; background: #F3F8FE; border-radius: 32px">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end">
+      <div>
+        <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Asuntos conciliables</div>
+        <h2 style="margin: 14px 0 0; font-size: 44px; font-weight: 800; letter-spacing: -.03em">¿Qué se puede conciliar?</h2>
+      </div>
+      <div role="tablist" aria-label="Tipo de asunto" style="display: flex; gap: 4px; padding: 5px; background: #FFFFFF; border-radius: 999px">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+          <button type="button" role="tab" onClick="{{t.pick}}" style="height: 44px; padding: 0 20px; border: 0; border-radius: 999px; background: {{t.bg}}; color: {{t.fg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{t.label}}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 10px">
+      <sc-for list="{{matters}}" as="m" hint-placeholder-count="10">
+        <span style="padding: 14px 20px; background: #FFFFFF; border-radius: 999px; font-size: 16px; font-weight: 700; border: 1px solid #DCE6F2">{{m}}</span>
+      </sc-for>
+    </div>
+    <p style="margin: 24px 0 0; font-size: 14px; color: #51617A">Entre otros asuntos.</p>
+  </div>
+</section>
+
+<!-- Servicios -->
+<section style="padding: 104px 48px 0">
+  <h2 style="margin: 0; font-size: 44px; font-weight: 800; letter-spacing: -.03em">Servicios del Centro</h2>
+  <div style="margin-top: 36px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+    <div class="card" style="padding: 36px; border: 1px solid #DCE6F2; border-radius: 28px"><div style="font-size: 13px; font-weight: 800; color: #F4914D">01</div><div style="margin-top: 14px; font-size: 24px; font-weight: 800">Conciliación y mediación</div><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: #51617A">Solución alternativa de conflictos civiles, de familia y comerciales.</p></div>
+    <div class="card" style="padding: 36px; border: 1px solid #DCE6F2; border-radius: 28px"><div style="font-size: 13px; font-weight: 800; color: #F4914D">02</div><div style="margin-top: 14px; font-size: 24px; font-weight: 800">Insolvencia de persona natural no comerciante</div><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: #51617A">Busca restablecer el equilibrio financiero del deudor y proteger a los acreedores con acuerdos de pago que eviten la liquidación forzosa.</p></div>
+    <div class="card" style="padding: 36px; border: 1px solid #DCE6F2; border-radius: 28px"><div style="font-size: 13px; font-weight: 800; color: #F4914D">03</div><div style="margin-top: 14px; font-size: 24px; font-weight: 800">Adjudicación de apoyos</div><p style="margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: #51617A">Procesos según la Ley 1996 de 2019. [Descripción por confirmar: el texto actual del sitio corresponde a otra sección]</p></div>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { t: 'all' }; }
+  renderVals() {
+    const M = {
+      civ: ['Restitución de inmueble arrendado', 'Obligaciones contractuales', 'Pago de cánones de arrendamiento', 'Deudas', 'Indemnizaciones', 'Incumplimiento de contratos', 'Rectificación de linderos', 'Ofertas de pago'],
+      fam: ['Alimentos', 'Regulación de visitas', 'Custodia', 'Liquidación y división de bienes', 'Declaración de unión marital de hecho']
+    };
+    const t = this.state.t;
+    const T = [['all', 'Todos'], ['civ', 'Civil y comercial'], ['fam', 'Familia']];
+    return {
+      tabs: T.map(([k, label]) => ({ label, bg: k === t ? '#0B2A4F' : 'transparent', fg: k === t ? '#FFFFFF' : '#0B2A4F', pick: () => this.setState({ t: k }) })),
+      matters: t === 'all' ? M.civ.concat(M.fam) : M[t],
+      advantages: [{ n: '01', t: 'Resolución más rápida' }, { n: '02', t: 'Menor costo que un litigio' }, { n: '03', t: 'Ahorro de tiempo' }, { n: '04', t: 'Acuerdos voluntarios y definitivos' }, { n: '05', t: 'Flexibilidad' }, { n: '06', t: 'Confidencialidad' }]
+    };
+  }
+}
+</script>
+</body>
+</html>

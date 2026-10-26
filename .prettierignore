@@ -1,0 +1,14 @@
+# Material original del paquete de diseño: nunca reformatear
+design/
+docs/
+tools/
+CLAUDE.md
+README.md
+AGENTS.md
+
+# Generados
+.next/
+out/
+public/images/
+node_modules/
+package-lock.json

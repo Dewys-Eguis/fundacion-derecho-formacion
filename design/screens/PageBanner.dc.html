@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Banner interior — Fundación Derecho y Formación</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<section style="width: 1440px; box-sizing: border-box; padding: 16px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #FFFFFF; background: #FFFFFF">
+  <div style="position: relative; height: 480px; overflow: hidden; border-radius: 32px; background: #050E1A">
+    <img src="{{artUrl}}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{artPos}}">
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,14,26,.9) 0%, rgba(5,14,26,.7) 45%, rgba(5,14,26,.15) 100%)"></div>
+    <div style="position: relative; height: 100%; box-sizing: border-box; padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; max-width: 900px">
+      <div style="display: flex; gap: 10px; align-items: center; font-size: 13px; font-weight: 600; color: #C9DAF0"><a href="Main.dc.html" style="color: #FFFFFF; text-decoration: none">Inicio</a><span>/</span><span>{{crumb}}</span></div>
+      <div style="margin-top: 26px; align-self: flex-start; padding: 8px 15px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase">{{eyebrow}}</div>
+      <h1 style="margin: 20px 0 0; font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -.035em">{{heading}}</h1>
+      <p style="margin: 20px 0 0; max-width: 640px; font-size: 18px; line-height: 1.6; color: #DCE8F7">{{lead}}</p>
+    </div>
+    <span style="position: absolute; right: 20px; bottom: 18px; padding: 6px 11px; background: rgba(5,14,26,.6); border: 1px solid rgba(255,255,255,.2); border-radius: 999px; font-size: 11px; font-weight: 600; color: #C9DAF0">Imagen temporal · reemplazar por foto real: {{photo}}</span>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"eyebrow":{"editor":"text","default":"Qué hacemos"},"heading":{"editor":"text","default":"Título de la página"},"lead":{"editor":"text","default":"Texto introductorio de la página."},"crumb":{"editor":"text","default":"Página"},"photo":{"editor":"text","default":"imagen de la sección"},"art":{"editor":"enum","options":["tejido","justicia","dialogo","educacion","paz","oficina","comunidad","campus","cultivo"],"default":"tejido"},"$preview":{"width":1440,"height":512}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    const H1 = '../assets/render-hero-ciudad-bolivar.jpg', H2 = '../assets/render-vista-elevada.jpg', H3 = '../assets/render-paneles-reflejo.jpg', CB = '../assets/render-ladera.jpg';
+    const ART = {
+      tejido: [H1, '50% 40%'], justicia: [CB, '30% 50%'], dialogo: [CB, '70% 40%'],
+      educacion: [H2, '50% 30%'], paz: [H1, '80% 30%'], oficina: [CB, '50% 30%'],
+      comunidad: [CB, '50% 50%'], campus: [H2, '30% 40%'], cultivo: [H3, '50% 60%']
+    };
+    const a = ART[p.art ?? 'tejido'] || ART.tejido;
+    return {
+      artUrl: a[0], artPos: a[1],
+      eyebrow: p.eyebrow ?? 'Qué hacemos', heading: p.heading ?? 'Título de la página', lead: p.lead ?? 'Texto introductorio de la página.', crumb: p.crumb ?? 'Página', photo: p.photo ?? 'imagen de la sección'
+    };
+  }
+}
+</script>
+</body>
+</html>

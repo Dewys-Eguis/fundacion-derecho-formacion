@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Inicio móvil — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.ph{background-color:#D3E3F5;background-image:repeating-linear-gradient(135deg,rgba(11,42,79,.06) 0 1px,transparent 1px 12px)}
+</style>
+</helmet>
+<div style="width: 390px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+
+<!-- Top -->
+<div style="height: 36px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; background: #0B2A4F; color: #DCE8F7; font-size: 11px; font-weight: 600">
+  <a href="tel:+573209038228" style="color: inherit; text-decoration: none">320 903 8228</a>
+  <span style="color: #FFD3B3">Estatus consultivo OEA</span>
+</div>
+<nav aria-label="Principal" style="height: 76px; padding: 0 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #DCE6F2">
+  <a href="Mobile.dc.html" aria-label="Fundación Derecho y Formación — Inicio" style="display: flex; align-items: center; text-decoration: none">
+    <dc-import name="Logo" tone="light" size="xs" hint-size="210px,52px"></dc-import>
+  </a>
+  <span style="display: flex; gap: 8px">
+    <a href="MobileSolar.dc.html" aria-label="Proyecto destacado" style="width: 44px; height: 44px; border-radius: 999px; background: #FFF1E6; display: flex; align-items: center; justify-content: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="#B5531A" stroke-width="2"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1" stroke="#B5531A" stroke-width="2"></path></svg></a>
+    <a href="MobileMenu.dc.html" aria-label="Abrir menú" style="width: 44px; height: 44px; border-radius: 999px; background: #0B2A4F; display: flex; align-items: center; justify-content: center"><svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true"><path d="M0 1h18M6 11h12" stroke="#FFFFFF" stroke-width="1.8"></path></svg></a>
+  </span>
+</nav>
+
+<!-- Hero slider -->
+<section style="padding: 12px 12px 0">
+  <div style="position: relative; height: 620px; overflow: hidden; border-radius: 28px; background: {{heroBg}}">
+    <sc-if value="{{slide0}}" hint-placeholder-val="{{ true }}">
+      <svg aria-hidden="true" width="366" height="620" viewBox="0 0 1440 760" preserveAspectRatio="xMaxYMax slice" style="position: absolute; inset: 0">
+        <defs>
+          <linearGradient id="msky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE5FA"></stop><stop offset=".58" stop-color="#FFF2E6"></stop></linearGradient>
+          <linearGradient id="mground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EEF6E7"></stop><stop offset="1" stop-color="#D6E8C9"></stop></linearGradient>
+          <linearGradient id="mpv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2D6DB8"></stop><stop offset="1" stop-color="#123F78"></stop></linearGradient>
+        </defs>
+        <rect width="1440" height="760" fill="url(#msky)"></rect>
+        <circle cx="1260" cy="330" r="60" fill="#F7A766"></circle>
+        <path d="M0 440 C 120 380, 220 360, 340 390 S 560 330, 700 360 S 940 300, 1100 350 S 1320 330, 1440 370 L1440 445 L0 445 Z" fill="#BCD6F0"></path>
+        <rect y="440" width="1440" height="320" fill="url(#mground)"></rect>
+        <path d="M996 442L1012 442L1029 445L990 445ZM983 449L1049 449L1083 455L971 455ZM959 462L1121 462L1169 471L942 471ZM924 480L1221 480L1282 491L903 491ZM881 503L1347 503L1419 516L856 516ZM830 530L1495 530L1579 545L801 545ZM771 561L1666 561L1760 578L739 578ZM705 596L1857 596L1960 615L670 615ZM633 634L2068 634L2181 655L594 655ZM554 676L2298 676L2420 698L512 698ZM469 721L2546 721L2677 745L424 745Z" fill="url(#mpv)" stroke="#8FC0F0" stroke-width="2"></path>
+      </svg>
+    </sc-if>
+    <img src="{{s.img}}" alt="{{s.alt}}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: {{s.pos}}">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,14,26,.85) 0%, rgba(5,14,26,.45) 55%, rgba(5,14,26,.2) 100%)"></div>
+    <span style="position: absolute; right: 12px; bottom: 76px; padding: 5px 9px; background: rgba(5,14,26,.6); border-radius: 999px; font-size: 9.5px; font-weight: 600; color: #C9DAF0">Visualización 3D conceptual</span>
+    <div style="position: absolute; left: 22px; right: 22px; top: 24px; color: #FFFFFF">
+      <span style="display: inline-flex; padding: 6px 12px; background: {{s.chipBg}}; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase">{{s.chip}}</span>
+      <h1 style="margin: 16px 0 0; font-size: 36px; line-height: 1.04; font-weight: 800; letter-spacing: -.03em">{{s.t1}} <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFC9A3">{{s.t2}}</span></h1>
+      <p style="margin: 12px 0 0; font-size: 15px; line-height: 1.55; color: #DCE8F7">{{s.body}}</p>
+      <a href="{{s.href}}" style="margin-top: 18px; height: 52px; padding: 0 20px; display: inline-flex; align-items: center; gap: 8px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none">{{s.cta}} →</a>
+    </div>
+    <div style="position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; gap: 6px; padding: 6px; background: rgba(255,255,255,.94); border-radius: 999px">
+      <sc-for list="{{slides}}" as="sl" hint-placeholder-count="3">
+        <button type="button" onClick="{{sl.go}}" style="flex: 1; height: 44px; border: 0; border-radius: 999px; background: {{sl.bg}}; color: {{sl.fg}}; font: inherit; font-size: 12px; font-weight: 800; cursor: pointer">{{sl.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<section style="padding: 14px 12px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+  <div style="padding: 14px 10px; background: #F3F8FE; border-radius: 18px; text-align: center"><div style="font-size: 20px; font-weight: 800">11,05</div><div style="font-size: 10.5px; font-weight: 600; color: #51617A">MWp</div></div>
+  <div style="padding: 14px 10px; background: #F3F8FE; border-radius: 18px; text-align: center"><div style="font-size: 20px; font-weight: 800">16.744</div><div style="font-size: 10.5px; font-weight: 600; color: #51617A">módulos</div></div>
+  <div style="padding: 14px 10px; background: #F3F8FE; border-radius: 18px; text-align: center"><div style="font-size: 20px; font-weight: 800">23,1 ha</div><div style="font-size: 10.5px; font-weight: 600; color: #51617A">lote</div></div>
+</section>
+
+<!-- Quick -->
+<section style="padding: 14px 12px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+  <a href="Contacto.dc.html" style="padding: 18px; background: #F4914D; border-radius: 20px; color: #0B2A4F; text-decoration: none; font-size: 15px; font-weight: 800">Agenda tu cita</a>
+  <a href="Conciliacion.dc.html" style="padding: 18px; background: #F3F8FE; border-radius: 20px; color: #0B2A4F; text-decoration: none; font-size: 15px; font-weight: 800">Centro de Conciliación</a>
+  <a href="Diplomados.dc.html" style="padding: 18px; background: #F3F8FE; border-radius: 20px; color: #0B2A4F; text-decoration: none; font-size: 15px; font-weight: 800">Diplomados gratis</a>
+  <a href="Litigio.dc.html" style="padding: 18px; background: #F3F8FE; border-radius: 20px; color: #0B2A4F; text-decoration: none; font-size: 15px; font-weight: 800">Litigio estratégico</a>
+</section>
+
+<!-- Quiénes -->
+<section style="padding: 64px 20px 0">
+  <div style="font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Quiénes somos</div>
+  <h2 style="margin: 12px 0 0; font-size: 30px; line-height: 1.1; font-weight: 800; letter-spacing: -.02em">Una organización de carácter legal, orientada a la <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">educación.</span></h2>
+  <div role="tablist" aria-label="Identidad" style="margin-top: 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; background: #F3F8FE; border-radius: 999px">
+    <sc-for list="{{idTabs}}" as="it" hint-placeholder-count="3">
+      <button type="button" role="tab" onClick="{{it.pick}}" style="height: 44px; border: 0; border-radius: 999px; background: {{it.bg}}; color: {{it.fg}}; font: inherit; font-size: 13px; font-weight: 800; cursor: pointer">{{it.label}}</button>
+    </sc-for>
+  </div>
+  <p style="margin: 16px 0 0; min-height: 120px; font-size: 15px; line-height: 1.65; color: #34465F">{{idText}}</p>
+</section>
+
+<!-- Servicios -->
+<section style="padding: 40px 20px 0">
+  <div style="font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Qué hacemos</div>
+  <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px">
+    <sc-for list="{{services}}" as="sv" hint-placeholder-count="6">
+      <a href="{{sv.href}}" style="padding: 18px; display: flex; gap: 14px; align-items: center; background: #F3F8FE; border-radius: 20px; color: #0B2A4F; text-decoration: none"><span style="flex: 0 0 40px; height: 40px; border-radius: 12px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; color: #F4914D">{{sv.num}}</span><span style="flex: 1; font-size: 16px; font-weight: 800; line-height: 1.25">{{sv.title}}</span><span>→</span></a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- Focus Washington -->
+<section style="padding: 56px 12px 0">
+  <div style="position: relative; overflow: hidden; padding: 28px 22px 300px; background: #0B2A4F; color: #FFFFFF; border-radius: 28px">
+    <span style="display: inline-flex; padding: 6px 12px; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 11px; font-weight: 800; text-transform: uppercase">Proyecto destacado</span>
+    <h2 style="margin: 16px 0 0; font-size: 32px; line-height: 1.05; font-weight: 800; letter-spacing: -.02em">De Washington a <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #FFC9A3">Ciudad Bolívar.</span></h2>
+    <p style="margin: 12px 0 0; font-size: 14px; line-height: 1.6; color: #C9DAF0">Presentada en Washington D.C., la Planta solar fotovoltaica San Francisco tiene un destino: energía renovable con carácter social para la población vulnerable de Ciudad Bolívar.</p>
+    <a href="MobileSolar.dc.html" style="margin-top: 18px; height: 50px; padding: 0 20px; display: inline-flex; align-items: center; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 14px; font-weight: 800; text-decoration: none">Ver el proyecto →</a>
+    <svg aria-hidden="true" width="300" height="300" viewBox="140 40 300 300" style="position: absolute; right: 10px; bottom: 0">
+      <path d="M152 155h0M165 155h0M178 155h0M190 155h0M202 155h0M215 155h0M228 155h0M252 155h0M240 168h0M190 180h0M202 180h0M252 180h0M265 180h0M140 192h0M152 192h0M165 192h0M178 192h0M190 192h0M178 205h0M190 205h0M202 205h0M215 205h0M215 218h0M290 218h0M265 230h0M278 230h0M290 230h0M302 230h0M315 230h0M328 230h0M240 242h0M252 242h0M265 242h0M278 242h0M290 242h0M302 242h0M315 242h0M328 242h0M340 242h0M265 255h0M278 255h0M290 255h0M302 255h0M315 255h0M328 255h0M340 255h0M352 255h0M365 255h0M378 255h0M252 268h0M265 268h0M278 268h0M290 268h0M302 268h0M315 268h0M328 268h0M340 268h0M352 268h0M365 268h0M378 268h0M240 280h0M252 280h0M265 280h0M278 280h0M290 280h0M302 280h0M315 280h0M328 280h0M340 280h0M352 280h0M365 280h0M378 280h0M390 280h0M240 292h0M252 292h0M265 292h0M278 292h0M290 292h0M302 292h0M315 292h0M328 292h0M340 292h0M352 292h0M365 292h0M378 292h0M390 292h0M402 292h0M415 292h0M252 318h0M265 318h0M278 318h0M290 318h0M302 318h0M315 318h0M328 318h0M340 318h0M352 318h0M365 318h0M378 318h0M390 318h0M402 318h0M415 318h0M428 318h0M65 68h0M78 68h0M90 68h0M102 68h0M115 68h0M128 68h0M140 68h0M152 68h0M165 68h0M178 68h0M190 68h0M202 68h0M215 68h0M228 68h0M240 68h0M252 68h0M265 68h0M278 68h0M140 80h0M152 80h0M165 80h0M178 80h0M190 80h0M202 80h0M215 80h0M228 80h0M240 80h0M252 80h0M265 80h0M140 92h0M152 92h0M165 92h0M178 92h0M190 92h0M202 92h0M215 92h0M228 92h0M240 92h0M252 92h0M140 105h0M152 105h0M165 105h0M178 105h0M190 105h0M202 105h0M215 105h0M228 105h0M240 105h0M252 105h0M140 118h0M152 118h0M165 118h0M178 118h0M190 118h0M202 118h0M215 118h0M228 118h0M140 130h0M152 130h0M165 130h0M178 130h0M190 130h0M215 130h0M228 130h0M140 142h0M152 142h0M228 142h0M240 55h0M252 55h0M265 55h0M278 55h0M290 55h0M302 55h0M315 55h0M328 55h0" stroke="#5FA3EE" stroke-opacity=".45" stroke-width="5.5" stroke-linecap="round"></path>
+      <defs><marker id="arrMb" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#F4914D"></path></marker></defs>
+      <path d="M255 86 C 345 112, 355 200, 278 248" stroke="#F4914D" stroke-width="2.5" stroke-dasharray="6 7" fill="none" marker-end="url(#arrMb)"></path>
+      <circle cx="270" cy="257" r="8" fill="#F4914D"></circle><circle cx="255" cy="86" r="8" fill="#FFFFFF"></circle>
+    </svg>
+  </div>
+</section>
+
+<!-- Galería -->
+<section style="padding: 56px 0 0">
+  <div style="padding: 0 20px; display: flex; justify-content: space-between; align-items: center">
+    <h2 style="margin: 0; font-size: 28px; font-weight: 800">Galería</h2>
+    <span style="display: flex; gap: 8px">
+      <button type="button" aria-label="Anterior" onClick="{{galPrev}}" style="width: 44px; height: 44px; border: 1.5px solid #C9DBEF; border-radius: 999px; background: #FFFFFF; color: #0B2A4F; cursor: pointer">←</button>
+      <button type="button" aria-label="Siguiente" onClick="{{galNext}}" style="width: 44px; height: 44px; border: 0; border-radius: 999px; background: #0B2A4F; color: #FFFFFF; cursor: pointer">→</button>
+    </span>
+  </div>
+  <div style="position: relative; margin-top: 18px; height: 360px; overflow: hidden; background: #EAF3FD">
+    <div style="position: absolute; left: 0; top: 10px; display: flex; gap: 10px; transform: translateX({{galX}}); transition: transform .5s ease">
+      <div style="flex: 0 0 240px; height: 340px; overflow: hidden"><img src="../assets/foto-paneles-sitio-actual.jpg" alt="Paneles solares" style="width: 100%; height: 100%; object-fit: cover"></div>
+      <div style="flex: 0 0 240px; height: 340px; position: relative; overflow: hidden"><img src="../assets/render-ladera.jpg" alt="Visualización 3D de Ciudad Bolívar" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 12px; bottom: 50px; padding: 6px 10px; background: #FFFFFF; border-radius: 8px; font-size: 11px; font-weight: 700">Ciudad Bolívar · 3D</span></div>
+      <div style="flex: 0 0 240px; height: 340px; position: relative; overflow: hidden"><img src="../assets/render-vista-elevada.jpg" alt="Visualización 3D elevada" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 12px; bottom: 50px; padding: 6px 10px; background: #FFFFFF; border-radius: 8px; font-size: 11px; font-weight: 700">Vista elevada · 3D</span></div>
+      <div style="flex: 0 0 240px; height: 340px; position: relative; overflow: hidden"><img src="../assets/render-paneles-reflejo.jpg" alt="Visualización 3D de paneles" style="width: 100%; height: 100%; object-fit: cover"><span style="position: absolute; left: 12px; bottom: 50px; padding: 6px 10px; background: #FFFFFF; border-radius: 8px; font-size: 11px; font-weight: 700">Reflejos · 3D</span></div>
+    </div>
+    <svg aria-hidden="true" width="390" height="360" viewBox="0 0 390 360" preserveAspectRatio="none" style="position: absolute; inset: 0; pointer-events: none"><path d="M0 0 H390 V24 Q195 64 0 24 Z" fill="#FFFFFF"></path><path d="M0 360 V320 Q195 282 390 320 V360 Z" fill="#FFFFFF"></path></svg>
+  </div>
+</section>
+
+<!-- Diplomados -->
+<section style="padding: 40px 12px 0">
+  <a href="Diplomados.dc.html" style="padding: 26px 22px; background: #FFF1E6; border-radius: 28px; display: flex; align-items: center; gap: 18px; color: #0B2A4F; text-decoration: none">
+    <span style="font-size: 64px; font-weight: 800; letter-spacing: -.05em; line-height: .9">21</span>
+    <span><span style="display: block; font-size: 18px; font-weight: 800">diplomados virtuales gratuitos</span><span style="display: block; margin-top: 4px; font-size: 13px; color: #34465F">Solo se paga el certificado →</span></span>
+  </a>
+</section>
+
+<!-- Staff -->
+<section style="padding: 56px 0 0 20px; overflow: hidden">
+  <div style="font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Staff jurídico</div>
+  <div style="margin-top: 16px; display: flex; gap: 10px; width: 900px">
+    <sc-for list="{{staff}}" as="m" hint-placeholder-count="4">
+      <a href="Staff.dc.html" style="flex: 0 0 200px; padding: 18px; background: #F3F8FE; border-radius: 22px; color: #0B2A4F; text-decoration: none"><span style="width: 56px; height: 56px; border-radius: 999px; overflow: hidden; background: #E9EFF6; display: flex; align-items: flex-end; justify-content: center"><svg width="44" height="50" viewBox="0 0 190 230" fill="none" aria-hidden="true"><circle cx="95" cy="80" r="46" fill="#C9D6E6"></circle><path d="M10 230 C 10 160, 50 140, 95 140 C 140 140, 180 160, 180 230 Z" fill="#C9D6E6"></path></svg></span><span style="display: block; margin-top: 12px; font-size: 15px; font-weight: 800; line-height: 1.25">{{m.name}}</span><span style="display: block; margin-top: 6px; font-size: 12px; line-height: 1.4; color: #51617A">{{m.role}}</span></a>
+    </sc-for>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="margin: 56px 12px 12px; padding: 32px 22px; background: #0B2A4F; color: #FFFFFF; border-radius: 28px">
+  <dc-import name="Logo" tone="dark" size="xs" hint-size="210px,52px"></dc-import>
+  <div style="margin-top: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: #DCE8F7">
+    <span>Calle 12B # 8A-34, interior 13 · Bogotá D.C.</span>
+    <a href="tel:+573209038228" style="color: #FFFFFF; font-weight: 800; text-decoration: none">320 903 8228</a>
+    <a href="mailto:contacto@fundacionderechoyformacion.org" style="color: #DCE8F7; text-decoration: none; font-size: 13px">contacto@fundacionderechoyformacion.org</a>
+  </div>
+  <div style="margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap">
+    <a href="Contacto.dc.html" style="height: 48px; padding: 0 18px; display: flex; align-items: center; background: #F4914D; color: #0B2A4F; border-radius: 999px; font-size: 14px; font-weight: 800; text-decoration: none">Agenda tu cita</a>
+    <a href="Contacto.dc.html" style="height: 48px; padding: 0 18px; display: flex; align-items: center; border: 1.5px solid rgba(255,255,255,.3); color: #FFFFFF; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none">Donar</a>
+  </div>
+  <div style="margin-top: 28px; font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 46px; line-height: .95">Derecho y Formación</div>
+  <div style="margin-top: 18px; font-size: 11px; color: #BFD2EA">© 2026 Fundación Derecho y Formación – Tejido Humano</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":4300}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { slide: 0, id: 0, gal: 0 }; }
+  componentDidMount() { this.t = setInterval(() => this.setState({ slide: (this.state.slide + 1) % 3 }), 8000); }
+  componentWillUnmount() { clearInterval(this.t); }
+  renderVals() {
+    const st = this.state;
+    const set = (o) => () => this.setState(o);
+    const S = [
+      { label: 'Washington', chip: 'Proyecto destacado', chipBg: '#F4914D', t1: 'De Washington a', t2: 'Ciudad Bolívar.', body: 'Planta solar fotovoltaica San Francisco: energía renovable con carácter social para la localidad.', cta: 'Conocer el proyecto', href: 'MobileSolar.dc.html', bg: '#050E1A', img: '../assets/render-hero-ciudad-bolivar.jpg', pos: '62% 50%', alt: 'Visualización 3D de la planta solar frente a Ciudad Bolívar' },
+      { label: 'Energía', chip: 'Planta solar San Francisco', chipBg: '#FFFFFF', t1: '11,05 MWp de', t2: 'energía limpia.', body: '16.744 módulos bifaciales en un lote de 23,1 hectáreas al sur de Bogotá.', cta: 'Ver ficha técnica', href: 'MobileSolar.dc.html', bg: '#050E1A', img: '../assets/render-vista-elevada.jpg', pos: '40% 50%', alt: 'Visualización 3D elevada de la planta solar' },
+      { label: 'Fundación', chip: 'Fundación Derecho y Formación', chipBg: '#FFFFFF', t1: 'Justicia, formación', t2: 'y cultura de paz.', body: 'Asesoría legal, conciliación y educación para la paz, con ética y compromiso.', cta: 'Agenda tu cita', href: 'Contacto.dc.html', bg: '#050E1A', img: '../assets/render-paneles-reflejo.jpg', pos: '55% 50%', alt: 'Visualización 3D de paneles solares' }
+    ];
+    const ID = [
+      ['Propósito', 'Hoy nuestro propósito es lograr escenarios de convivencia vinculante, orientados a la justicia, la paz, la educación y el liderazgo comunitario.'],
+      ['Misión', 'Facilitar a la comunidad herramientas autocompositivas que permitan una solución alternativa a los conflictos que deterioran la seguridad y la convivencia.'],
+      ['Visión', 'Para 2035, ser una institución generadora de conocimiento jurídico y académico de alto impacto en la restauración del tejido humano y social.']
+    ];
+    const SV = [['Estudio legal y consultoría', 'EstudioLegal.dc.html'], ['Litigio estratégico', 'Litigio.dc.html'], ['Centro de Conciliación', 'Conciliacion.dc.html'], ['Educación para la paz', 'Educacion.dc.html'], ['Proyectos para la paz', 'Proyectos.dc.html'], ['Justicia especial para la paz', 'JusticiaPaz.dc.html']];
+    return {
+      s: S[st.slide], heroBg: S[st.slide].bg, slide0: st.slide === 0, notSlide0: st.slide !== 0,
+      slides: S.map((x, i) => ({ label: x.label, bg: i === st.slide ? '#0B2A4F' : 'transparent', fg: i === st.slide ? '#FFFFFF' : '#0B2A4F', go: set({ slide: i }) })),
+      idTabs: ID.map(([label], i) => ({ label, bg: i === st.id ? '#0B2A4F' : 'transparent', fg: i === st.id ? '#FFFFFF' : '#0B2A4F', pick: set({ id: i }) })),
+      idText: ID[st.id][1],
+      services: SV.map(([title, href], i) => ({ title, href, num: '0' + (i + 1) })),
+      galX: (-st.gal * 250 + 20) + 'px', galPrev: set({ gal: Math.max(0, st.gal - 1) }), galNext: set({ gal: Math.min(3, st.gal + 1) }),
+      staff: [
+        { ini: 'JA', name: 'Jesús Enrique Archila Guio', role: 'CEO y Representante Legal' },
+        { ini: 'LR', name: 'Leydi Yesenia Ramírez Aristizabal', role: 'Directora General' },
+        { ini: 'PM', name: 'Pedro Octavio Munar Cadena', role: 'Presidente de la Corte Suprema de Justicia (2010)' },
+        { ini: 'AR', name: 'Ángela Margarita Rey Anaya', role: 'CEO Fundación United For Justice' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

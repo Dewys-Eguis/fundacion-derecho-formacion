@@ -1,0 +1,259 @@
+@import "tailwindcss";
+
+/*
+ * Tokens del diseño aprobado (design/tokens.json · iteración 3).
+ * La paleta por defecto de Tailwind se desactiva: solo existen los colores del diseño.
+ */
+@theme {
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Paleta principal (tokens.json) */
+  --color-azul: #0b2a4f; /* azul institucional: texto, bandas oscuras, pie */
+  --color-noche: #050e1a; /* fondo de secciones cinematográficas */
+  --color-accion: #1e64c8; /* énfasis, enlaces, anillo exterior del logo */
+  --color-mapa: #5fa3ee; /* puntos del mapa, logo sobre oscuro */
+  --color-naranja: #f4914d; /* botones principales (siempre con texto azul) */
+  --color-naranja-texto: #b5531a; /* rótulos pequeños sobre blanco (AA) */
+  --color-durazno-claro: #ffc9a3; /* palabra destacada sobre oscuro */
+  --color-cielo: #eaf3fd;
+  --color-bruma: #f3f8fe;
+  --color-durazno: #fff1e6;
+  --color-linea: #dce6f2;
+  --color-borde-boton: #c9dbef;
+  --color-texto-2: #51617a; /* descripciones */
+  --color-texto-cuerpo: #34465f; /* párrafos largos */
+  --color-sobre-oscuro: #c9daf0; /* párrafos sobre azul */
+  --color-foto: #e9eff6; /* fondo de silueta «Foto pendiente» */
+  --color-silueta: #c9d6e6;
+
+  /* Tonos secundarios presentes en las pantallas (no listados en tokens.json) */
+  --color-atenuado: #9aafc8; /* tramo gris del manifiesto */
+  --color-texto-claro: #dce8f7; /* barra superior, entradillas sobre oscuro */
+  --color-sello: #ffd3b3; /* sello OEA de la barra superior */
+  --color-pie: #bfd2ea; /* textos del pie */
+  --color-sub-oscuro: #9cc6f2; /* «Tejido Humano» del logo oscuro */
+  --color-punto: #7db6f5; /* matriz de puntos del mapa */
+  --color-texto-tarjeta: #d6e4f5; /* texto sobre tarjeta con imagen */
+  --color-texto-megamenu: #bfd6f2; /* texto secundario del destacado del mega menú */
+  --color-tab-inactiva: #9fb5cf; /* pestañas inactivas del hero */
+  --color-durazno-suave: #ffe1cc;
+  --color-inhabil: #9aa8bc; /* días no disponibles del calendario */
+  --color-divisor: #eef3f9;
+  --color-ph: #d3e3f5; /* marcador rayado de imagen pendiente */
+
+  /* Tipografía (next/font define las variables --font-jakarta / --font-instrument) */
+  --font-sans: var(--font-jakarta), system-ui, sans-serif;
+  --font-serif: var(--font-instrument), Georgia, serif;
+
+  /* Breakpoints: móvil < 768 · tableta 768–1279 · escritorio ≥ 1280 */
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 90rem;
+
+  /* Radios */
+  --radius-pildora: 999px;
+  --radius-banda: 32px;
+  --radius-tarjeta: 28px;
+  --radius-tarjeta-sm: 22px;
+  --radius-control: 18px;
+
+  /* Sombras */
+  --shadow-tarjeta: 0 24px 48px rgba(11, 42, 79, 0.14);
+  --shadow-kpi: 0 30px 60px rgba(0, 0, 0, 0.35);
+  --shadow-flotante: 0 16px 32px rgba(0, 0, 0, 0.3);
+  --shadow-megamenu: 0 30px 60px rgba(11, 42, 79, 0.16);
+  --shadow-header: 0 10px 30px rgba(11, 42, 79, 0.08);
+
+  /* Movimiento */
+  --ease-galeria: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-salida: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 96px;
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-azul);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  /* Foco visible: anillo 3 px azul acción (handoff · accesibilidad) */
+  :focus-visible {
+    outline: 3px solid var(--color-accion);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  .sobre-oscuro :focus-visible {
+    outline-color: var(--color-mapa);
+  }
+  ::selection {
+    background: var(--color-durazno-claro);
+    color: var(--color-azul);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+/* ---------- Escala tipográfica (escritorio 1440 → móvil 390) ---------- */
+@utility text-hero {
+  font-size: clamp(2.25rem, 1.2rem + 5.2vw, 6rem); /* 96 px · 36–38 px móvil */
+  line-height: 0.94;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+@utility text-h1-proyecto {
+  font-size: clamp(2.375rem, 1.5rem + 4.2vw, 5.125rem); /* 82 px */
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+@utility text-h1-banner {
+  font-size: clamp(2.25rem, 1.6rem + 2.9vw, 4rem); /* 64 px */
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+@utility text-h2 {
+  font-size: clamp(1.875rem, 1.3rem + 2.5vw, 3.5rem); /* 56 px · 30 px móvil */
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+@utility text-h2-cine {
+  font-size: clamp(2rem, 1.1rem + 3.9vw, 4.75rem); /* 72–76 px */
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+@utility text-manifiesto {
+  font-size: clamp(1.875rem, 1.1rem + 3.4vw, 4rem); /* 64 px */
+  line-height: 1.06;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+@utility text-cifra {
+  font-size: clamp(3rem, 2rem + 2.8vw, 4.5rem); /* 72 px */
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+@utility text-lead {
+  font-size: clamp(1rem, 0.9rem + 0.4vw, 1.25rem); /* 18–20 px */
+  line-height: 1.6;
+}
+@utility text-rotulo {
+  font-size: 0.6875rem; /* 11 px móvil · 13 px escritorio */
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  @variant md {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ---------- Layout ---------- */
+/* Contenedor de 1440 px con gutter 48 px (escritorio) → 20 px (móvil) */
+@utility contenedor {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @variant md {
+    padding-inline: 2rem;
+  }
+  @variant xl {
+    padding-inline: 3rem;
+  }
+}
+/* Bandas inset: margen 12 px (móvil) / 16 px (escritorio), radio 28/32 px */
+@utility banda {
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: 0.75rem;
+  @variant md {
+    padding-inline: 1rem;
+  }
+}
+
+/* Marcador rayado de imagen pendiente (.ph del diseño) */
+@utility marcador-foto {
+  background-color: var(--color-ph);
+  background-image: repeating-linear-gradient(135deg, rgba(11, 42, 79, 0.06) 0 1px, transparent 1px 12px);
+}
+
+/* ---------- Interacción ---------- */
+/* Tarjeta: translateY(-6px) + sombra en 300 ms (tokens · movimiento) */
+@utility tarjeta-hover {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  @media (hover: hover) {
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-tarjeta);
+    }
+  }
+}
+/* Zoom suave de imagen dentro de un contenedor con la clase `group` */
+@utility zoom-suave {
+  transition: transform 1.2s var(--ease-salida);
+  @media (hover: hover) {
+    :where(.group):hover & {
+      transform: scale(1.045);
+    }
+  }
+}
+
+/* ---------- Animación: estado inicial solo si hay JS y se permite movimiento ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* Cambio de contenido en pestañas */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Transición entre páginas (React <ViewTransition>) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

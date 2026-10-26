@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Contáctenos — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>body{margin:0;background:#FFFFFF}</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="contacto" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Contáctenos" eyebrow="Contáctenos" heading="Hablemos. Estamos para ayudarle." lead="Escríbanos, agende su cita para asesoría o conciliación, o apoye la labor de la Fundación." photo="atención a la ciudadanía" art="oficina" hint-size="1440px,512px"></dc-import>
+
+<section style="padding: 72px 48px 0; display: grid; grid-template-columns: 400px minmax(0, 1fr); gap: 24px; align-items: start">
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <a href="tel:+573209038228" style="padding: 28px; background: #F3F8FE; border-radius: 26px; text-decoration: none; color: #0B2A4F"><div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1E64C8">Teléfono</div><div style="margin-top: 8px; font-size: 26px; font-weight: 800">320 903 8228</div></a>
+    <a href="mailto:contacto@fundacionderechoyformacion.org" style="padding: 28px; background: #F3F8FE; border-radius: 26px; text-decoration: none; color: #0B2A4F"><div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1E64C8">Correo</div><div style="margin-top: 8px; font-size: 17px; font-weight: 800">contacto@fundacionderechoyformacion.org</div></a>
+    <a href="Oficinas.dc.html" style="padding: 28px; background: #F3F8FE; border-radius: 26px; text-decoration: none; color: #0B2A4F"><div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #1E64C8">Dirección</div><div style="margin-top: 8px; font-size: 19px; font-weight: 800; line-height: 1.35">Calle 12B # 8A-34, interior 13 · Bogotá D.C.</div></a>
+    <a href="mailto:centroconciliacionth@gmail.com" style="padding: 28px; background: #FFF1E6; border-radius: 26px; text-decoration: none; color: #0B2A4F"><div style="font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #B5531A">Centro de Conciliación</div><div style="margin-top: 8px; font-size: 17px; font-weight: 800">centroconciliacionth@gmail.com</div></a>
+  </div>
+
+  <div style="padding: 32px; border: 1px solid #DCE6F2; border-radius: 32px">
+    <div role="tablist" aria-label="Opciones de contacto" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 5px; background: #F3F8FE; border-radius: 999px">
+      <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+        <button type="button" role="tab" onClick="{{t.pick}}" style="height: 50px; border: 0; border-radius: 999px; background: {{t.bg}}; color: {{t.fg}}; font: inherit; font-size: 15px; font-weight: 800; cursor: pointer">{{t.label}}</button>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{isMsg}}" hint-placeholder-val="{{ true }}">
+      <form style="margin-top: 28px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+        <label style="font-size: 14px; font-weight: 700">Nombre<input type="text" style="margin-top: 8px; width: 100%; height: 56px; box-sizing: border-box; padding: 0 18px; border: 1.5px solid #DCE6F2; border-radius: 16px; font: inherit; font-size: 15px"></label>
+        <label style="font-size: 14px; font-weight: 700">Correo electrónico<input type="email" style="margin-top: 8px; width: 100%; height: 56px; box-sizing: border-box; padding: 0 18px; border: 1.5px solid #DCE6F2; border-radius: 16px; font: inherit; font-size: 15px"></label>
+        <label style="grid-column: span 2; font-size: 14px; font-weight: 700">Mensaje<textarea rows="6" style="margin-top: 8px; width: 100%; box-sizing: border-box; padding: 16px 18px; border: 1.5px solid #DCE6F2; border-radius: 16px; font: inherit; font-size: 15px; resize: vertical"></textarea></label>
+        <button type="button" style="grid-column: span 2; height: 60px; border: 0; border-radius: 999px; background: #0B2A4F; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer">Enviar</button>
+      </form>
+    </sc-if>
+
+    <sc-if value="{{isCita}}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 24px">
+        <div>
+          <div style="font-size: 22px; font-weight: 800">[Mes · Año]</div>
+          <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; text-align: center; font-size: 12px; font-weight: 800; color: #51617A"><span>LU</span><span>MA</span><span>MI</span><span>JU</span><span>VI</span><span>SÁ</span><span>DO</span></div>
+          <div style="margin-top: 8px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+            <sc-for list="{{days}}" as="d" hint-placeholder-count="35">
+              <button type="button" onClick="{{d.pick}}" style="height: 48px; border: 0; border-radius: 12px; background: {{d.bg}}; color: {{d.fg}}; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">{{d.n}}</button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <label style="font-size: 14px; font-weight: 700">Servicio<select style="margin-top: 8px; width: 100%; height: 52px; padding: 0 14px; border: 1.5px solid #DCE6F2; border-radius: 14px; font: inherit; font-size: 14px; background: #FFFFFF"><option>Centro de Conciliación</option><option>Asesoría jurídica</option><option>Litigio estratégico</option></select></label>
+          <div style="margin-top: 6px; font-size: 14px; font-weight: 700">Horario</div>
+          <div style="font-size: 13px; color: #51617A">[Horarios por confirmar]</div>
+          <button type="button" style="margin-top: auto; height: 56px; border: 0; border-radius: 999px; background: #F4914D; color: #0B2A4F; font: inherit; font-size: 15px; font-weight: 800; cursor: pointer">Confirmar · día {{day}}</button>
+          <div style="font-size: 12px; color: #51617A">Conectado a la agenda actual del sitio.</div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isDon}}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top: 28px">
+        <div style="font-size: 26px; font-weight: 800">Apoye la construcción de paz</div>
+        <p style="margin: 8px 0 0; font-size: 15px; color: #51617A">Su aporte fortalece el tejido social. [Montos y pasarela de pago por definir: el sitio actual no tiene enlace de donación]</p>
+        <div style="margin-top: 20px; display: inline-flex; padding: 4px; background: #F3F8FE; border-radius: 999px">
+          <sc-for list="{{cur}}" as="c" hint-placeholder-count="2">
+            <button type="button" onClick="{{c.pick}}" style="height: 40px; padding: 0 18px; border: 0; border-radius: 999px; background: {{c.bg}}; color: {{c.fg}}; font: inherit; font-size: 13px; font-weight: 800; cursor: pointer">{{c.label}}</button>
+          </sc-for>
+        </div>
+        <div style="margin-top: 16px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+          <sc-for list="{{amounts}}" as="a" hint-placeholder-count="4">
+            <button type="button" onClick="{{a.pick}}" style="height: 72px; border: 2px solid {{a.bd}}; border-radius: 18px; background: {{a.bg}}; color: {{a.fg}}; font: inherit; font-size: 20px; font-weight: 800; cursor: pointer">{{a.label}}</button>
+          </sc-for>
+        </div>
+        <button type="button" style="margin-top: 20px; width: 100%; height: 60px; border: 0; border-radius: 999px; background: #F4914D; color: #0B2A4F; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer">Donar {{donation}}</button>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2400}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { t: 'msg', day: 12, c: 'COP', a: 1 }; }
+  renderVals() {
+    const st = this.state;
+    const T = [['msg', 'Escríbanos'], ['cita', 'Agenda tu cita'], ['don', 'Donaciones']];
+    const days = [];
+    for (let i = 0; i < 2; i++) days.push({ n: '', bg: 'transparent', fg: '#0B2A4F', pick: () => {} });
+    for (let n = 1; n <= 30; n++) {
+      const dow = (n + 1) % 7; const we = dow === 5 || dow === 6; const sel = n === st.day;
+      days.push({ n: String(n), bg: sel ? '#F4914D' : (we ? 'transparent' : '#F3F8FE'), fg: we ? '#9AA8BC' : '#0B2A4F', pick: we ? () => {} : () => this.setState({ day: n }) });
+    }
+    for (let i = 0; i < 3; i++) days.push({ n: '', bg: 'transparent', fg: '#0B2A4F', pick: () => {} });
+    const AM = st.c === 'COP' ? ['$50.000', '$100.000', '$200.000', '$500.000'] : ['$25', '$50', '$100', '$250'];
+    return {
+      tabs: T.map(([k, label]) => ({ label, bg: k === st.t ? '#0B2A4F' : 'transparent', fg: k === st.t ? '#FFFFFF' : '#0B2A4F', pick: () => this.setState({ t: k }) })),
+      isMsg: st.t === 'msg', isCita: st.t === 'cita', isDon: st.t === 'don',
+      days, day: st.day,
+      cur: ['COP', 'USD'].map((c) => ({ label: c, bg: c === st.c ? '#0B2A4F' : 'transparent', fg: c === st.c ? '#FFFFFF' : '#0B2A4F', pick: () => this.setState({ c }) })),
+      amounts: AM.map((label, i) => ({ label, bg: i === st.a ? '#FFF1E6' : '#FFFFFF', fg: '#0B2A4F', bd: i === st.a ? '#F4914D' : '#DCE6F2', pick: () => this.setState({ a: i }) })),
+      donation: AM[st.a] + ' ' + st.c
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Quiénes somos — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.card{transition:transform .3s ease, box-shadow .3s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(11,42,79,.1)}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="quienes" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Quiénes somos" eyebrow="Quiénes somos" heading="Derecho, formación y tejido humano." lead="Una organización de carácter legal, orientada a la educación y la consultoría jurídica especializada, dedicada a la asesoría, la educación y la investigación." photo="equipo de la Fundación" art="tejido" hint-size="1440px,512px"></dc-import>
+
+<!-- Propósito -->
+<section style="padding: 104px 48px 0; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 56px">
+  <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A; padding-top: 14px">Nuestro propósito</div>
+  <p style="margin: 0; font-size: 46px; line-height: 1.15; font-weight: 800; letter-spacing: -.025em">Hoy nuestro propósito es lograr <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">escenarios de convivencia vinculante</span>, orientados a la justicia, la paz, la educación y el liderazgo comunitario.</p>
+</section>
+
+<!-- Misión / Visión -->
+<section style="padding: 96px 48px 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+  <div class="card" style="padding: 48px; background: #F3F8FE; border-radius: 32px">
+    <div style="width: 64px; height: 64px; border-radius: 20px; background: #FFFFFF; display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#1E64C8" stroke-width="1.6"></circle><circle cx="12" cy="12" r="5" stroke="#F4914D" stroke-width="1.6"></circle><circle cx="12" cy="12" r="1.5" fill="#0B2A4F"></circle></svg></div>
+    <h2 style="margin: 28px 0 0; font-size: 40px; font-weight: 800; letter-spacing: -.02em">Misión</h2>
+    <p style="margin: 16px 0 0; font-size: 18px; line-height: 1.7; color: #34465F">Facilitar a la comunidad herramientas autocompositivas que permitan una solución alternativa a los conflictos que deterioran la seguridad y la convivencia, permitiendo establecer relaciones comunitarias estructuradas sobre la base de principios y valores.</p>
+  </div>
+  <div class="card" style="padding: 48px; background: #0B2A4F; color: #FFFFFF; border-radius: 32px">
+    <div style="display: flex; justify-content: space-between; align-items: center"><div style="width: 64px; height: 64px; border-radius: 20px; background: rgba(255,255,255,.1); display: flex; align-items: center; justify-content: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" stroke="#FFFFFF" stroke-width="1.6"></path><circle cx="12" cy="12" r="3" stroke="#F4914D" stroke-width="1.6"></circle></svg></div><span style="font-size: 56px; font-weight: 800; color: #F4914D; letter-spacing: -.04em">2035</span></div>
+    <h2 style="margin: 28px 0 0; font-size: 40px; font-weight: 800; letter-spacing: -.02em">Visión</h2>
+    <p style="margin: 16px 0 0; font-size: 18px; line-height: 1.7; color: #C9DAF0">Para el 2035 seremos una institución generadora y productora de conocimiento jurídico y académico de alto impacto en el desarrollo y restauración de tejido humano y social de la región, el país y el mundo, con liderazgo en un proceso de formación soportado en el diálogo sistémico, complejo, interdisciplinar, transdisciplinar y ecoformativo, garantes de la cultura de paz.</p>
+  </div>
+</section>
+
+<!-- Pilares -->
+<section style="padding: 104px 48px 0">
+  <div style="text-align: center">
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Nuestros pilares</div>
+    <h2 style="margin: 14px 0 0; font-size: 48px; font-weight: 800; letter-spacing: -.03em">Lo que nos <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">define</span></h2>
+  </div>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+    <sc-for list="{{pillars}}" as="p" hint-placeholder-count="4">
+      <button type="button" onClick="{{p.pick}}" class="card" style="padding: 32px; min-height: 240px; text-align: left; border: 2px solid {{p.bd}}; border-radius: 28px; background: {{p.bg}}; color: {{p.fg}}; font: inherit; cursor: pointer; display: flex; flex-direction: column; justify-content: space-between">
+        <span style="font-size: 44px; font-weight: 800; color: #F4914D">{{p.num}}</span>
+        <span><span style="display: block; font-size: 26px; font-weight: 800">{{p.title}}</span><span style="display: block; margin-top: 8px; font-size: 15px; line-height: 1.55; color: {{p.muted}}">{{p.desc}}</span></span>
+      </button>
+    </sc-for>
+  </div>
+</section>
+
+<!-- Trayectoria (timeline) -->
+<section style="padding: 104px 16px 0">
+  <div style="padding: 64px; background: #F3F8FE; border-radius: 32px">
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Trayectoria</div>
+    <h2 style="margin: 14px 0 0; font-size: 48px; font-weight: 800; letter-spacing: -.03em">Hitos institucionales</h2>
+    <div style="margin-top: 48px; position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+      <span style="position: absolute; left: 0; right: 0; top: 23px; height: 2px; background: #C9DBEF"></span>
+      <sc-for list="{{milestones}}" as="m" hint-placeholder-count="4">
+        <button type="button" onClick="{{m.pick}}" style="position: relative; padding: 0; text-align: left; background: transparent; border: 0; color: #0B2A4F; font: inherit; cursor: pointer">
+          <span style="display: block; width: 48px; height: 48px; border-radius: 999px; background: {{m.dot}}; border: 4px solid #F3F8FE; box-sizing: border-box"></span>
+          <span style="display: block; margin-top: 18px; font-size: 40px; font-weight: 800; letter-spacing: -.03em; color: {{m.yearC}}">{{m.year}}</span>
+          <span style="display: block; margin-top: 8px; font-size: 16px; font-weight: 700; line-height: 1.35">{{m.title}}</span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="margin-top: 36px; padding: 28px 32px; background: #FFFFFF; border-radius: 24px; font-size: 17px; line-height: 1.6; color: #34465F">{{mDesc}}</div>
+  </div>
+</section>
+
+<!-- Equipo interdisciplinario -->
+<section style="padding: 104px 48px 0; display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 56px; align-items: center">
+  <div>
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Equipo interdisciplinario</div>
+    <h2 style="margin: 14px 0 0; font-size: 46px; line-height: 1.08; font-weight: 800; letter-spacing: -.03em">Profesionales con trayectoria en los ámbitos <span style="font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-weight: 400; color: #1E64C8">judicial, académico e investigativo.</span></h2>
+    <div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px">
+      <sc-for list="{{areas}}" as="a" hint-placeholder-count="8">
+        <span style="padding: 10px 16px; background: #F3F8FE; border-radius: 999px; font-size: 14px; font-weight: 700">{{a}}</span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <a href="Staff.dc.html" class="card" style="padding: 28px; background: #0B2A4F; color: #FFFFFF; border-radius: 26px; text-decoration: none; display: flex; justify-content: space-between; align-items: center"><span><span style="display: block; font-size: 22px; font-weight: 800">Staff jurídico</span><span style="display: block; margin-top: 4px; font-size: 14px; color: #C9DAF0">11 profesionales</span></span><span style="font-size: 22px">→</span></a>
+    <a href="Oficinas.dc.html" class="card" style="padding: 28px; background: #F3F8FE; color: #0B2A4F; border-radius: 26px; text-decoration: none; display: flex; justify-content: space-between; align-items: center"><span><span style="display: block; font-size: 22px; font-weight: 800">Nuestras oficinas</span><span style="display: block; margin-top: 4px; font-size: 14px; color: #51617A">Sede en Bogotá D.C.</span></span><span style="font-size: 22px">→</span></a>
+    <a href="Gobierno.dc.html" class="card" style="padding: 28px; background: #FFF1E6; color: #0B2A4F; border-radius: 26px; text-decoration: none; display: flex; justify-content: space-between; align-items: center"><span><span style="display: block; font-size: 22px; font-weight: 800">Gobierno corporativo</span><span style="display: block; margin-top: 4px; font-size: 14px; color: #51617A">Transparencia, ética y responsabilidad</span></span><span style="font-size: 22px">→</span></a>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { p: 0, m: 2 }; }
+  renderVals() {
+    const st = this.state;
+    const P = [
+      ['Confianza', 'Estamos del lado de la ciudadanía colombiana.'],
+      ['Transparencia', 'Prácticas que garantizan confianza, sostenibilidad y eficiencia.'],
+      ['Calidad', 'Profesionales altamente cualificados en cada proceso.'],
+      ['Ética', 'Compromiso con la dignidad, la inclusión y los valores.']
+    ];
+    const pillars = P.map(([title, desc], i) => { const a = i === st.p; return { title, desc, num: '0' + (i + 1), bg: a ? '#0B2A4F' : '#FFFFFF', fg: a ? '#FFFFFF' : '#0B2A4F', muted: a ? '#C9DAF0' : '#51617A', bd: a ? '#0B2A4F' : '#DCE6F2', pick: () => this.setState({ p: i }) }; });
+    const M = [
+      ['2014', 'Centro de Conciliación', 'El Centro de Conciliación queda adscrito al Ministerio de Justicia y del Derecho mediante la Resolución 0026 del 16 de enero de 2014.'],
+      ['2021', 'Resolución No. 0748', 'Resolución No. 0748 del 21 de junio de 2021, documento publicado en el gobierno corporativo de la Fundación.'],
+      ['2023', 'Estatus consultivo ante la OEA', 'La Fundación obtiene el estatus de organización consultiva ante la Organización de los Estados Americanos.'],
+      ['2035', 'Visión institucional', 'Ser una institución generadora y productora de conocimiento jurídico y académico de alto impacto en la región, el país y el mundo.']
+    ];
+    const milestones = M.map(([year, title], i) => { const a = i === st.m; return { year, title, dot: a ? '#F4914D' : '#1E64C8', yearC: a ? '#B5531A' : '#0B2A4F', pick: () => this.setState({ m: i }) }; });
+    return {
+      pillars, milestones, mDesc: M[st.m][2],
+      areas: ['Derecho penal', 'Derecho civil', 'Derecho laboral', 'Derecho constitucional', 'Derecho administrativo', 'Derecho internacional', 'Derechos humanos', 'Resolución de conflictos']
+    };
+  }
+}
+</script>
+</body>
+</html>

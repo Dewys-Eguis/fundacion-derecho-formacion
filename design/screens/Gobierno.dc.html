@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Gobierno corporativo — Tejido Humano</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+body{margin:0;background:#FFFFFF}
+.row{transition:background .2s ease}
+.row:hover{background:#F3F8FE}
+</style>
+</helmet>
+<div style="width: 1440px; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; color: #0B2A4F; background: #FFFFFF">
+<dc-import name="Header" active="quienes" hint-size="1440px,128px"></dc-import>
+<dc-import name="PageBanner" crumb="Gobierno corporativo" eyebrow="Gobierno corporativo" heading="Transparencia que genera confianza." lead="Nuestro gobierno corporativo se fundamenta en la transparencia, la ética y la responsabilidad. Implementamos prácticas que garantizan confianza, sostenibilidad y eficiencia en cada proceso." photo="sesión de trabajo institucional" art="tejido" hint-size="1440px,512px"></dc-import>
+
+<section style="padding: 72px 48px 0; display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 48px; align-items: start">
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <div style="font-size: 13px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #B5531A">Documentos</div>
+    <p style="margin: 0 0 12px; font-size: 16px; line-height: 1.6; color: #51617A">Esta sección reúne la información clave sobre nuestra estructura y lineamientos.</p>
+    <sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
+      <button type="button" onClick="{{f.pick}}" style="height: 56px; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; border: 0; border-radius: 18px; background: {{f.bg}}; color: {{f.fg}}; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer; text-align: left">{{f.label}}<span style="font-size: 13px; opacity: .7">{{f.count}}</span></button>
+    </sc-for>
+  </div>
+  <div style="border: 1px solid #DCE6F2; border-radius: 32px; overflow: hidden">
+    <sc-for list="{{docs}}" as="d" hint-placeholder-count="9">
+      <div class="row" style="padding: 24px 28px; display: flex; gap: 20px; align-items: center; border-bottom: 1px solid #DCE6F2">
+        <span style="flex: 0 0 52px; height: 52px; border-radius: 16px; background: {{d.iconBg}}; color: {{d.iconFg}}; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800">PDF</span>
+        <span style="flex: 1"><span style="display: block; font-size: 17px; font-weight: 700; line-height: 1.35">{{d.title}}</span><span style="display: block; margin-top: 4px; font-size: 13px; color: #51617A">{{d.cat}}</span></span>
+        <a href="#" style="height: 46px; padding: 0 18px; display: flex; align-items: center; gap: 8px; border: 1.5px solid #C9DBEF; border-radius: 999px; color: #0B2A4F; font-size: 14px; font-weight: 700; text-decoration: none"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v8M4.5 6.5L8 10l3.5-3.5M3 13h10" stroke="currentColor" stroke-width="1.8"></path></svg>Ver</a>
+      </div>
+    </sc-for>
+    <div style="padding: 18px 28px; font-size: 13px; color: #51617A; background: #F3F8FE">[Enlaces de descarga por cargar: el sitio actual lista los documentos sin archivo adjunto]</div>
+  </div>
+</section>
+
+<div style="height: 112px"></div>
+<dc-import name="Footer" hint-size="1440px,680px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { f: 'all' }; }
+  renderVals() {
+    const D = [
+      ['act', 'Acta Ordinaria 01 – 2025'],
+      ['act', 'Resolución No. 0748 del 21 de junio de 2021'],
+      ['act', 'Insolvencia económica de persona natural no comerciante · Resolución No. 0026 del 16 de enero de 2014 del Centro de Conciliación'],
+      ['cer', 'Certificación de cumplimiento de los requisitos (2025)'],
+      ['cer', 'Certificado Representante Legal – Antecedentes judiciales'],
+      ['cer', 'Certificado OEA'],
+      ['fin', 'Estados financieros a diciembre 31 de 2024-2023'],
+      ['fin', 'Informe de gestión a diciembre 31 de 2024'],
+      ['tri', 'RUT']
+    ];
+    const CAT = { act: 'Actas y resoluciones', cer: 'Certificados', fin: 'Información financiera y de gestión', tri: 'Información tributaria' };
+    const f = this.state.f;
+    const F = [['all', 'Todos'], ['act', 'Actas y resoluciones'], ['cer', 'Certificados'], ['fin', 'Financiera y gestión'], ['tri', 'Tributaria']];
+    return {
+      filters: F.map(([k, label]) => ({ label, count: String(k === 'all' ? D.length : D.filter((d) => d[0] === k).length), bg: k === f ? '#0B2A4F' : '#F3F8FE', fg: k === f ? '#FFFFFF' : '#0B2A4F', pick: () => this.setState({ f: k }) })),
+      docs: D.filter((d) => f === 'all' || d[0] === f).map(([k, title]) => ({ title, cat: CAT[k], iconBg: k === 'cer' ? '#FFF1E6' : '#EAF3FD', iconFg: k === 'cer' ? '#B5531A' : '#1E64C8' }))
+    };
+  }
+}
+</script>
+</body>
+</html>
