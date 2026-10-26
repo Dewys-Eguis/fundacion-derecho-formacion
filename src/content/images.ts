@@ -53,6 +53,15 @@ export const IMAGES = {
   },
 } as const satisfies Record<string, SiteImage>;
 
+/** Distintivo oficial (media/logos): se muestra completo, sin recortes ni deformaciones. */
+export const MINJUSTICIA_BADGE = {
+  src: "/images/vigilado-minjusticia.png",
+  width: 402,
+  height: 127,
+  alt: "Vigilado por el Ministerio de Justicia y del Derecho · La justicia es de todos · Minjusticia",
+  render: false,
+} as const satisfies SiteImage;
+
 /** Arte de los banners interiores (prop `art` de PageBanner.dc.html). */
 export const BANNER_ART = {
   tejido: [IMAGES.heroCiudadBolivar, "50% 40%"],

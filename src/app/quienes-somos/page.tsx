@@ -4,7 +4,7 @@ import { Milestones, Pillars } from "@/components/about/Interactive";
 import { PageBanner } from "@/components/layout/PageBanner";
 import { CountUp } from "@/components/motion/CountUp";
 import { Accent, Eyebrow } from "@/components/ui/typography";
-import { ABOUT_LINKS, AREAS, MISSION, PURPOSE, VISION } from "@/content/about";
+import { ABOUT_INTRO, ABOUT_LINKS, AREAS, MISSION, PURPOSE, VISION } from "@/content/about";
 import { BANNERS } from "@/content/banners";
 
 export const metadata: Metadata = {
@@ -119,6 +119,9 @@ export default function QuienesSomosPage() {
           >
             Profesionales con trayectoria en los ámbitos <Accent>judicial, académico e investigativo.</Accent>
           </h2>
+          <p data-reveal className="mt-5 text-base leading-[1.7] text-texto-cuerpo">
+            {ABOUT_INTRO}
+          </p>
           <ul className="mt-7 flex flex-wrap gap-2">
             {AREAS.map((a) => (
               <li

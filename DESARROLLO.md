@@ -49,8 +49,34 @@ apunte el dominio.
 ## Fotografías
 
 - `media/Oficinas/`: 4 fotos reales (1, 2, 4 y 5 · 1080×810). `…_4-300x225.webp` es una miniatura duplicada
-  y el script la omite. No hay foto n.º 3. Se usan solo en Nuestras oficinas (banner + galería con visor).
-- Resto: placeholders celestes con el archivo esperado, hasta recibir fotos oficiales.
+  y el script la omite. La n.º 3 no se entregó (el WordPress la referencia en
+  `/wp-content/uploads/2025/09/Oficina_Fundacion_Tejido_Humano_3.webp`: pedir el archivo).
+  Se usan en Nuestras oficinas (banner + galería con visor) y en la galería de Inicio («Oficinas en Bogotá»).
+- `media/imagenes-web/`: 8 imágenes ilustrativas (IA). Siempre con el rótulo «Imagen ilustrativa»
+  (`ILLUSTRATIVE` en `src/content/images.ts`): banners de los 5 servicios, proyectos solar, Alma Mater y
+  desarrollo social, y la tarjeta «Centro de Conciliación» de la galería de Inicio.
+- `media/logos/vigilado-minjusticia.png`: distintivo oficial, servido sin recomprimir (PNG original) en el
+  pie de página y en Centro de Conciliación. **Validar** que la Fundación está autorizada a usar esta versión.
+
+### Imágenes pendientes (no se generaron)
+
+En el entorno de desarrollo no hay herramienta de generación de imágenes: no se creó ningún archivo nuevo.
+Espacios que siguen con placeholder celeste y el motivo:
+
+| Espacio                                                                         | Motivo                                                     |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Banner Contáctenos («atención a la ciudadanía»)                                 | Imagen ilustrativa por generar                             |
+| Banner Proyectos («proyecto en territorio»)                                     | Imagen ilustrativa por generar                             |
+| Banner Quiénes somos («equipo de la Fundación») y banner Gobierno corporativo   | Imagen ilustrativa por generar (sin personas reconocibles) |
+| Banner Diplomados («educadores en formación virtual»)                           | Imagen ilustrativa por generar                             |
+| Inicio · Quiénes somos (2 fotos con la tarjeta «Visión 2035»)                   | Imágenes ilustrativas por generar                          |
+| Proyecto «Diplomado Fuerza Pública y Construcción de Paz» (Proyectos e Inicio)  | Imagen ilustrativa por generar                             |
+| Banner Staff, tarjetas y perfiles del equipo, «[Foto] Staff jurídico» (galería) | Excepción: solo fotografías reales de la Fundación         |
+| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                           | Archivos oficiales y permisos pendientes                   |
+| Proyecto solar: plano real del lote, fotos de dron                              | Material documental: solo fotografías reales               |
+
+Para integrarlas: guardar el WebP en `media/imagenes-web/`, añadirlo a `ILLUSTRATIVE` y pasarlo como
+`image` (banners) o en el contenido correspondiente.
 
 ## Integraciones pendientes
 
@@ -59,7 +85,10 @@ apunte el dominio.
 - Citas: enlace al calendario actual `https://fundacionderechoyformacion.org/wp-booking-calendar/`
   (dejará de existir si se retira WordPress: definir reemplazo).
 - Donaciones: sin montos ni pasarela (pendiente de la Fundación).
-- Gobierno corporativo: los 9 documentos se listan «Por cargar» (añadir `href` en `DOCUMENTS`).
+- Gobierno corporativo: los 10 documentos se listan «Por cargar» (añadir `href` en `DOCUMENTS`).
+  En WordPress tampoco tienen archivo adjunto.
+- Diplomados: «Inscribirme gratis» abre el formulario de Google del sitio actual (`COURSE_SIGNUP_URL`,
+  el mismo para los 21 programas, como en WordPress).
 - Redes sociales, política de datos y mapa interactivo: pendientes.
 
 ## Datos pendientes de validar
@@ -68,8 +97,49 @@ apunte el dominio.
   11,05 MWp como configuración óptima. El sitio muestra 11,05 MWp rotulado «configuración óptima».
 - Estatus OEA: «2023» (diseño) frente a «CP/RES. 759 (1217/99)» (sitio actual).
 - Presentación en Washington: fecha, lugar y entidad `[por confirmar]`.
-- Proyecto solar: resumen financiero y sitio del proyecto `[enlace por confirmar]`; plano real del lote.
+- Proyecto solar: resumen financiero y sitio del proyecto siguen `[enlace por confirmar]`; plano real del lote.
+  - WordPress (`/proyectos/`) enlaza `…/2026/09/San-Francisco-Granja-Solar-Resumen-Financiero-1.pdf`, pero el
+    PDF está marcado «Privileged and Confidential» y describe otra ubicación y capacidad (Manaure, Guajira ·
+    23,652 MWp). No se enlaza hasta que la Fundación lo confirme.
+  - «EcoEnergia15MW» (`https://ecoenergia15mw.org/presentation`) responde 404.
 - Configuración «tracker monocristalino»: inversores y strings no informados en el documento («—»).
+- Diplomados: en WordPress, «Impresión 3D», «Genera recursos con IA» y «SST» repiten los objetivos de
+  otro diplomado (Design Thinking, Canva y Prompting). Se muestran como «[Objetivos por confirmar]».
+  Duración y horas no figuran en el texto (solo en una imagen, `5semanasvirtual.png`): por confirmar.
+- Inicio · tarjeta de proyectos: WordPress dice «Desarrollo de proyectos en educación, ambientales,
+  energéticos y seguridad integral»; el diseño dice «seguridad alimentaria y construcción de paz».
+- Oficinas: WordPress habla de «instalaciones … en la torre Davivienda»; la dirección publicada es
+  Calle 12B # 8A-34, interior 13. Confirmar antes de publicar ese texto.
+- Distintivo «Vigilado Minjusticia»: confirmar autorización y vigencia de esta versión.
+
+## Auditoría de contenido frente a WordPress (oct. 2026)
+
+| Página                 | Estado                  | Recuperado                                                                                    | Pendiente / para validar                                                                     |
+| ---------------------- | ----------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Inicio                 | Faltan bloques de texto | Galería: foto real de oficinas e imagen ilustrativa de Conciliación                           | Intros de Servicios y Staff; bloques Soluciones/Calidad/Experiencia; Testimonios (sin datos) |
+| Quiénes somos          | Recuperado              | Párrafo completo «¿Quiénes somos?», propósito, visión completa, 3 áreas más                   | 2.ª oración de la misión (texto incompleto en la extracción)                                 |
+| Equipo jurídico        | Recuperado              | «Formación y trayectoria» de 10 perfiles; magistrada Lily Rueda; cargo de W. Fonseca          | Biografía de J. M. González (duplicada en WordPress)                                         |
+| Nuestras oficinas      | Casi completo           | —                                                                                             | Texto «torre Davivienda»; foto n.º 3; logo OEA                                               |
+| Gobierno corporativo   | Completo                | 10 documentos (Insolvencia y Resolución 0026 separados); intro completa                       | Archivos de los documentos                                                                   |
+| Estudio legal          | Recuperado parcialmente | 9 acciones que faltaban; definiciones completas de civil y comercial                          | Tablas por acción (objeto, juez competente, normatividad): requieren otro componente         |
+| Litigio estratégico    | Recuperado              | Intro de la línea II, alegatos, INTERPOL, diálogo comunitario                                 | Detalle por formulario de la asistencia migratoria                                           |
+| Centro de Conciliación | Recuperado              | 4 asuntos conciliables, texto completo de insolvencia, distintivo Minjusticia                 | «Adjudicación de apoyos» (WordPress repite otro texto)                                       |
+| Educación para la paz  | Completo                | —                                                                                             | Lead completo (más largo que el banner del diseño)                                           |
+| Justicia para la paz   | Recuperado              | Textos completos de competencias, víctimas y sanciones                                        | —                                                                                            |
+| Proyectos              | Completo                | —                                                                                             | Descripción larga de Alma Mater; enlaces del proyecto solar (ver arriba)                     |
+| Proyecto solar         | Completo                | —                                                                                             | Ver «Datos pendientes de validar»                                                            |
+| Diplomados             | Recuperado              | Descripción completa, objetivos y enlace de inscripción real de los 21 (ficha «Ver detalles») | Objetivos de 3 programas; duración                                                           |
+| Contáctenos            | Completo                | —                                                                                             | Horario (WordPress no lo publica)                                                            |
+
+## Publicación en GitHub Pages
+
+`.github/workflows/deploy.yml` compila y publica en cada push a `main`:
+https://dewys-eguis.github.io/fundacion-derecho-formacion/
+
+El workflow define `NEXT_PUBLIC_BASE_PATH=/fundacion-derecho-formacion`: `next.config.ts` lo usa como
+`basePath` y `src/lib/image-loader.ts` lo antepone a las imágenes. Sin esa variable (Render, dominio propio,
+`npm run dev`) el sitio se sirve desde la raíz. Para probar el subdirectorio en local:
+`NEXT_PUBLIC_BASE_PATH=/fundacion-derecho-formacion npm run build`.
 
 ## Requisitos
 

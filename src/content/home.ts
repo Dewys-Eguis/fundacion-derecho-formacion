@@ -5,6 +5,7 @@
  * Narrativa del proyecto: siempre «De Washington a Ciudad Bolívar» (CLAUDE.md).
  */
 import { ILLUSTRATIVE, IMAGES, type SiteImage } from "./images";
+import { OFFICE_PHOTOS } from "./interior";
 import { ROUTES } from "./routes";
 
 export const PDF_PLANTA_SOLAR =
@@ -191,10 +192,16 @@ export const GALLERY: GalleryItem[] = [
     pos: "50% 50%",
     alt: "Paneles solares fotovoltaicos (imagen del sitio actual)",
   },
-  { caption: "[Foto] Centro de Conciliación" },
+  {
+    caption: "Centro de Conciliación",
+    image: ILLUSTRATIVE.conciliacion,
+    pos: ILLUSTRATIVE.conciliacion.pos,
+    alt: ILLUSTRATIVE.conciliacion.alt,
+  },
   { caption: "[Foto] Diplomado Fuerza Pública y Construcción de Paz" },
   { caption: "[Foto] Staff jurídico" },
-  { caption: "[Foto] Oficinas en Bogotá" },
+  // Fotografía real de la sede (media/Oficinas)
+  { caption: "Oficinas en Bogotá", image: OFFICE_PHOTOS[0].image, pos: "50% 50%", alt: OFFICE_PHOTOS[0].image.alt },
 ];
 
 export const GALLERY_NOTE =

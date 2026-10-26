@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Matters } from "@/components/interior/Selectors";
 import { PageBanner } from "@/components/layout/PageBanner";
+import { MinjusticiaBadge } from "@/components/ui/MinjusticiaBadge";
 import { Accent, Eyebrow, Pending } from "@/components/ui/typography";
 import { BANNERS } from "@/content/banners";
 import { ILLUSTRATIVE } from "@/content/images";
@@ -49,6 +50,15 @@ export default function ConciliacionPage() {
             </span>
           </span>
         </Link>
+        <div
+          data-reveal
+          className="flex flex-col gap-4 rounded-[26px] border border-linea p-5 sm:flex-row sm:items-center sm:justify-between md:col-span-3 md:px-7"
+        >
+          <p className="text-xs font-extrabold tracking-[.1em] text-accion uppercase">
+            Centro de Conciliación adscrito al Ministerio de Justicia y del Derecho
+          </p>
+          <MinjusticiaBadge width={300} className="self-start p-0 sm:self-auto" />
+        </div>
       </section>
 
       <section aria-labelledby="que-es" className="contenedor grid gap-8 pt-16 md:pt-22 lg:grid-cols-2 lg:gap-12">

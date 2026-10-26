@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { PlayIcon } from "@/components/ui/icons";
+import { MinjusticiaBadge } from "@/components/ui/MinjusticiaBadge";
 import { CTA, FOOTER_COLUMNS, SITE, SOCIAL } from "@/content/site";
 import { FooterWaves } from "./FooterWaves";
 
@@ -23,6 +24,7 @@ export function Footer() {
             </span>
           ))}
         </div>
+        <MinjusticiaBadge width={232} className="mt-4" />
         {/* Mismos enlaces del pie de escritorio, en dos columnas */}
         <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-6 text-[13.5px]">
           {FOOTER_COLUMNS.map((col) => (
@@ -98,6 +100,7 @@ export function Footer() {
                 </span>
               ))}
             </div>
+            <MinjusticiaBadge width={232} className="mt-4" />
           </div>
 
           {FOOTER_COLUMNS.map((col) => (

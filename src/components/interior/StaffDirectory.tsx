@@ -91,6 +91,21 @@ export function StaffDirectory() {
             <p className="perfil-in mt-4 max-w-190 text-[15px] leading-[1.65] text-sobre-oscuro md:text-base">
               {p.bio} {p.bioPending && <Pending>{p.bioPending}</Pending>}
             </p>
+            {p.record && (
+              <div className="perfil-in mt-6 border-t border-white/14 pt-5">
+                <h3 className="text-xs font-extrabold tracking-[.12em] text-naranja uppercase">
+                  Formación y trayectoria
+                </h3>
+                <ul className="mt-3 grid gap-x-8 gap-y-2 md:grid-cols-2">
+                  {p.record.map((r) => (
+                    <li key={r} className="flex gap-2.5 text-[13.5px] leading-normal text-sobre-oscuro">
+                      <span aria-hidden className="mt-1.75 size-1.5 shrink-0 rounded-pildora bg-naranja" />
+                      {r}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </section>
