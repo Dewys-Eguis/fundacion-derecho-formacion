@@ -50,7 +50,9 @@ for (const [dir, file] of files) {
   const copy = path.join(OUT, file);
   const crop = CROPS[base];
   const load = () => (crop ? sharp(src).extract(crop) : sharp(src));
-  if (!(await isFresh(copy, mtimeMs))) {
+  // Fotografías PNG (> 1 MB): sin copia del original en public/; se usan solo las variantes WebP.
+  const heavyPng = /\.png$/i.test(file) && (await stat(src)).size > 1024 * 1024;
+  if (!heavyPng && !(await isFresh(copy, mtimeMs))) {
     if (crop) await load().toFile(copy);
     else await copyFile(src, copy);
   }

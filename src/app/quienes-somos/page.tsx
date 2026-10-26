@@ -6,6 +6,7 @@ import { CountUp } from "@/components/motion/CountUp";
 import { Accent, Eyebrow } from "@/components/ui/typography";
 import { ABOUT_INTRO, ABOUT_LINKS, AREAS, MISSION, PURPOSE, VISION } from "@/content/about";
 import { BANNERS } from "@/content/banners";
+import { ILLUSTRATIVE } from "@/content/images";
 
 export const metadata: Metadata = {
   title: "Quiénes somos",
@@ -23,7 +24,7 @@ const LINK_TONE = {
 export default function QuienesSomosPage() {
   return (
     <>
-      <PageBanner {...BANNERS.quienesSomos} />
+      <PageBanner {...BANNERS.quienesSomos} image={ILLUSTRATIVE.quienesSomos} />
 
       {/* Propósito */}
       <section

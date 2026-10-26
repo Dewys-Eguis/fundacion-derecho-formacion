@@ -58,22 +58,21 @@ apunte el dominio.
 - `media/logos/vigilado-minjusticia.png`: distintivo oficial, servido sin recomprimir (PNG original) en el
   pie de página y en Centro de Conciliación. **Validar** que la Fundación está autorizada a usar esta versión.
 
-### Imágenes pendientes (no se generaron)
+### Imágenes ilustrativas (segunda entrega, PNG)
 
-En el entorno de desarrollo no hay herramienta de generación de imágenes: no se creó ningún archivo nuevo.
-Espacios que siguen con placeholder celeste y el motivo:
+Integradas con rótulo «Imagen ilustrativa» y variantes WebP (el PNG original no se publica):
+encabezados de Contáctenos, Proyectos, Quiénes somos, Gobierno corporativo y Diplomados; las dos imágenes
+de la composición «Visión 2035» de Inicio; y el proyecto «Diplomado Fuerza Pública y Construcción de Paz»
+(Proyectos, fila de Inicio y galería de Inicio).
 
-| Espacio                                                                         | Motivo                                                     |
-| ------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Banner Contáctenos («atención a la ciudadanía»)                                 | Imagen ilustrativa por generar                             |
-| Banner Proyectos («proyecto en territorio»)                                     | Imagen ilustrativa por generar                             |
-| Banner Quiénes somos («equipo de la Fundación») y banner Gobierno corporativo   | Imagen ilustrativa por generar (sin personas reconocibles) |
-| Banner Diplomados («educadores en formación virtual»)                           | Imagen ilustrativa por generar                             |
-| Inicio · Quiénes somos (2 fotos con la tarjeta «Visión 2035»)                   | Imágenes ilustrativas por generar                          |
-| Proyecto «Diplomado Fuerza Pública y Construcción de Paz» (Proyectos e Inicio)  | Imagen ilustrativa por generar                             |
-| Banner Staff, tarjetas y perfiles del equipo, «[Foto] Staff jurídico» (galería) | Excepción: solo fotografías reales de la Fundación         |
-| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                           | Archivos oficiales y permisos pendientes                   |
-| Proyecto solar: plano real del lote, fotos de dron                              | Material documental: solo fotografías reales               |
+### Espacios que siguen pendientes
+
+| Espacio                                                               | Motivo                                             |
+| --------------------------------------------------------------------- | -------------------------------------------------- |
+| Banner Staff, tarjetas y perfiles del equipo, «[Foto] Staff jurídico» | Solo fotografías reales de la Fundación            |
+| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                 | Archivos oficiales y permisos pendientes           |
+| Proyecto solar: plano real del lote, fotos de dron                    | Material documental: solo fotografías reales       |
+| Oficinas: foto n.º 3                                                  | Existe en WordPress, pendiente de entregar archivo |
 
 Para integrarlas: guardar el WebP en `media/imagenes-web/`, añadirlo a `ILLUSTRATIVE` y pasarlo como
 `image` (banners) o en el contenido correspondiente.

@@ -21,6 +21,7 @@ import {
   STAFF_HOME,
   TRUST,
 } from "@/content/home";
+import { ILLUSTRATIVE, type SiteImage } from "@/content/images";
 import { ROUTES } from "@/content/routes";
 import { CTA } from "@/content/site";
 import { IdentityTabs } from "./IdentityTabs";
@@ -148,37 +149,42 @@ export function Trust() {
 
 /* ======================= Quiénes somos ======================= */
 
-/** Composición de fotos pendientes superpuestas + tarjeta «Visión 2035». */
+/** Imagen de la composición: ocupa el marco y respeta el encuadre definido en el registro. */
+function CompositionPhoto({ image, sizes }: { image: SiteImage; sizes: string }) {
+  return (
+    <Image
+      src={image.src}
+      width={image.width}
+      height={image.height}
+      alt={image.alt}
+      sizes={sizes}
+      className="h-full w-full object-cover"
+      style={{ objectPosition: image.pos }}
+    />
+  );
+}
+
+/** Composición de dos imágenes ilustrativas superpuestas + tarjeta «Visión 2035». */
 function PhotoComposition() {
   return (
     <div
       className="relative mx-auto aspect-square w-full max-w-138 xl:mx-0"
-      aria-label="Fotografías pendientes"
+      aria-label="Imágenes ilustrativas"
       role="group"
     >
-      <div className="absolute top-0 left-0 h-[87%] w-[72.5%] overflow-hidden rounded-tarjeta">
+      <div className="absolute top-0 left-0 h-[87%] w-[72.5%] overflow-hidden rounded-tarjeta bg-ph">
         <Parallax amount={3}>
-          <div className="h-full w-full marcador-foto" />
+          <CompositionPhoto image={ILLUSTRATIVE.vision1} sizes="(min-width: 1280px) 400px, 72vw" />
         </Parallax>
-        <span
-          data-pending=""
-          className="absolute bottom-4 left-4 z-10 rounded-lg bg-white px-3 py-1.5 text-[11.5px] font-semibold text-texto-cuerpo md:text-[12.5px]"
-        >
-          [Foto: staff de la Fundación]
-        </span>
+        <IllustrativeLabel className="absolute bottom-4 left-4 z-10" />
       </div>
       <div className="absolute right-0 bottom-0 h-[55.8%] w-[52.2%] overflow-hidden rounded-[30px] border-8 border-white bg-white">
-        <div className="relative h-full w-full overflow-hidden rounded-[22px]">
+        <div className="relative h-full w-full overflow-hidden rounded-[22px] bg-ph">
           <Parallax amount={6}>
-            <div className="h-full w-full marcador-foto" />
+            <CompositionPhoto image={ILLUSTRATIVE.vision2} sizes="(min-width: 1280px) 290px, 52vw" />
           </Parallax>
         </div>
-        <span
-          data-pending=""
-          className="absolute bottom-3 left-3 z-10 rounded-lg bg-white px-3 py-1.5 text-[11.5px] font-semibold text-texto-cuerpo md:text-[12.5px]"
-        >
-          [Foto: oficinas]
-        </span>
+        <IllustrativeLabel className="absolute bottom-3 left-3 z-10" />
       </div>
       <div
         data-reveal

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ContactPanel } from "@/components/interior/ContactPanel";
 import { PageBanner } from "@/components/layout/PageBanner";
 import { BANNERS } from "@/content/banners";
+import { ILLUSTRATIVE } from "@/content/images";
 import { CONCILIATION } from "@/content/interior";
 import { ROUTES } from "@/content/routes";
 import { SITE } from "@/content/site";
@@ -20,7 +21,7 @@ const card =
 export default function ContactoPage() {
   return (
     <>
-      <PageBanner {...BANNERS.contacto} />
+      <PageBanner {...BANNERS.contacto} image={ILLUSTRATIVE.contacto} />
 
       <section
         aria-label="Canales de contacto"

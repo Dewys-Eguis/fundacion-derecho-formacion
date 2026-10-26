@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function ProyectosPage() {
   return (
     <>
-      <PageBanner {...BANNERS.proyectos} />
+      <PageBanner {...BANNERS.proyectos} image={ILLUSTRATIVE.proyectos} />
 
       {/* Proyecto destacado */}
       <section aria-label="Proyecto destacado" className="contenedor pt-12 md:pt-18">

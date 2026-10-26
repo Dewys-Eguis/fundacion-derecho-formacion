@@ -198,7 +198,12 @@ export const GALLERY: GalleryItem[] = [
     pos: ILLUSTRATIVE.conciliacion.pos,
     alt: ILLUSTRATIVE.conciliacion.alt,
   },
-  { caption: "[Foto] Diplomado Fuerza Pública y Construcción de Paz" },
+  {
+    caption: "Diplomado Fuerza Pública y Construcción de Paz",
+    image: ILLUSTRATIVE.fuerzaPublica,
+    pos: ILLUSTRATIVE.fuerzaPublica.pos,
+    alt: ILLUSTRATIVE.fuerzaPublica.alt,
+  },
   { caption: "[Foto] Staff jurídico" },
   // Fotografía real de la sede (media/Oficinas)
   { caption: "Oficinas en Bogotá", image: OFFICE_PHOTOS[0].image, pos: "50% 50%", alt: OFFICE_PHOTOS[0].image.alt },
@@ -233,6 +238,7 @@ export const PROJECTS = [
   {
     cat: "Construcción de paz",
     title: "Diplomado «Fuerza Pública y Construcción de Paz»",
+    image: ILLUSTRATIVE.fuerzaPublica,
     pdf: "https://allianceedu.co/wp-content/uploads/2026/04/4.4-DIPLOMADO-FUERZA-PUBLICA-Y-CONSTRUCCION-DE-PAZ-1.pdf",
   },
 ] as const;

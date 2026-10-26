@@ -1,7 +1,7 @@
 /**
  * Proyectos y publicaciones — textos de Proyectos.dc.html; composición del PDF aprobado (pág. 3).
  * Solo los 4 proyectos documentados en las fuentes oficiales (docs/fuentes-contenido.md).
- * Imágenes: ilustrativas (IA, media/imagenes-web) con su rótulo; el diplomado conserva el placeholder.
+ * Imágenes: ilustrativas (IA, media/imagenes-web) con su rótulo.
  */
 import { PDF_PLANTA_SOLAR } from "./home";
 import { ILLUSTRATIVE, type SiteImage } from "./images";
@@ -69,7 +69,8 @@ export const PROJECTS_ALL: Project[] = [
     title: "Diplomado «Fuerza Pública y Construcción de Paz»",
     desc: "Aportamos al desarrollo de las comunidades a partir de la gestión del conocimiento, el fortalecimiento de capacidades ciudadanas, la promoción de los derechos humanos, la convivencia pacífica y la cultura de la legalidad.",
     pdf: "https://allianceedu.co/wp-content/uploads/2026/04/4.4-DIPLOMADO-FUERZA-PUBLICA-Y-CONSTRUCCION-DE-PAZ-1.pdf",
-    imageNote: "Fotografía pendiente: proyecto_4.jpg",
+    image: ILLUSTRATIVE.fuerzaPublica,
+    imageNote: "Imagen ilustrativa",
   },
 ];
 

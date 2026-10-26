@@ -81,8 +81,8 @@ export type BannerArt = keyof typeof BANNER_ART;
  * Imágenes ilustrativas (media/imagenes-web, generadas con IA). No son fotografías reales de
  * proyectos ejecutados, profesionales ni instalaciones: siempre van con su rótulo.
  */
-const ill = (name: string, alt: string, pos: string, w = 1672, h = 941): SiteImage => ({
-  src: `/images/${name}.webp`,
+const ill = (name: string, alt: string, pos: string, w = 1672, h = 941, ext = "webp"): SiteImage => ({
+  src: `/images/${name}.${ext}`,
   width: w,
   height: h,
   alt: `Imagen ilustrativa: ${alt}`,
@@ -106,4 +106,48 @@ export const ILLUSTRATIVE = {
   conciliacion: ill("centro-conciliacion", "conversación entre tres personas en una mesa de diálogo", "42% 45%"),
   educacion: ill("educacion-para-la-paz", "jornada de formación con un grupo diverso", "55% 45%"),
   justiciaPaz: ill("justicia-para-la-paz", "diálogo comunitario al aire libre", "55% 50%"),
+  // Segunda entrega (PNG): encabezados, composición «Visión 2035» de Inicio y proyecto del diplomado
+  contacto: ill("contacto-hero", "orientación jurídica a una pareja en una oficina", "40% 50%", 1448, 1086, "png"),
+  proyectos: ill(
+    "proyectos-hero",
+    "facilitadora presentando un plan a una comunidad en un espacio al aire libre",
+    "50% 42%",
+    1122,
+    1402,
+    "png",
+  ),
+  quienesSomos: ill(
+    "quienes-somos-hero",
+    "reunión de trabajo en una oficina con vista a la ciudad",
+    "50% 62%",
+    1122,
+    1402,
+    "png",
+  ),
+  gobierno: ill(
+    "gobierno-corporativo-hero",
+    "sesión de trabajo institucional alrededor de una mesa de reuniones",
+    "55% 55%",
+    1448,
+    1086,
+    "png",
+  ),
+  diplomados: ill("diplomados-hero", "estudiantes trabajando en grupo con un portátil", "50% 50%", 1672, 941, "png"),
+  vision1: ill("inicio-vision-2035-1", "personas en una sesión de formación virtual", "32% 50%", 1448, 1086, "png"),
+  vision2: ill(
+    "inicio-vision-2035-2",
+    "equipo jurídico revisando documentos en una oficina",
+    "35% 50%",
+    1448,
+    1086,
+    "png",
+  ),
+  fuerzaPublica: ill(
+    "proyecto-fuerza-publica",
+    "jornada de formación en convivencia con personas de la comunidad y uniformados",
+    "55% 45%",
+    1448,
+    1086,
+    "png",
+  ),
 } as const;
