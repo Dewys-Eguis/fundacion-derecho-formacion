@@ -8,12 +8,18 @@ import { IMAGE_WIDTHS } from "./src/lib/image-widths";
  *
  * Páginas internas (`page.dev.tsx`, p. ej. /sistema/): solo existen en `npm run dev`
  * o con `npm run build:interno`; nunca entran en la exportación de producción.
+ *
+ * GitHub Pages sirve el sitio en un subdirectorio: el workflow define
+ * NEXT_PUBLIC_BASE_PATH=/fundacion-derecho-formacion. Sin esa variable (Render, dominio
+ * propio, desarrollo local) el sitio se sirve desde la raíz, como hasta ahora.
  */
 export default function config(phase: string): NextConfig {
   const internal = phase === PHASE_DEVELOPMENT_SERVER || process.env.INCLUDE_INTERNAL === "1";
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined;
 
   return {
     output: "export",
+    basePath,
     pageExtensions: internal ? ["dev.tsx", "tsx", "ts"] : ["tsx", "ts"],
     // /quienes-somos → out/quienes-somos/index.html (servido tal cual por hosts estáticos)
     trailingSlash: true,
