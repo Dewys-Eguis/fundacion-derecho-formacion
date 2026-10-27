@@ -19,6 +19,7 @@
 
 # production
 /build
+/fundacion-derecho-formacion-HOSTGATOR.zip
 
 # imágenes generadas por scripts/optimize-images.mjs
 /public/images/

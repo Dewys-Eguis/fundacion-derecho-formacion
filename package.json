@@ -13,6 +13,7 @@
     "prebuild": "npm run images",
     "build": "next build",
     "build:interno": "node scripts/build-interno.mjs",
+    "build:hostgator": "node scripts/build-hostgator.mjs",
     "preview": "node scripts/preview.mjs",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
