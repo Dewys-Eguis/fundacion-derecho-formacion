@@ -67,7 +67,7 @@ export const AREAS = [
 ] as const;
 
 export const ABOUT_LINKS = [
-  { title: "Staff jurídico", sub: "11 profesionales", href: ROUTES.staff, tone: "azul" },
+  { title: "Staff jurídico", sub: "9 profesionales", href: ROUTES.staff, tone: "azul" },
   { title: "Nuestras oficinas", sub: "Sede en Bogotá D.C.", href: ROUTES.oficinas, tone: "bruma" },
   {
     title: "Gobierno corporativo",

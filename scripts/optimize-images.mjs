@@ -17,9 +17,21 @@ const OPT = path.join(OUT, "_opt");
 const WIDTHS = [390, 640, 828, 1080, 1440, 1920];
 // Recortes aplicados solo a las copias de producción (el original no se modifica).
 // proyecto-desarrollo-social.webp trae un marco blanco con esquinas redondeadas incrustado.
+// Dra-Leydi-Ramirez: foto horizontal (1920×1280) con la persona pequeña: recorte vertical centrado en ella.
 const CROPS = {
   "proyecto-desarrollo-social": { left: 67, top: 82, width: 1536, height: 775 },
+  "Dra-Leydi-Ramirez": { left: 880, top: 230, width: 840, height: 1050 },
 };
+
+// Nombre publicable: sin tildes, espacios ni puntos («Dr. José Ricardo Archila Guio» → «Dr-Jose-Ricardo-Archila-Guio»).
+// Los nombres que ya eran válidos no cambian.
+const slug = (name) =>
+  name
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[.\s]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 
 const isFresh = async (target, srcMtime) => {
   try {
@@ -46,8 +58,9 @@ let generated = 0;
 for (const [dir, file] of files) {
   const src = path.join(dir, file);
   const { mtimeMs } = await stat(src);
-  const base = file.replace(/\.[a-z0-9]+$/i, "");
-  const copy = path.join(OUT, file);
+  const ext = path.extname(file).toLowerCase();
+  const base = slug(file.slice(0, -ext.length));
+  const copy = path.join(OUT, base + ext);
   const crop = CROPS[base];
   const load = () => (crop ? sharp(src).extract(crop) : sharp(src));
   // Fotografías PNG (> 1 MB): sin copia del original en public/; se usan solo las variantes WebP.

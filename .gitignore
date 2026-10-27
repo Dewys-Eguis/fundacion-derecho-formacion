@@ -50,3 +50,6 @@ next-env.d.ts
 .claude/
 Thumbs.db
 *.log
+
+# Documentos de trabajo privados (fuente del staff): no se publican
+/docs/staff/

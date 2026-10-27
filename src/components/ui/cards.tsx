@@ -160,12 +160,39 @@ export function TeamCard({
   role,
   href,
   initials,
+  photo,
 }: {
   name: string;
   role: string;
   href: string;
   initials?: string;
+  /** Fotografía real entregada por la Fundación. */
+  photo?: SiteImage;
 }) {
+  if (photo) {
+    return (
+      <Link
+        href={href}
+        className="group block tarjeta-hover overflow-hidden rounded-tarjeta bg-bruma text-azul no-underline"
+      >
+        <span className="relative block h-75 overflow-hidden bg-foto">
+          <Image
+            src={photo.src}
+            width={photo.width}
+            height={photo.height}
+            alt={photo.alt}
+            sizes="(min-width: 1280px) 330px, (min-width: 768px) 50vw, 300px"
+            className="h-full w-full zoom-suave object-cover"
+            style={{ objectPosition: photo.pos }}
+          />
+        </span>
+        <span className="block p-5">
+          <span className="block text-lg leading-[1.2] font-extrabold">{name}</span>
+          <span className="mt-2 block text-[13px] leading-[1.45] text-texto-2">{role}</span>
+        </span>
+      </Link>
+    );
+  }
   if (initials) {
     return (
       <Link

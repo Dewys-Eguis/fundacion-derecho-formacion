@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import type { SiteImage } from "@/content/images";
 import { ROUTES } from "@/content/routes";
 
@@ -25,9 +26,11 @@ export type PageBannerProps = {
   art?: string;
   /** Fotografía real (si existe) en lugar del placeholder. */
   image?: SiteImage;
+  /** Composición propia dentro del mismo marco (p. ej. retratos del staff). */
+  media?: ReactNode;
 };
 
-export function PageBanner({ crumb, parents = [], eyebrow, heading, lead, photo, image }: PageBannerProps) {
+export function PageBanner({ crumb, parents = [], eyebrow, heading, lead, photo, image, media }: PageBannerProps) {
   const trail: Crumb[] = [{ label: "Inicio", href: ROUTES.inicio }, ...parents, { label: crumb }];
   return (
     <section className="banda pt-3 md:pt-4">
@@ -105,7 +108,11 @@ export function PageBanner({ crumb, parents = [], eyebrow, heading, lead, photo,
             </p>
           </div>
           <div data-reveal className="relative">
-            {image ? (
+            {media ? (
+              <div className="relative aspect-[460/360] w-full overflow-hidden rounded-tarjeta shadow-[0_30px_60px_rgba(11,42,79,.12)]">
+                {media}
+              </div>
+            ) : image ? (
               <div className="group relative aspect-[460/360] w-full overflow-hidden rounded-tarjeta shadow-[0_30px_60px_rgba(11,42,79,.12)]">
                 <Image
                   src={image.src}

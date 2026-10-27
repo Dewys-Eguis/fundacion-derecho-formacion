@@ -71,15 +71,45 @@ de la composición «Visión 2035» de Inicio; y el proyecto «Diplomado Fuerza 
 
 ### Espacios que siguen pendientes
 
-| Espacio                                                                  | Motivo                                             |
-| ------------------------------------------------------------------------ | -------------------------------------------------- |
-| Banner Staff, tarjetas y perfiles del equipo, «Staff jurídico» (galería) | Solo fotografías reales de la Fundación            |
-| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                    | Archivos oficiales y permisos pendientes           |
-| Proyecto solar: plano real del lote, fotos de dron                       | Material documental: solo fotografías reales       |
-| Oficinas: foto n.º 3                                                     | Existe en WordPress, pendiente de entregar archivo |
+| Espacio                                                                               | Motivo                                             |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Juan Miguel González Velasco: foto en mayor resolución (la entregada mide 148×194 px) | Original insuficiente para el marco completo       |
+| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                                 | Archivos oficiales y permisos pendientes           |
+| Proyecto solar: plano real del lote, fotos de dron                                    | Material documental: solo fotografías reales       |
+| Oficinas: foto n.º 3                                                                  | Existe en WordPress, pendiente de entregar archivo |
 
 Para integrarlas: guardar el WebP en `media/imagenes-web/`, añadirlo a `ILLUSTRATIVE` y pasarlo como
 `image` (banners) o en el contenido correspondiente.
+
+## Staff jurídico (actualizado el 27 de octubre de 2026)
+
+Fuente: «STAFF DE LA FUNDACIÓN DFTH ACTUALIZADO JULIO 21-2025» (`docs/staff/`, documento privado: está en
+`.gitignore` y no se publica). Datos en `STAFF` (`src/content/interior.ts`), en el orden del documento:
+
+| N.º | Profesional                       | Cargo principal (documento)                                         | Fotografía (`media/staff/`)                                        |
+| --- | --------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 1   | Jesús Enrique Archila Guio        | CEO y Representante Legal de la Fundación DFTH                      | `Dr. Jesús Enrique Archila .JPG`                                   |
+| 2   | Leydi Yesenia Ramírez Aristizábal | Directora General                                                   | `Dra. Leydi Ramírez .JPG` (recorte vertical)                       |
+| 3   | Pedro Octavio Munar Cadena        | Presidente de la Corte Suprema de Justicia de Colombia 2010         | `Dr. Pedro Munar Cadena .jpg`                                      |
+| 4   | Lina María Munar Guevara          | Jurisdicción Especial para la Paz                                   | `Dra. Lina Maria Munar Guevara.jpg`                                |
+| 5   | Yazmin Cadena Camargo             | Profesora, Decana Encargada de la Facultad de Medicina (Javeriana)  | `Dra. Yazmin Cadena Camargo.jpg`                                   |
+| 6   | Ángela Margarita Rey Anaya        | Profesora, CEO de la Fundación United For Justice                   | `Dra. Margarita Rey Anaya .jpg`                                    |
+| 7   | Juan Miguel González Velasco      | Docencia Universitaria y Consultor Internacional de Proyectos       | `Dr. Juan Miguel González Velassco.jpg` (148×194, baja resolución) |
+| 8   | José Ricardo Archila Guio         | Director del Centro de Conciliación de la Fundación DFTH            | `Dr. José Ricardo Archila Guio.png`                                |
+| 9   | Kelly Yojara Ramírez Aristizábal  | Directora Ejecutiva del Centro de Conciliación de la Fundación DFTH | `Dra. Kelly Yojara Ramírez .jpg`                                   |
+
+- Salen del listado (no figuran en el documento actualizado): Carlos Gustavo Muñoz Díaz y William Armando
+  Fonseca Flórez.
+- Página `/equipo-juridico/`: banner con tres retratos reales (Jesús Enrique Archila, Leydi Ramírez y José
+  Ricardo Archila), directorio de 9 tarjetas (3 · 2 · 1 columnas) y ficha completa en `<dialog>` con la
+  biografía por apartados (`StaffDirectory.tsx`, `StaffPhoto.tsx`).
+- Fotos reales también en: tarjetas del staff de Inicio, tarjeta «Staff jurídico» de la galería de Inicio
+  (José Ricardo Archila) y tarjeta de Lina María Munar en Justicia para la paz. «11 profesionales» → «9».
+- `scripts/optimize-images.mjs` publica los archivos con nombres sin tildes, espacios ni puntos
+  (p. ej. `Dr-Jose-Ricardo-Archila-Guio`); los originales no se modifican.
+- Sin cambios institucionales frente al sitio: Jesús Enrique Archila (CEO y representante legal), Leydi
+  Ramírez (Directora General) y José Ricardo Archila (Director del Centro de Conciliación) coinciden.
+- Pendiente: foto de Juan Miguel González en mayor resolución (se muestra reducida y enmarcada).
 
 ## Integraciones pendientes
 

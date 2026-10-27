@@ -8,185 +8,351 @@ import type { SiteImage } from "./images";
 import { ROUTES } from "./routes";
 
 /* ======================= Staff jurídico ======================= */
-export type StaffGroup = "dir" | "aca" | "con" | "cons";
+/**
+ * Fuente: «STAFF DE LA FUNDACIÓN DFTH ACTUALIZADO JULIO 21-2025» (docs/staff, documento privado, no se
+ * publica). Orden, nombres, cargos y textos del documento; solo se corrigieron tildes y puntuación.
+ * Fotografías reales entregadas por la Fundación (media/staff).
+ */
+export type StaffSection = { title: string; paragraphs?: string[]; items?: string[] };
 export type StaffMember = {
-  group: StaffGroup;
-  groupLabel: string;
-  ini: string;
+  /** Identificador para anclas y para el foco al cerrar la ficha. */
+  id: string;
   name: string;
+  /** Cargo institucional principal (tarjeta). */
   role: string;
-  bio: string;
-  /** Parte de la biografía pendiente de confirmar. */
-  bioPending?: string;
-  /** Formación y trayectoria: datos literales del perfil en el sitio actual. */
-  record?: string[];
+  /** Línea secundaria del encabezado del documento. */
+  tagline: string;
+  photo: SiteImage;
+  sections: StaffSection[];
 };
 
-export const STAFF_FILTERS: { value: "all" | StaffGroup; label: string }[] = [
-  { value: "all", label: "Todos" },
-  { value: "dir", label: "Dirección" },
-  { value: "aca", label: "Equipo interdisciplinario" },
-  { value: "con", label: "Conciliación" },
-  { value: "cons", label: "Consultoría" },
-];
+const portrait = (file: string, name: string, w: number, h: number, pos: string): SiteImage => ({
+  src: `/images/${file}`,
+  width: w,
+  height: h,
+  alt: `Fotografía de ${name}`,
+  render: false,
+  pos,
+});
 
 export const STAFF: StaffMember[] = [
   {
-    group: "dir",
-    groupLabel: "Dirección",
-    ini: "JA",
+    id: "jesus-enrique-archila-guio",
     name: "Jesús Enrique Archila Guio",
     role: "CEO y Representante Legal de la Fundación DFTH",
-    bio: "Abogado penalista enfocado en la resolución pacífica de conflictos, la política criminal y las ciencias forenses. Docente de derecho penal y doctor en educación; se desempeñó como fiscal. Lideró la obtención del estatus consultivo de la Fundación ante la OEA en 2023.",
-    record: [
-      "Doctor en Educación de la Universidad Simón Bolívar de Barranquilla",
-      "Magíster en Ciencias Penales y Criminológicas de la Universidad Externado de Colombia",
-      "Abogado de la Universidad Católica de Colombia",
-      "Fiscal Delegado ante la Corte Suprema de Justicia 2004",
-      "Servidor del Estado en la Fiscalía General de la Nación 2000-2005",
-      "Profesor en el área de Derecho Penal en las Universidades Católica de Colombia y Colegio Mayor de Cundinamarca",
-      "Tutor en Consultorio Jurídico de la Universidad Nacional 2017",
-      "Investigador de Colciencias",
-      "Abogado Fundador de las Firmas: Fundación Derecho y Formación Tejido Humano, Alliance EDU y Alliance AR",
-      "Entidad Consultiva de la Organización de Estados Americanos OEA en abril de 2023",
-      "Publicaciones: «La Prueba en el Delito de Lavado de Activos», «Victimología y Valores Humanos Alternativas contra la Violencia», «Derecho Penal y Derechos Humanos», «Principio de Oportunidad»",
+    tagline: "Docencia Universitaria · Implementación de la Paz en Colombia",
+    photo: portrait("Dr-Jesus-Enrique-Archila.jpg", "Jesús Enrique Archila Guio", 1032, 1037, "62% 30%"),
+    sections: [
+      {
+        title: "Presentación profesional",
+        paragraphs: [
+          "CEO de la Fundación DFTH, abogado penalista experto en resolución pacífica de conflictos, política criminal y ciencias forenses. Ocupa el cargo de Profesor en el área de Derecho Penal en las Universidades Católica de Colombia y Colegio Mayor de Cundinamarca.",
+        ],
+      },
+      {
+        title: "Formación académica",
+        paragraphs: [
+          "Es Doctor en Educación de la Universidad Simón Bolívar de Barranquilla, Magíster en Ciencias Penales y Criminológicas de la Universidad Externado de Colombia, Abogado de la Universidad Católica de Colombia, experto en Derecho Penal y Derecho Probatorio de la Universidad Católica de Colombia.",
+        ],
+      },
+      {
+        title: "Experiencia profesional",
+        paragraphs: [
+          "Ocupó el cargo de Tutor en Consultorio Jurídico de la Universidad Nacional 2017 y en la actualidad es Investigador de Colciencias.",
+          "Cuenta con amplia experiencia en Consultoría y Litigio Penal, Derechos Humanos y Derecho Internacional Humanitario, Proceso de Paz en Colombia y Justicia Transicional, Mecanismos Alternativos de Justicia y Extinción del Derecho de Dominio. Abogado Fundador de las Firmas: Fundación Derecho y Formación Tejido Humano, Alliance EDU y Alliance AR.",
+        ],
+      },
+      {
+        title: "Cargos relevantes",
+        paragraphs: [
+          "Ocupó cargos públicos como Servidor del Estado en la Fiscalía General de la Nación 2000-2005, fue Fiscal Delegado ante la Corte Suprema de Justicia 2004.",
+        ],
+      },
+      {
+        title: "Publicaciones",
+        paragraphs: ["Autor de diferentes obras jurídicas y cultura de paz, entre otras:"],
+        items: [
+          "La Prueba en el Delito de Lavado de Activos",
+          "Victimología y Valores Humanos Alternativas contra la Violencia",
+          "Derecho Penal y Derechos Humanos",
+          "Principio de Oportunidad",
+        ],
+      },
+      {
+        title: "Trayectoria institucional",
+        paragraphs: [
+          "Profesional con gran habilidad técnica que llevó a la Fundación DFTH a ser una Entidad Consultiva de la Organización de Estados Americanos OEA en abril de 2023.",
+        ],
+      },
     ],
   },
   {
-    group: "dir",
-    groupLabel: "Dirección",
-    ini: "LR",
-    name: "Leydi Yesenia Ramírez Aristizabal",
-    role: "Directora General · Conciliadora y Atención a Víctimas en Derecho (2025)",
-    bio: "Abogada conciliadora con experiencia en atención a víctimas, derecho comercial y gerencia de proyectos. Fue directora ejecutiva de la Fundación entre 2023 y 2025 y es coautora de un texto de derecho penal.",
-    record: [
-      "Profesional de la Universidad Católica de Colombia",
-      "Asesora Jurídica y Directora Ejecutiva de las firmas Alliance EDU y Alliance AR",
-      "Consultora en litigio Estratégico de la Fundación United For Justice con sede en Washington EE.UU.",
-      "Experiencia en Secretaría de Procesos por más de 10 años",
-      "Publicación: «Delitos contra el Orden Económico y social. Derecho Penal Especial» ISBN: 978-958-791-911-0",
+    id: "leydi-yesenia-ramirez-aristizabal",
+    name: "Leydi Yesenia Ramírez Aristizábal",
+    role: "Directora General",
+    tagline: "Conciliadora y Atención a Víctimas en Derecho de la Fundación DFTH 2025 · Docencia Universitaria",
+    photo: portrait("Dra-Leydi-Ramirez.jpg", "Leydi Yesenia Ramírez Aristizábal", 840, 1050, "50% 20%"),
+    sections: [
+      {
+        title: "Presentación profesional",
+        paragraphs: [
+          "Abogada Conciliadora en Derecho y Atención a Víctimas de la Fundación DFTH, experta en Gerencia de Proyectos y Derecho Comercial que regula las actividades mercantiles, los actos de comercio, los empresarios y las relaciones jurídicas derivadas del tráfico económico en el derecho comercial e inmobiliario.",
+        ],
+      },
+      {
+        title: "Formación y experiencia",
+        paragraphs: [
+          "Profesional de la Universidad Católica de Colombia, con experiencia en Resolución Pacífica de Conflictos, Conciliadora del Centro de Conciliación de la Fundación DFTH, acciones en Derecho Penal y Derechos Humanos, Atención a Víctimas y Mediación.",
+        ],
+      },
+      {
+        title: "Trayectoria institucional",
+        paragraphs: [
+          "Se desempeña como Asesora Jurídica y Directora Ejecutiva de las firmas Alliance EDU y Alliance AR, Directora Ejecutiva de la Fundación Derecho y Formación Tejido Humano 2023-2025; Consultora en litigio Estratégico de la Fundación United For Justice con sede en Washington EE. UU.",
+          "Experiencia en Secretaría de Procesos por más de 10 años y Estudio Legal de acciones Penales en la Oficina Servicios Profesionales de la Calle 100 No. 18-36, Oficina 701.",
+        ],
+      },
+      {
+        title: "Publicaciones",
+        items: ["Delitos contra el Orden Económico y Social. Derecho Penal Especial. ISBN: 978-958-791-911-0"],
+      },
     ],
   },
   {
-    group: "aca",
-    groupLabel: "Equipo interdisciplinario",
-    ini: "PM",
+    id: "pedro-octavio-munar-cadena",
     name: "Pedro Octavio Munar Cadena",
-    role: "Presidente de la Corte Suprema de Justicia de Colombia (2010)",
-    bio: "Magistrado de la Corte Suprema de Justicia entre 2003 y 2011, de la que fue presidente, y magistrado del Consejo Superior de la Judicatura. Árbitro, docente universitario y conferencista internacional.",
-    record: [
-      "Presidente Corte Suprema de Justicia, diciembre 2010 – enero 2011",
-      "Presidente Sala de Casación Civil Corte Suprema de Justicia 2004",
-      "Magistrado de la Corte Suprema de Justicia: 1° de noviembre de 2003 a 31 de octubre de 2011",
-      "Magistrado del Consejo Superior de la Judicatura 7 de febrero de 2013 al 27 de noviembre de 2014",
-      "Presidente Sala Administrativa del Consejo Superior de la Judicatura. 2014.",
-      "Árbitro de la Lista A de la Cámara de Comercio de Bogotá",
-      "Botón de Oro – Universidad Santo Tomás 2004",
-      "Medalla orden de los lanceros grado Encomendador 2004",
-      "Medalla Honor al Mérito Gran Colombiano 2003 y 2011",
+    role: "Presidente de la Corte Suprema de Justicia de Colombia 2010",
+    tagline: "Docencia Universitaria, Consultoría y Estudio Legal",
+    photo: portrait("Dr-Pedro-Munar-Cadena.jpg", "Pedro Octavio Munar Cadena", 574, 596, "68% 30%"),
+    sections: [
+      {
+        title: "Cargos relevantes",
+        items: [
+          "Presidente Sala Administrativa del Consejo Superior de la Judicatura. 2014.",
+          "Presidente Corte Suprema de Justicia, diciembre 2010 - enero 2011.",
+          "Presidente Sala de Casación Civil Corte Suprema de Justicia 2004.",
+          "Magistrado Corte Suprema de Justicia, 1° de noviembre de 2003 a 31 de octubre de 2011.",
+          "Magistrado del Consejo Superior de la Judicatura, 7 de febrero de 2013 al 27 de noviembre de 2014.",
+          "Exmagistrado Sala de Casación Civil.",
+          "Árbitro de la Lista A de la Cámara de Comercio de Bogotá.",
+        ],
+      },
+      {
+        title: "Distinciones y reconocimientos",
+        items: [
+          "Botón de Oro – Universidad Santo Tomás 2004.",
+          "Gobernación de Boyacá – Medalla orden de los lanceros grado Encomendador 2004.",
+          "Universidad La Gran Colombia – Medalla Honor al Mérito Gran Colombiano 2003 y 2011.",
+        ],
+      },
+      {
+        title: "Docencia",
+        paragraphs: [
+          "Docente Universitario de las Universidades: Javeriana, Bolivariana de Medellín, Santo Tomás, Universidad de la Sabana, Universidad Libre y Autónoma de Colombia. Conferencista Internacional.",
+        ],
+      },
     ],
   },
   {
-    group: "aca",
-    groupLabel: "Equipo interdisciplinario",
-    ini: "LM",
+    id: "lina-maria-munar-guevara",
     name: "Lina María Munar Guevara",
     role: "Jurisdicción Especial para la Paz",
-    bio: "Abogada con experiencia editorial e investigativa en derecho y periodismo. En 2019 apoyó el despacho de la magistrada Lily Rueda en la Sala de Amnistía o Indulto de la JEP en asuntos de justicia transicional.",
-    record: [
-      "Sala de Amnistía o Indulto · Práctica profesional agosto 2019 - diciembre 2019",
-      "Apoyo al despacho de la magistrada Lily Rueda",
-      "Miembro del equipo editorial de UNA · Revista digital de la Facultad de Derecho · 2018-2019",
-      "Investigación en Justicia Transicional, Derecho Internacional Humanitario, y régimen de amnistías",
+    tagline: "Docencia Universitaria",
+    photo: portrait("Dra-Lina-Maria-Munar-Guevara.jpg", "Lina María Munar Guevara", 1536, 2048, "50% 22%"),
+    sections: [
+      {
+        title: "Jurisdicción Especial para la Paz",
+        paragraphs: [
+          "Sala de Amnistía o Indulto | Práctica profesional agosto 2019 - diciembre 2019. Apoyo al despacho de la magistrada Lily Rueda.",
+        ],
+        items: [
+          "Proyecciones de resoluciones.",
+          "Emisión de permisos de salida del país para excombatientes.",
+          "Investigación en Justicia Transicional, Derecho Internacional Humanitario, y régimen de amnistías.",
+          "Funciones administrativas.",
+        ],
+      },
+      {
+        title: "Trayectoria académica y editorial",
+        paragraphs: ["Abogada."],
+        items: [
+          "Miembro del equipo editorial de 070 | Revista digital del Departamento de periodismo | 2018-2019.",
+          "Miembro del equipo editorial de UNA | Revista digital de la Facultad de Derecho | 2018-2019.",
+          "Miembro del grupo Justicia para mujeres del Consultorio Jurídico | Primer semestre 2019.",
+          "Miembro del semillero de investigación Sustracción internacional de menores y violencia doméstica | Primer semestre 2019.",
+          "Monitora de la clase Crónicas y otros relatos periodísticos | Segundo semestre 2018 y primer semestre 2019.",
+          "Monitora de la clase Obligaciones II | Segundo semestre 2017 y primer semestre 2018.",
+        ],
+      },
     ],
   },
   {
-    group: "aca",
-    groupLabel: "Equipo interdisciplinario",
-    ini: "YC",
+    id: "yazmin-cadena-camargo",
     name: "Yazmin Cadena Camargo",
-    role: "Profesora · Decana encargada de la Facultad de Medicina, Universidad Javeriana (2025)",
-    bio: "Médica con formación doctoral en salud global y antropología médica, y formación en salud pública en Israel. Trabaja en promoción de la salud y ha acompañado a familias desplazadas en un proyecto interdisciplinario.",
-    record: [
-      "Médica cirujano de la Pontificia Universidad Javeriana",
-      "Doctora en Salud Global y antropología de la Salud de la Universidad de Maastricht en los Países Bajos",
-      "Salubrista pública de la Universidad Hebrea de Jerusalén, Israel",
-      "Docente de educación continua en la Universidad de Gerona, España",
+    role: "Profesora, Decana Encargada de la Facultad de Medicina de la Universidad Javeriana 2025",
+    tagline: "Docencia Universitaria y Salud e Investigación Científica",
+    photo: portrait("Dra-Yazmin-Cadena-Camargo.jpg", "Yazmin Cadena Camargo", 1280, 960, "52% 20%"),
+    sections: [
+      {
+        title: "Formación académica",
+        paragraphs: [
+          "Médica cirujano de la Pontificia Universidad Javeriana, doctora en Salud Global y Antropología de la Salud de la Universidad de Maastricht en los Países Bajos, Salubrista pública de la Universidad Hebrea de Jerusalén, Israel.",
+        ],
+      },
+      {
+        title: "Perfil profesional",
+        paragraphs: [
+          "Con habilidades clínicas y en salud pública, con gran destreza para relacionarse en comunidad, trabajar en grupo y capacidad de liderazgo. Gran experiencia en el desarrollo de temas y proyectos relacionados con la promoción de la salud, prevención de la enfermedad, y acercamiento a fenómenos sociales relevantes de la realidad nacional y del bienestar de la familia.",
+        ],
+      },
+      {
+        title: "Docencia",
+        paragraphs: [
+          "Docente de la Pontificia Universidad Javeriana en la Facultad de Medicina en pregrado y postgrado, de educación continua, y de la Maestría en Salud Pública, programa Interfacultades. Docente de educación continua en la Universidad de Gerona, España. Tutora de tesis de Maestría en Salud Global de la Universidad de Maastricht, Países Bajos.",
+        ],
+      },
+      {
+        title: "Responsabilidad social",
+        paragraphs: [
+          "Gran experiencia en proyectos de responsabilidad social, en especial acompañamiento y atención a familias en situación de desplazamiento como parte del equipo interdisciplinar del proyecto Vidas Móviles.",
+        ],
+      },
     ],
   },
   {
-    group: "aca",
-    groupLabel: "Equipo interdisciplinario",
-    ini: "AR",
+    id: "angela-margarita-rey-anaya",
     name: "Ángela Margarita Rey Anaya",
-    role: "Profesora · CEO de la Fundación United For Justice",
-    bio: "Abogada en derechos humanos con dos maestrías y exdiplomática colombiana que lideró delegaciones ante instancias internacionales de derechos humanos y la Corte Penal Internacional. Fundó y dirige United for Justice, ONG de litigio estratégico para víctimas.",
-    record: [
-      "Abogada egresada de la Universidad Externado de Colombia",
-      "Maestría en International Human Rights and Humanitarian Law de American University",
-      "Maestría en Derecho Penal Internacional de la Universidad Granada, España",
-      "Miembro de la Academia Colombiana de Derecho Internacional",
-      "Jefe de delegación ante la Comisión Interamericana de Derechos Humanos (Washington, D.C.)",
+    role: "Profesora, CEO de la Fundación United For Justice",
+    tagline: "Docencia Universitaria, Litigio Estratégico y Consultora Internacional",
+    photo: portrait("Dra-Margarita-Rey-Anaya.jpg", "Ángela Margarita Rey Anaya", 790, 1024, "50% 22%"),
+    sections: [
+      {
+        title: "Formación académica",
+        paragraphs: [
+          "Abogada egresada de la Universidad Externado de Colombia. Cuenta con maestrías en International Human Rights and Humanitarian Law de American University, y Derecho Penal Internacional de la Universidad Granada, España. En la actualidad es candidata al Máster de Derecho, con énfasis en derecho y el sistema de inmigración de los Estados Unidos de la University of Maryland, School of Law (2024).",
+        ],
+      },
+      {
+        title: "Trayectoria actual",
+        paragraphs: [
+          "Actualmente es la experta independiente por Colombia ante el Comité del Mecanismo de Seguimiento de la Implementación de la Convención Interamericana para Prevenir, Sancionar y Erradicar la Violencia contra la Mujer (MESECVI-OEA, Convención de Belém do Pará). Es profesora y consultora en Derechos Humanos y Relacionamiento Comunitario, e instructora de entrenamiento estratégico en el fortalecimiento institucional de organizaciones de la sociedad civil, experta en gerencia de proyectos.",
+          "Es miembro de la Academia Colombiana de Derecho Internacional. Fundadora y directora ejecutiva de la Fundación United for Justice/Unidos por la Justicia, organización no gubernamental que busca contribuir a la realización de los derechos a la verdad, justicia y reparación de las víctimas de graves violaciones de derechos humanos a través, entre otros, del diseño de litigio estratégico nacional e internacional.",
+          "Como Directora, representa judicialmente a víctimas de graves violaciones de Derechos Humanos en México, Guatemala, Colombia y Costa Rica.",
+        ],
+      },
+      {
+        title: "Experiencia diplomática",
+        paragraphs: [
+          "Fue diplomática del Ministerio de Relaciones Exteriores de Colombia, y se desempeñó como jefe de delegación ante la Comisión Interamericana de Derechos Humanos (Washington, D.C.), el Consejo de Derechos Humanos y órganos convencionales de las Naciones Unidas (Ginebra y New York), la Conferencia de Revisión y las Asambleas de los Estados Parte del Estatuto de la Corte Penal Internacional (Kampala y La Haya).",
+          "Adicionalmente fue agente ante la Corte Interamericana de Derechos Humanos (San José de Costa Rica) en los procedimientos de supervisión de sentencias.",
+        ],
+      },
+      {
+        title: "Publicaciones",
+        paragraphs: [
+          "Autora de publicaciones relacionadas con la protección internacional de los derechos humanos en coautoría con su padre, Ernesto Rey Cantor.",
+        ],
+      },
     ],
   },
   {
-    group: "con",
-    groupLabel: "Conciliación",
-    ini: "JR",
-    name: "José Ricardo Archila Guio",
-    role: "Director del Centro de Conciliación de la Fundación D.F.T.H.",
-    bio: "Abogado y conciliador especializado en mecanismos alternativos de solución de conflictos, insolvencia y derechos humanos, con experiencia en litigio laboral, penal, civil y de familia. Fue representante legal de la Fundación.",
-    record: [
-      "Especializado en Derecho Procesal Constitucional",
-      "Doctor Honoris Causa en Victimología",
-      "Docente de UNIVIRTUAL de la ciudad de México DF",
-    ],
-  },
-  {
-    group: "con",
-    groupLabel: "Conciliación",
-    ini: "KR",
-    name: "Kelly Yojara Ramírez Aristizabal",
-    role: "Directora Ejecutiva del Centro de Conciliación de la Fundación DFTH",
-    bio: "Abogada con experiencia en mecanismos alternativos de justicia. Asesora en derecho civil y comercial y consultora en litigios inmobiliarios.",
-    record: ["Abogada de la Universidad Católica de Colombia", "Experta en Resolución Pacífica de Conflictos"],
-  },
-  {
-    group: "cons",
-    groupLabel: "Consultoría y docencia",
-    ini: "CM",
-    name: "Carlos Gustavo Muñoz Díaz",
-    role: "Consultoría y Estudio Legal en Derecho Penal, Lavado de Activos y Extinción de Dominio",
-    bio: "Abogado penalista con experiencia en lavado de activos, extinción del derecho de dominio y acciones constitucionales. Especializado en derecho procesal y en derecho penal y ciencias forenses.",
-    record: [
-      "Universidad Católica de Colombia – Abogado – 2000",
-      "Universidad Nacional de Colombia – Especialista en Instituciones Jurídico Procesales – 2002",
-      "Especialista en Derecho Penal y Ciencias Forenses – 2003",
-    ],
-  },
-  {
-    group: "cons",
-    groupLabel: "Consultoría y docencia",
-    ini: "WF",
-    name: "William Armando Fonseca Flórez",
-    role: "Docencia Universitaria y Gerencia de Proyectos · Asesor de la Alta Consejería para la Reintegración y la Normalización del Gobierno Nacional",
-    bio: "Administrador policial con 18 años en la Policía Nacional, donde alcanzó el grado de Mayor. Trabajó en seguridad privada y durante 14 años asesoró a las agencias presidenciales de reintegración.",
-    record: [
-      "Escuela Nacional de Policía General Santander",
-      "Especialización en Gerencia Logística de la Universidad Sergio Arboleda",
-      "Treinta y cuatro años de experiencia, de estos 32 en el servicio público",
-    ],
-  },
-  {
-    group: "cons",
-    groupLabel: "Consultoría y docencia",
-    ini: "JG",
+    id: "juan-miguel-gonzalez-velasco",
     name: "Juan Miguel González Velasco",
     role: "Docencia Universitaria y Consultor Internacional de Proyectos",
-    bio: "Doctor en educación (Universidad Mayor de San Andrés y Universidad de Bremen).",
-    bioPending: "Biografía por confirmar: en el sitio actual aparece duplicada con otro perfil",
+    tagline: "Doctor en Educación Universidad Mayor de San Andrés - Universidad de Bremen, Alemania",
+    // Original de 148×194 px: pedir una versión de mayor resolución.
+    photo: portrait("Dr-Juan-Miguel-Gonzalez-Velassco.jpg", "Juan Miguel González Velasco", 148, 194, "50% 30%"),
+    sections: [
+      {
+        title: "Formación académica",
+        items: [
+          "Doctor y Post Ph.D., Farmacéutico clínico, Universidad Autónoma del Estado de Hidalgo, México.",
+          "Doctor en Educación, Universidad Mayor de San Andrés - Universidad de Bremen, Alemania.",
+          "Postdoctorado en Educación, Universidad Católica de Brasilia.",
+          "Post Doctor en Filosofía, Ciencia y Tecnología, UMSA, Bolivia.",
+          "Post Doctor en Andragogía Hospitalaria, Universidad de Barcelona, España.",
+        ],
+      },
+      {
+        title: "Distinciones y reconocimientos",
+        items: [
+          "Doctor Honoris Causa, Universidad Simón Bolívar, Barranquilla, Colombia.",
+          "Doctor Honoris Causa por aportes a la Educación, Escuela Militar de Ingeniería.",
+          "Investigador A1 Colciencias, Colombia.",
+        ],
+      },
+      {
+        title: "Docencia",
+        paragraphs: [
+          "Profesor invitado y conferencista internacional en diversas universidades latinoamericanas: Brasil, Colombia, México, España, Perú, Bolivia, entre otros.",
+        ],
+      },
+      {
+        title: "Publicaciones",
+        paragraphs: [
+          "Autor de 27 libros y varias obras en temas de Educación y Complejidad: Teoría Educativa Transcompleja, Aula Mente Social, Religaje Educativo, Estrategias de Indagación Científica, entre otras. Autor de 45 artículos originales en temas de Educación, Complejidad y Transdisciplinariedad.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "jose-ricardo-archila-guio",
+    name: "José Ricardo Archila Guio",
+    role: "Director del Centro de Conciliación de la Fundación DFTH",
+    tagline: "Docencia Universitaria · Abogado Experto en Mecanismos Alternativos de Solución Pacífica de Conflictos",
+    photo: portrait("Dr-Jose-Ricardo-Archila-Guio.png", "José Ricardo Archila Guio", 1122, 1402, "50% 12%"),
+    sections: [
+      {
+        title: "Presentación profesional",
+        paragraphs: [
+          "Abogado Director del Centro de Conciliación de la Fundación DFTH, con amplia experiencia y experto en Resolución Pacífica de Conflictos, Conciliación y Mediación e Insolvencia de Personas Jurídicas y Naturales y Derechos Humanos de la Fundación DFTH.",
+        ],
+      },
+      {
+        title: "Formación y docencia",
+        paragraphs: [
+          "Abogado de la Universidad Católica de Colombia especializado en Derecho Procesal Constitucional, Doctor Honoris Causa en Victimología, Docente Universitario en las áreas de Derecho Probatorio y Sucesiones; Docente Monitor Universitario en las áreas de Derecho Procesal y Derecho Procesal Constitucional; Abogado Conciliador ©.",
+        ],
+      },
+      {
+        title: "Experiencia profesional",
+        paragraphs: [
+          "Abogado con amplia experiencia en Litigio y Consultoría Jurídica, Asesor Jurídico de Empresas Privadas, Asesor y Asistente en Conciliación. Destacada experiencia en el ámbito del litigio en las áreas Laboral, Penal, Civil, Familia; miembro de número y Docente de UNIVIRTUAL de la ciudad de México D.F.",
+          "Se desempeñó por varios años como Representante legal de la Fundación Derecho y Formación Tejido Humano.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "kelly-yojara-ramirez-aristizabal",
+    name: "Kelly Yojara Ramírez Aristizábal",
+    role: "Directora Ejecutiva del Centro de Conciliación de la Fundación DFTH",
+    tagline: "Experta en Resolución Pacífica de Conflictos",
+    photo: portrait("Dra-Kelly-Yojara-Ramirez.jpg", "Kelly Yojara Ramírez Aristizábal", 652, 1560, "50% 10%"),
+    sections: [
+      {
+        title: "Presentación profesional",
+        paragraphs: [
+          "Abogada de la Universidad Católica de Colombia, con amplia experiencia en Actuaciones Judiciales sobre Resolución Pacífica de Conflictos y aplicación de Mecanismos alternativos de Justicia en diferentes áreas del Derecho.",
+        ],
+      },
+      {
+        title: "Experiencia profesional",
+        paragraphs: [
+          "Asesora Jurídica en derecho Civil y Comercial de las firmas Alliance EDU y Alliance AR, Fundación Derecho y Formación Tejido Humano.",
+          "Consultora en Litigio Inmobiliario y Estudio Legal de Procesos en Derecho Civil, como rama del derecho privado que regula las relaciones jurídicas entre personas, sean naturales o jurídicas, en cuanto a su estado civil, patrimonio y relaciones familiares.",
+        ],
+      },
+    ],
   },
 ];
+
+/** Busca un integrante por su identificador (para Inicio, galería y Justicia para la paz). */
+export const staffById = (id: string) => {
+  const m = STAFF.find((s) => s.id === id);
+  if (!m) throw new Error(`Staff no encontrado: ${id}`);
+  return m;
+};
 
 /* ======================= Nuestras oficinas ======================= */
 const office = (n: number, alt: string): SiteImage => ({
@@ -537,7 +703,7 @@ export const JEP_TOPICS = [
 ] as const;
 
 export const JEP_MEMBER = {
-  ini: "LM",
+  photo: staffById("lina-maria-munar-guevara").photo,
   label: "Equipo · Jurisdicción Especial para la Paz",
   name: "Lina María Munar Guevara",
   text: "Experiencia de apoyo en la Sala de Amnistía o Indulto de la JEP (2019).",

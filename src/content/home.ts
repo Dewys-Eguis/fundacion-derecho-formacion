@@ -5,7 +5,7 @@
  * Narrativa del proyecto: siempre «De Washington a Ciudad Bolívar» (CLAUDE.md).
  */
 import { ILLUSTRATIVE, type SiteImage } from "./images";
-import { OFFICE_PHOTOS } from "./interior";
+import { OFFICE_PHOTOS, staffById } from "./interior";
 import { ROUTES } from "./routes";
 
 export const PDF_PLANTA_SOLAR =
@@ -204,7 +204,12 @@ export const GALLERY: GalleryItem[] = [
     pos: ILLUSTRATIVE.fuerzaPublica.pos,
     alt: ILLUSTRATIVE.fuerzaPublica.alt,
   },
-  { caption: "Staff jurídico" },
+  {
+    caption: "Staff jurídico",
+    image: staffById("jose-ricardo-archila-guio").photo,
+    pos: "50% 14%",
+    alt: staffById("jose-ricardo-archila-guio").photo.alt,
+  },
   // Fotografía real de la sede (media/Oficinas)
   { caption: "Oficinas en Bogotá", image: OFFICE_PHOTOS[0].image, pos: "50% 50%", alt: OFFICE_PHOTOS[0].image.alt },
 ];
@@ -242,19 +247,11 @@ export const PROJECTS = [
 
 /* ---------- Staff ---------- */
 export const STAFF_HOME = [
-  { ini: "JA", name: "Jesús Enrique Archila Guio", role: "CEO y Representante Legal de la Fundación" },
-  {
-    ini: "LR",
-    name: "Leydi Yesenia Ramírez Aristizabal",
-    role: "Directora General · Conciliadora y Atención a Víctimas",
-  },
-  {
-    ini: "PM",
-    name: "Pedro Octavio Munar Cadena",
-    role: "Presidente de la Corte Suprema de Justicia de Colombia (2010)",
-  },
-  { ini: "AR", name: "Ángela Margarita Rey Anaya", role: "Profesora · CEO de la Fundación United For Justice" },
-] as const;
+  "jesus-enrique-archila-guio",
+  "leydi-yesenia-ramirez-aristizabal",
+  "pedro-octavio-munar-cadena",
+  "angela-margarita-rey-anaya",
+].map((id) => staffById(id));
 
 /* ---------- Diplomados ---------- */
 export const COURSES_HOME = [

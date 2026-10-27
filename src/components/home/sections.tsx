@@ -430,8 +430,8 @@ export function Staff() {
       {/* Móvil: carrusel táctil con ajuste; tableta: 2 columnas; escritorio: 4. */}
       <ul className="contenedor mt-8 flex snap-x snap-mandatory scroll-px-5 [scrollbar-width:none] gap-3 overflow-x-auto pb-3 md:mt-12 md:grid md:grid-cols-2 md:gap-4 md:overflow-visible md:pb-0 xl:grid-cols-4">
         {STAFF_HOME.map((m) => (
-          <li key={m.name} data-reveal className="grid w-[78%] max-w-75 shrink-0 snap-start md:w-auto md:max-w-none">
-            <TeamCard name={m.name} role={m.role} href={ROUTES.staff} initials={m.ini} />
+          <li key={m.id} data-reveal className="grid w-[78%] max-w-75 shrink-0 snap-start md:w-auto md:max-w-none">
+            <TeamCard name={m.name} role={m.role} href={ROUTES.staff} photo={m.photo} />
           </li>
         ))}
       </ul>

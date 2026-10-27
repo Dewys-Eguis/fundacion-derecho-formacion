@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JepTopics } from "@/components/interior/Selectors";
@@ -29,11 +30,16 @@ export default function JusticiaPazPage() {
           data-reveal
           className="group flex tarjeta-hover flex-col gap-5 rounded-tarjeta border border-linea p-5 text-azul no-underline sm:flex-row sm:items-center md:p-7"
         >
-          <span className="relative flex size-20 shrink-0 items-center justify-center rounded-pildora marcador-foto">
-            <span aria-hidden className="text-2xl font-extrabold text-accion">
-              {JEP_MEMBER.ini}
-            </span>
-            <span className="sr-only">Fotografía pendiente</span>
+          <span className="relative block size-20 shrink-0 overflow-hidden rounded-pildora bg-foto">
+            <Image
+              src={JEP_MEMBER.photo.src}
+              width={JEP_MEMBER.photo.width}
+              height={JEP_MEMBER.photo.height}
+              alt={JEP_MEMBER.photo.alt}
+              sizes="80px"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: JEP_MEMBER.photo.pos }}
+            />
           </span>
           <span className="flex-1">
             <span className="block text-[11px] font-extrabold tracking-[.08em] text-naranja-texto uppercase">
