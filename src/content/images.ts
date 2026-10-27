@@ -55,7 +55,7 @@ export const IMAGES = {
 
 /** Distintivo oficial (media/logos): se muestra completo, sin recortes ni deformaciones. */
 export const MINJUSTICIA_BADGE = {
-  src: "/images/vigilado-minjusticia.png",
+  src: "/images/logos/vigilado-minjusticia.png",
   width: 402,
   height: 127,
   alt: "Vigilado por el Ministerio de Justicia y del Derecho · La justicia es de todos · Minjusticia",

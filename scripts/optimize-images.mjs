@@ -43,12 +43,19 @@ const isFresh = async (target, srcMtime) => {
 
 await mkdir(OPT, { recursive: true });
 const files = [];
-// Recorre subcarpetas (p. ej. media/Oficinas). Se omiten las miniaturas de WordPress
-// («nombre-300x225.webp»): son copias reducidas de un original que ya está en la carpeta.
+// Logotipos oficiales (aliados y distintivos): se publican tal cual en public/images/logos/, con
+// compresión sin pérdida y sin variantes WebP. Aquí sí se aceptan los archivos «-300x225» de WordPress
+// (los aliados solo existen en ese tamaño) y el sufijo se quita del nombre publicado.
+const LOGO_DIRS = [path.join(ROOT, "media", "logos"), path.join(ROOT, "media", "Aliados")];
+const LOGOS = path.join(OUT, "logos");
+const isLogo = (dir) => LOGO_DIRS.includes(dir);
+await mkdir(LOGOS, { recursive: true });
+// Recorre subcarpetas (p. ej. media/Oficinas). Fuera de los logotipos se omiten las miniaturas de
+// WordPress («nombre-300x225.webp»): son copias reducidas de un original que ya está en la carpeta.
 const walk = async (dir) => {
   for (const entry of await readdir(dir, { withFileTypes: true }).catch(() => [])) {
     if (entry.isDirectory()) await walk(path.join(dir, entry.name));
-    else if (/\.(jpe?g|png|webp)$/i.test(entry.name) && !/-\d+x\d+\.[a-z]+$/i.test(entry.name))
+    else if (/\.(jpe?g|png|webp)$/i.test(entry.name) && (isLogo(dir) || !/-\d+x\d+\.[a-z]+$/i.test(entry.name)))
       files.push([dir, entry.name]);
   }
 };
@@ -59,6 +66,17 @@ for (const [dir, file] of files) {
   const src = path.join(dir, file);
   const { mtimeMs } = await stat(src);
   const ext = path.extname(file).toLowerCase();
+  if (isLogo(dir)) {
+    const target = path.join(LOGOS, slug(file.slice(0, -ext.length)).replace(/-\d+x\d+$/, "") + ext);
+    if (!(await isFresh(target, mtimeMs))) {
+      const img = sharp(src);
+      await (
+        ext === ".png" ? img.png({ compressionLevel: 9, effort: 10 }) : img.jpeg({ quality: 90, mozjpeg: true })
+      ).toFile(target);
+      generated++;
+    }
+    continue;
+  }
   const base = slug(file.slice(0, -ext.length));
   const copy = path.join(OUT, base + ext);
   const crop = CROPS[base];

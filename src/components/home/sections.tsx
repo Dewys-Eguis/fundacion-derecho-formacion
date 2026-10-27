@@ -485,14 +485,22 @@ export function Allies() {
       >
         Instituciones que tejen con nosotros
       </h2>
-      <ul className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:gap-3.5 xl:grid-cols-4">
+      <ul className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:gap-3.5 lg:grid-cols-4">
         {ALLIES.map((a) => (
           <li
-            key={a}
+            key={a.src}
             data-reveal
-            className="flex min-h-24 items-center justify-center rounded-tarjeta-sm border border-linea px-3 py-4 text-sm font-extrabold transition-[border-color,background-color] duration-300 hover:border-borde-boton hover:bg-bruma md:h-35.5 md:px-4 md:text-[16.5px]"
+            className="group flex h-32 items-center justify-center rounded-tarjeta-sm border border-linea bg-white px-4 py-3 transition-[border-color,box-shadow,translate] duration-300 hover:border-borde-boton hover:shadow-[0_14px_30px_rgba(11,42,79,.08)] motion-safe:hover:-translate-y-0.5 sm:h-36 md:h-40 md:px-6"
           >
-            {a}
+            <Image
+              src={a.src}
+              width={a.width}
+              height={a.height}
+              alt={a.alt}
+              title={a.name}
+              sizes="(min-width: 1024px) 240px, 45vw"
+              className="h-full w-full object-contain transition-transform duration-500 ease-(--ease-salida) motion-safe:group-hover:scale-[1.03]"
+            />
           </li>
         ))}
       </ul>

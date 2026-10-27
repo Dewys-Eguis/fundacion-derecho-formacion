@@ -74,7 +74,6 @@ de la composición «Visión 2035» de Inicio; y el proyecto «Diplomado Fuerza 
 | Espacio                                                                               | Motivo                                             |
 | ------------------------------------------------------------------------------------- | -------------------------------------------------- |
 | Juan Miguel González Velasco: foto en mayor resolución (la entregada mide 148×194 px) | Original insuficiente para el marco completo       |
-| Logo OEA, logos de aliados (8 en WordPress, `conv_N`)                                 | Archivos oficiales y permisos pendientes           |
 | Proyecto solar: plano real del lote, fotos de dron                                    | Material documental: solo fotografías reales       |
 | Oficinas: foto n.º 3                                                                  | Existe en WordPress, pendiente de entregar archivo |
 
@@ -110,6 +109,15 @@ Fuente: «STAFF DE LA FUNDACIÓN DFTH ACTUALIZADO JULIO 21-2025» (`docs/staff/`
 - Sin cambios institucionales frente al sitio: Jesús Enrique Archila (CEO y representante legal), Leydi
   Ramírez (Directora General) y José Ricardo Archila (Director del Centro de Conciliación) coinciden.
 - Pendiente: foto de Juan Miguel González en mayor resolución (se muestra reducida y enmarcada).
+
+## Nuestros aliados (Inicio)
+
+Los 8 logotipos de «Nuestros aliados» del sitio actual (`media/Aliados/conv_N-300x225.png`), en el mismo
+orden: Alliance Edu (2), Universidad Militar Nueva Granada (3), UVirtual (4), Alliance AR (5), FundUVirtual (6),
+OEA (11), Centro de Conciliación UVirtual (7) y Vigilado Minjusticia (8). Se publican como PNG optimizados sin
+pérdida en `/images/logos/` (`scripts/optimize-images.mjs`), igual que el distintivo Minjusticia. Las tarjetas
+de texto anteriores (incluida «CECOLI · Washington D.C.», sin logotipo en el sitio actual) se sustituyeron por
+los logotipos; CECOLI sigue mencionado en Litigio estratégico y en el proyecto solar.
 
 ## Integraciones pendientes
 

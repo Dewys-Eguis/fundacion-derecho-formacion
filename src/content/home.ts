@@ -262,12 +262,27 @@ export const COURSES_HOME = [
 ] as const;
 
 /* ---------- Aliados ---------- */
+/**
+ * Logotipos de «Nuestros aliados» del sitio actual (media/Aliados, conv_N-300x225.png), en el mismo
+ * orden. Solo se muestran los emblemas: no se añade ninguna relación institucional nueva.
+ */
+const ally = (n: number, name: string) => ({
+  name,
+  src: `/images/logos/conv_${n}.png`,
+  width: 300,
+  height: 225,
+  alt: `Logotipo de ${name}`,
+});
 export const ALLIES = [
-  "Corporación Universitaria Alliance",
-  "CECOLI · Washington D.C.",
-  "Ministerio de Justicia y del Derecho",
-  "Organización de los Estados Americanos",
-] as const;
+  ally(2, "Alliance Edu"),
+  ally(3, "Universidad Militar Nueva Granada"),
+  ally(4, "UVirtual · Universidad Virtual Abierta y a Distancia"),
+  ally(5, "Alliance AR"),
+  ally(6, "FundUVirtual · Fundación de la Universidad Virtual Abierta y a Distancia"),
+  ally(11, "Organización de los Estados Americanos (OEA)"),
+  ally(7, "Centro de Conciliación, Mediación, Arbitraje y Amigable Composición UVirtual"),
+  ally(8, "Ministerio de Justicia y del Derecho (Vigilado Minjusticia)"),
+];
 
 /* ---------- Cierre ---------- */
 export const CLOSING = {
