@@ -186,6 +186,15 @@ export const FOCUS = {
 /* ---------- Galería «El tejido en imágenes» (PDF pág. 1) ---------- */
 export type GalleryItem = { caption: string; image?: SiteImage; pos?: string; alt?: string };
 
+const GALLERY_STAFF_PHOTO = {
+  src: "/images/Dr-jesus-enrique.png",
+  width: 1145,
+  height: 1374,
+  alt: "Fotografía de Jesús Enrique Archila Guio",
+  render: false,
+  pos: "42% 22%",
+} satisfies SiteImage;
+
 export const GALLERY: GalleryItem[] = [
   {
     caption: "Planta solar · energía renovable",
@@ -205,11 +214,12 @@ export const GALLERY: GalleryItem[] = [
     pos: ILLUSTRATIVE.fuerzaPublica.pos,
     alt: ILLUSTRATIVE.fuerzaPublica.alt,
   },
+  // Fotografía real (media/staff/Dr jesus enrique.png), solo para esta tarjeta de la galería.
   {
     caption: "Staff jurídico",
-    image: staffById("jose-ricardo-archila-guio").photo,
-    pos: "50% 14%",
-    alt: staffById("jose-ricardo-archila-guio").photo.alt,
+    image: GALLERY_STAFF_PHOTO,
+    pos: GALLERY_STAFF_PHOTO.pos,
+    alt: GALLERY_STAFF_PHOTO.alt,
   },
   // Fotografía real de la sede (media/Oficinas)
   { caption: "Oficinas en Bogotá", image: OFFICE_PHOTOS[0].image, pos: "50% 50%", alt: OFFICE_PHOTOS[0].image.alt },
