@@ -95,6 +95,7 @@ export function QuickLinks() {
             <li key={q.title} data-reveal className="grid">
               <Link
                 href={q.href}
+                {...(q.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className={`group flex tarjeta-hover flex-col gap-1 rounded-[20px] p-4 text-azul no-underline md:min-h-25 md:flex-row md:items-center md:gap-4 md:rounded-3xl md:px-6 ${
                   primary ? "bg-naranja" : "bg-bruma"
                 }`}

@@ -171,6 +171,8 @@ export function MobileMenu({ open, onClose, pathname }: { open: boolean; onClose
         </Link>
         <Link
           href={CTA.agenda.href}
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={onClose}
           className="flex h-13.5 items-center justify-center rounded-pildora bg-naranja text-[15px] font-extrabold text-azul no-underline active:scale-[.98]"
         >

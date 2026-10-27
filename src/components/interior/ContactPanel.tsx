@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { PillGroup, tabPanelProps } from "@/components/ui/PillGroup";
 import { Pending } from "@/components/ui/typography";
 import { BOOKING_URL, CONTACT_PENDING } from "@/content/interior";
-import { SITE } from "@/content/site";
+import { SITE, WHATSAPP_AGENDA } from "@/content/site";
 
 type Tab = "escribanos" | "agenda" | "donaciones";
 const TABS: { value: Tab; label: string }[] = [
@@ -163,9 +163,13 @@ export function ContactPanel() {
           <div className="rounded-3xl bg-bruma p-6 md:p-8">
             <h3 className="text-2xl font-extrabold">Agende su cita de asesoría o conciliación</h3>
             <p className="mt-3 text-[15px] leading-[1.6] text-texto-cuerpo">
-              Las citas se gestionan en el calendario de reservas de la Fundación.
+              Escríbanos por WhatsApp para agendar su cita, o reserve directamente en el calendario de la Fundación.
             </p>
-            <ButtonLink href={BOOKING_URL} arrow className="mt-6">
+            <ButtonLink href={WHATSAPP_AGENDA} arrow className="mt-6 mr-3">
+              Agendar por WhatsApp
+              <span className="sr-only"> (se abre en una pestaña nueva)</span>
+            </ButtonLink>
+            <ButtonLink href={BOOKING_URL} variant="secondary" arrow className="mt-6">
               Abrir el calendario de citas
               <span className="sr-only"> (se abre en una pestaña nueva)</span>
             </ButtonLink>

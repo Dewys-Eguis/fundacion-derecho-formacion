@@ -129,7 +129,9 @@ los logotipos; CECOLI sigue mencionado en Litigio estratégico y en el proyecto 
 
 - Formulario de contacto: valida, pero no hay servicio de recepción; ofrece enviar por correo (`mailto:`).
   Para conectarlo (p. ej. Formspree/Resend/Web3Forms), cambiar `submit` en `ContactPanel.tsx`.
-- Citas: enlace al calendario actual `https://fundacionderechoyformacion.org/wp-booking-calendar/`
+- Citas: todos los botones «Agenda tu cita» abren WhatsApp (+57 320 903 8228) con un mensaje predefinido
+  (`WHATSAPP_AGENDA` en `src/content/site.ts`). La pestaña «Agenda tu cita» de Contáctenos ofrece WhatsApp y,
+  como alternativa, el calendario actual `https://fundacionderechoyformacion.org/wp-booking-calendar/`
   (dejará de existir si se retira WordPress: definir reemplazo).
 - Donaciones: sin montos ni pasarela (pendiente de la Fundación).
 - Gobierno corporativo: los 10 documentos se listan «Por cargar» (añadir `href` en `DOCUMENTS`).

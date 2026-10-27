@@ -7,6 +7,7 @@
 import { ILLUSTRATIVE, type SiteImage } from "./images";
 import { OFFICE_PHOTOS, staffById } from "./interior";
 import { ROUTES } from "./routes";
+import { WHATSAPP_AGENDA } from "./site";
 
 export const PDF_PLANTA_SOLAR =
   "https://allianceedu.co/wp-content/uploads/2026/04/2.2-PROYECTO-PLANTA-SOLAR-FOTOVOLTAICA-CIUDAD-BOLIVAR-BOGOTA-.pdf";
@@ -53,7 +54,7 @@ export const HERO_SCENES: HeroScene[] = [
     t1: "Resolvemos conflictos con",
     t2: "diálogo.",
     body: "Conciliación y mediación, insolvencia de persona natural no comerciante y adjudicación de apoyos según la Ley 1996 de 2019.",
-    cta1: { label: "Agenda tu cita", href: `${ROUTES.contacto}#agenda` },
+    cta1: { label: "Agenda tu cita", href: WHATSAPP_AGENDA },
     cta2: { label: "Conocer el centro", href: ROUTES.conciliacion },
     bg: "durazno",
   },
@@ -81,7 +82,7 @@ export const MINISTRY_CARD = {
 
 /* ---------- Accesos rápidos (bajo el hero) ---------- */
 export const QUICK_LINKS = [
-  { title: "Agenda tu cita", sub: "Asesoría y conciliación", href: `${ROUTES.contacto}#agenda`, icon: "calendar" },
+  { title: "Agenda tu cita", sub: "Asesoría y conciliación", href: WHATSAPP_AGENDA, icon: "calendar" },
   { title: "Centro de Conciliación", sub: "Diálogo sin juicio", href: ROUTES.conciliacion, icon: "rings" },
   { title: "Diplomados gratuitos", sub: "21 programas virtuales", href: ROUTES.diplomados, icon: "cap" },
   { title: "Litigio estratégico", sub: "Derechos humanos · CECOLI", href: ROUTES.litigio, icon: "scales" },

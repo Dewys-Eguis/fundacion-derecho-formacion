@@ -32,10 +32,15 @@ export const SITE = {
   ],
 } as const;
 
-/** Acciones principales del Header (Donar y Agenda tu cita llevan a Contáctenos). */
+/** WhatsApp de la Fundación (mismo número de contacto, +57 320 903 8228) con mensaje predefinido. */
+const WHATSAPP_MESSAGE =
+  "Hola, Fundación Derecho y Formación. Deseo agendar una cita de asesoría o conciliación. ¿Me pueden indicar la disponibilidad?";
+export const WHATSAPP_AGENDA = `https://wa.me/573209038228?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+/** Acciones principales del Header: Donar lleva a Contáctenos; Agenda tu cita abre WhatsApp. */
 export const CTA = {
   donar: { label: "Donar", href: `${ROUTES.contacto}#donaciones` },
-  agenda: { label: "Agenda tu cita", href: `${ROUTES.contacto}#agenda` },
+  agenda: { label: "Agenda tu cita", href: WHATSAPP_AGENDA },
 } as const;
 
 export type MenuLink = { label: string; desc: string; href: string };

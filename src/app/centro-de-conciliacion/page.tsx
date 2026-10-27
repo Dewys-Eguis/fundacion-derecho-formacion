@@ -39,6 +39,8 @@ export default function ConciliacionPage() {
         </div>
         <Link
           href={CTA.agenda.href}
+          target="_blank"
+          rel="noopener noreferrer"
           data-reveal
           className="group flex flex-col justify-between rounded-[26px] bg-naranja p-6 text-azul no-underline transition-transform duration-300 hover:-translate-y-1 md:p-7"
         >
