@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { PillGroup, tabPanelProps } from "@/components/ui/PillGroup";
 import { Pending } from "@/components/ui/typography";
 import { BOOKING_URL, CONTACT_PENDING } from "@/content/interior";
-import { SITE, WHATSAPP_AGENDA } from "@/content/site";
+import { CONTACT_FORM, PRIVACY_POLICY, SITE, WHATSAPP_AGENDA } from "@/content/site";
 
 type Tab = "escribanos" | "agenda" | "donaciones";
 const TABS: { value: Tab; label: string }[] = [
@@ -14,32 +14,44 @@ const TABS: { value: Tab; label: string }[] = [
   { value: "donaciones", label: "Donaciones" },
 ];
 
-type Errors = Partial<Record<"nombre" | "correo" | "mensaje", string>>;
+type Errors = Partial<Record<"nombre" | "correo" | "mensaje" | "autorizacion", string>>;
+type Status = "idle" | "sending" | "success" | "error";
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+/** Envíos más rápidos que esto desde que se abre el formulario se tratan como automáticos. */
+const MIN_FILL_MS = 3000;
 
-function validate(d: { nombre: string; correo: string; mensaje: string }): Errors {
+function validate(d: { nombre: string; correo: string; mensaje: string }, accepted: boolean): Errors {
   const e: Errors = {};
   if (d.nombre.trim().length < 2) e.nombre = "Escriba su nombre.";
   if (!EMAIL.test(d.correo.trim())) e.correo = "Escriba un correo electrónico válido.";
   if (d.mensaje.trim().length < 10) e.mensaje = "El mensaje debe tener al menos 10 caracteres.";
+  if (!accepted) e.autorizacion = "Debe autorizar el tratamiento de sus datos para enviar el mensaje.";
   return e;
 }
 
 /**
  * Panel de contacto (PDF pág. 17) con pestañas Escríbanos · Agenda tu cita · Donaciones.
  * La pestaña se elige también desde la URL (#escribanos, #agenda, #donaciones).
- *  · Formulario con validación accesible. No hay servicio de recepción conectado: en lugar
- *    de simular un envío, prepara el mensaje en el programa de correo del usuario.
+ *  · Formulario con validación accesible y envío real por Web3Forms (fetch, sin servidor propio).
+ *    Solo confirma el envío si Web3Forms responde con éxito; si falla, conserva los datos y ofrece
+ *    el envío por correo. Antispam: campo trampa «botcheck» y tiempo mínimo de llenado.
  *  · Citas: enlace al sistema de reservas que usa hoy el sitio.
  *  · Donaciones: pendiente de montos y pasarela (no se muestran montos ni pagos ficticios).
  */
 export function ContactPanel() {
   const [tab, setTab] = useState<Tab>("escribanos");
   const [data, setData] = useState({ nombre: "", correo: "", mensaje: "" });
+  const [accepted, setAccepted] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [ready, setReady] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
   const uid = useId();
   const root = useRef<HTMLDivElement>(null);
+  const inFlight = useRef(false);
+  const openedAt = useRef(0);
+
+  useEffect(() => {
+    if (tab === "escribanos") openedAt.current = Date.now();
+  }, [tab]);
 
   // Sincronizar la pestaña con el ancla de la URL (enlaces «Donar» y «Agenda tu cita»).
   useEffect(() => {
@@ -58,20 +70,58 @@ export function ContactPanel() {
   const change = (k: keyof typeof data) => (e: { target: { value: string } }) => {
     setData((d) => ({ ...d, [k]: e.target.value }));
     if (errors[k]) setErrors((x) => ({ ...x, [k]: undefined }));
-    setReady(false);
+    if (status === "success" || status === "error") setStatus("idle");
   };
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const found = validate(data);
+    if (inFlight.current) return; // evita envíos duplicados (doble clic o Enter repetido)
+    const found = validate(data, accepted);
     setErrors(found);
     const first = Object.keys(found)[0];
     if (first) {
       document.getElementById(`${uid}-${first}`)?.focus();
-      setReady(false);
       return;
     }
-    setReady(true);
+    const form = e.currentTarget;
+    const honeypot = (form.elements.namedItem("botcheck") as HTMLInputElement | null)?.checked;
+    // Bots: campo trampa marcado o envío instantáneo. No se envía nada ni se confirma nada.
+    if (honeypot || Date.now() - openedAt.current < MIN_FILL_MS) {
+      setStatus("error");
+      return;
+    }
+
+    inFlight.current = true;
+    setStatus("sending");
+    try {
+      // FormData = petición «simple» (sin preflight CORS), como en la documentación de Web3Forms.
+      const body = new FormData();
+      body.append("access_key", CONTACT_FORM.accessKey);
+      body.append("subject", CONTACT_FORM.subject);
+      body.append("from_name", CONTACT_FORM.fromName);
+      body.append("name", data.nombre.trim());
+      body.append("email", data.correo.trim());
+      body.append("message", data.mensaje.trim());
+      body.append("Autorizacion de datos personales", "Sí, aceptó la Política de Tratamiento de Datos Personales");
+      const res = await fetch(CONTACT_FORM.endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body,
+      });
+      const json = (await res.json().catch(() => null)) as { success?: boolean } | null;
+      if (res.ok && json?.success) {
+        setStatus("success");
+        setData({ nombre: "", correo: "", mensaje: "" });
+        setAccepted(false);
+        openedAt.current = Date.now();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    } finally {
+      inFlight.current = false;
+    }
   };
 
   const mailto = `mailto:${SITE.email.label}?subject=${encodeURIComponent(`Mensaje de ${data.nombre.trim()} desde el sitio web`)}&body=${encodeURIComponent(
@@ -132,19 +182,69 @@ export function ContactPanel() {
             {field("nombre", "Nombre")}
             {field("correo", "Correo electrónico", "email")}
             {field("mensaje", "Mensaje")}
+
+            {/* Campo trampa antispam de Web3Forms: invisible para personas y lectores de pantalla. */}
+            <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" aria-hidden className="hidden" />
+
+            <div className="sm:col-span-2">
+              <div className="flex items-start gap-3">
+                <input
+                  id={`${uid}-autorizacion`}
+                  type="checkbox"
+                  checked={accepted}
+                  onChange={(e) => {
+                    setAccepted(e.target.checked);
+                    if (errors.autorizacion) setErrors((x) => ({ ...x, autorizacion: undefined }));
+                  }}
+                  aria-invalid={!!errors.autorizacion}
+                  aria-describedby={errors.autorizacion ? `${uid}-autorizacion-err` : undefined}
+                  required
+                  className="mt-0.5 size-5 shrink-0 cursor-pointer accent-accion"
+                />
+                <label
+                  htmlFor={`${uid}-autorizacion`}
+                  className="cursor-pointer text-[14px] leading-[1.55] text-texto-cuerpo"
+                >
+                  He leído la{" "}
+                  <a
+                    href={PRIVACY_POLICY.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-bold text-accion underline underline-offset-2"
+                  >
+                    Política de Tratamiento de Datos Personales
+                    <span className="sr-only"> (PDF, se abre en una pestaña nueva)</span>
+                  </a>{" "}
+                  y autorizo el tratamiento de mis datos para atender mi solicitud.
+                </label>
+              </div>
+              {errors.autorizacion && (
+                <p id={`${uid}-autorizacion-err`} className="mt-1.5 text-[13px] font-semibold text-naranja-texto">
+                  {errors.autorizacion}
+                </p>
+              )}
+            </div>
+
             <div className="sm:col-span-2">
               <button
                 type="submit"
-                className="h-13 w-full cursor-pointer rounded-pildora bg-azul text-[15px] font-extrabold text-white transition-colors duration-300 hover:bg-accion"
+                disabled={status === "sending"}
+                aria-disabled={status === "sending"}
+                className="h-13 w-full cursor-pointer rounded-pildora bg-azul text-[15px] font-extrabold text-white transition-colors duration-300 hover:bg-accion disabled:cursor-wait disabled:opacity-75 disabled:hover:bg-azul"
               >
-                Enviar
+                {status === "sending" ? "Enviando mensaje…" : "Enviar"}
               </button>
-              <div aria-live="polite">
-                {ready && (
-                  <div className="mt-4 rounded-2xl bg-durazno p-4 text-sm leading-[1.6] text-texto-cuerpo">
-                    <p>
-                      <Pending>{CONTACT_PENDING.form}</Pending>. Mientras tanto, puede enviar este mismo mensaje desde
-                      su programa de correo:
+              <div aria-live="polite" role="status">
+                {status === "success" && (
+                  <div className="mt-4 animate-[aparecer_.3s_ease-out] rounded-2xl border border-accion/25 bg-bruma p-4 text-sm leading-[1.6] font-semibold text-azul motion-reduce:animate-none">
+                    Tu mensaje ha sido enviado correctamente. Pronto nos pondremos en contacto contigo.
+                  </div>
+                )}
+                {status === "error" && (
+                  <div className="mt-4 animate-[aparecer_.3s_ease-out] rounded-2xl bg-durazno p-4 text-sm leading-[1.6] text-texto-cuerpo motion-reduce:animate-none">
+                    <p className="font-semibold text-azul">
+                      No pudimos enviar tu mensaje en este momento. Tus datos se conservan: puedes intentarlo de nuevo o
+                      enviarlo desde tu programa de correo.
                     </p>
                     <a
                       href={mailto}

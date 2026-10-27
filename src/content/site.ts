@@ -41,6 +41,17 @@ export const PRIVACY_POLICY = {
   href: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/documentos/politica-tratamiento-datos-fundacion.pdf`,
 } as const;
 
+/**
+ * Formulario de Contáctenos → Web3Forms. La Access Key es pública por diseño (se usa desde el
+ * navegador); el correo destinatario se configura en el panel de Web3Forms, nunca desde la web.
+ */
+export const CONTACT_FORM = {
+  endpoint: "https://api.web3forms.com/submit",
+  accessKey: "36aec968-f9d5-4571-9e94-f1bde80f6d53",
+  subject: "Nueva solicitud de contacto - Fundación Derecho y Formación",
+  fromName: "Fundación Derecho y Formación",
+} as const;
+
 /** WhatsApp de la Fundación (mismo número de contacto, +57 320 903 8228) con mensaje predefinido. */
 const WHATSAPP_MESSAGE =
   "Hola, Fundación Derecho y Formación. Deseo agendar una cita de asesoría o conciliación. ¿Me pueden indicar la disponibilidad?";

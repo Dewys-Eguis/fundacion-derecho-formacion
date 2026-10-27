@@ -124,11 +124,13 @@ los logotipos; CECOLI sigue mencionado en Litigio estratégico y en el proyecto 
 - Avisos técnicos retirados de la interfaz (oct. 2026): rótulos «[Foto…]», «Imagen ilustrativa», aviso de
   fotografías provisionales, logos de aliados y logo OEA pendientes, horario por confirmar, notas internas
   sobre el sitio de WordPress. Se conservan los avisos que informan al usuario: documentos «Por cargar»,
-  formulario sin servicio de envío y donaciones sin pasarela.
+  y donaciones sin pasarela.
 - Selector ES/EN retirado: el sitio se publica solo en español.
 
-- Formulario de contacto: valida, pero no hay servicio de recepción; ofrece enviar por correo (`mailto:`).
-  Para conectarlo (p. ej. Formspree/Resend/Web3Forms), cambiar `submit` en `ContactPanel.tsx`.
+- Formulario de contacto: envío real con Web3Forms (`CONTACT_FORM` en `src/content/site.ts`, `fetch` + `FormData`,
+  sin servidor). Destinatario configurado en el panel de Web3Forms (hoy correo temporal del desarrollo: cambiarlo allí
+  al correo institucional). Casilla obligatoria de autorización enlazada a la política de datos; antispam con campo
+  trampa y tiempo mínimo de llenado; si falla, conserva los datos y ofrece `mailto:`.
 - Citas: todos los botones «Agenda tu cita» abren WhatsApp (+57 320 903 8228) con un mensaje predefinido
   (`WHATSAPP_AGENDA` en `src/content/site.ts`). La pestaña «Agenda tu cita» de Contáctenos ofrece WhatsApp y,
   como alternativa, el calendario actual `https://fundacionderechoyformacion.org/wp-booking-calendar/`
