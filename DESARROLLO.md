@@ -124,7 +124,7 @@ los logotipos; CECOLI sigue mencionado en Litigio estratégico y en el proyecto 
 - Avisos técnicos retirados de la interfaz (oct. 2026): rótulos «[Foto…]», «Imagen ilustrativa», aviso de
   fotografías provisionales, logos de aliados y logo OEA pendientes, horario por confirmar, notas internas
   sobre el sitio de WordPress. Se conservan los avisos que informan al usuario: documentos «Por cargar»,
-  formulario sin servicio de envío, donaciones sin pasarela y política de datos (pie de página).
+  formulario sin servicio de envío y donaciones sin pasarela.
 - Selector ES/EN retirado: el sitio se publica solo en español.
 
 - Formulario de contacto: valida, pero no hay servicio de recepción; ofrece enviar por correo (`mailto:`).
@@ -138,7 +138,8 @@ los logotipos; CECOLI sigue mencionado en Litigio estratégico y en el proyecto 
   En WordPress tampoco tienen archivo adjunto.
 - Diplomados: «Inscribirme gratis» abre el formulario de Google del sitio actual (`COURSE_SIGNUP_URL`,
   el mismo para los 21 programas, como en WordPress).
-- Redes sociales, política de datos y mapa interactivo: pendientes.
+- Política de tratamiento de datos: PDF en `public/documentos/` enlazado en el pie de página (`PRIVACY_POLICY`).
+- Redes sociales y mapa interactivo: pendientes.
 
 ## Datos pendientes de validar
 

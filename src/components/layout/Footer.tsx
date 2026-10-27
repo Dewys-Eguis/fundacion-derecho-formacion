@@ -3,7 +3,7 @@ import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { PlayIcon } from "@/components/ui/icons";
 import { MinjusticiaBadge } from "@/components/ui/MinjusticiaBadge";
-import { CTA, FOOTER_COLUMNS, SITE, SOCIAL } from "@/content/site";
+import { CTA, FOOTER_COLUMNS, PRIVACY_POLICY, SITE, SOCIAL } from "@/content/site";
 import { FooterWaves } from "./FooterWaves";
 
 /**
@@ -78,7 +78,15 @@ export function Footer() {
         <div className="mt-4.5 flex flex-col gap-2 border-t border-white/14 pt-4 text-[11.5px] text-pie">
           <span>{SITE.copyrightShort}</span>
           <span className="flex justify-between gap-4">
-            <span data-pending="">Política de tratamiento de datos [por confirmar]</span>
+            <a
+              href={PRIVACY_POLICY.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pie underline-offset-2 transition-colors hover:text-white hover:underline"
+            >
+              {PRIVACY_POLICY.label}
+              <span className="sr-only"> (PDF, se abre en una pestaña nueva)</span>
+            </a>
             <a href="#top" className="shrink-0 text-pie no-underline">
               Volver arriba ↑
             </a>
@@ -168,7 +176,15 @@ export function Footer() {
         <div className="relative mt-7 flex flex-col justify-between gap-3 border-t border-white/14 pt-5 text-[13px] text-pie lg:flex-row">
           <span>{SITE.copyright}</span>
           <span className="flex gap-6">
-            <span data-pending="">Política de tratamiento de datos [por confirmar]</span>
+            <a
+              href={PRIVACY_POLICY.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pie underline-offset-2 transition-colors hover:text-white hover:underline"
+            >
+              {PRIVACY_POLICY.label}
+              <span className="sr-only"> (PDF, se abre en una pestaña nueva)</span>
+            </a>
             <a href="#top" className="text-pie no-underline transition-colors hover:text-white">
               Volver arriba ↑
             </a>

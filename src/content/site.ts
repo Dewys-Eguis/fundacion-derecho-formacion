@@ -32,6 +32,15 @@ export const SITE = {
   ],
 } as const;
 
+/**
+ * Política de tratamiento de datos (PDF en public/documentos). Es un archivo estático, no una ruta:
+ * se antepone el basePath de GitHub Pages a mano (next/link no aplica a archivos).
+ */
+export const PRIVACY_POLICY = {
+  label: "Política de tratamiento de datos",
+  href: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/documentos/politica-tratamiento-datos-fundacion.pdf`,
+} as const;
+
 /** WhatsApp de la Fundación (mismo número de contacto, +57 320 903 8228) con mensaje predefinido. */
 const WHATSAPP_MESSAGE =
   "Hola, Fundación Derecho y Formación. Deseo agendar una cita de asesoría o conciliación. ¿Me pueden indicar la disponibilidad?";
