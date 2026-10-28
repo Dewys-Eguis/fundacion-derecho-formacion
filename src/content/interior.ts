@@ -41,7 +41,7 @@ export const STAFF: StaffMember[] = [
     name: "Jesús Enrique Archila Guio",
     role: "CEO y Representante Legal de la Fundación DFTH",
     tagline: "Docencia Universitaria · Implementación de la Paz en Colombia",
-    photo: portrait("Dr-jesus-enrique.png", "Jesús Enrique Archila Guio", 1145, 1374, "42% 0%"),
+    photo: portrait("Dr-Jesus-Enrique-Archila.jpg", "Jesús Enrique Archila Guio", 1032, 1037, "62% 30%"),
     sections: [
       {
         title: "Presentación profesional",
