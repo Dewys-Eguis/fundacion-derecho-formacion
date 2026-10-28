@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { gsap, MOTION_OK, useGSAP } from "@/components/motion/gsap";
 import { ButtonLink } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/icons";
-import { HERO_SCENES, MINISTRY_CARD, type HeroScene } from "@/content/home";
+import { HERO_SCENES, SCENE_CARDS, type HeroScene, type SceneCard } from "@/content/home";
 import { SOLAR_SCENE_SVG, SOLAR_SCENE_VIEWBOX } from "@/content/solar-illustration";
 
 /**
@@ -212,7 +212,7 @@ export function HeroSlider() {
                   i === index ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <SceneArt tone={s.bg === "durazno" ? "calido" : "frio"} withCard={s.id === "conciliacion"} />
+                <SceneArt tone={s.bg === "durazno" ? "calido" : "frio"} card={SCENE_CARDS[s.id]} />
               </div>
             ),
           )}
@@ -276,8 +276,12 @@ function HeroWave() {
   );
 }
 
-/** Círculos superpuestos (+ tarjeta institucional en la escena Conciliación). */
-function SceneArt({ tone, withCard }: { tone: "calido" | "frio"; withCard: boolean }) {
+/**
+ * Círculos superpuestos (+ tarjeta en Conciliación y Diplomados). La tarjeta se centra en la
+ * intersección de los círculos: x = (228 + 411) / 2 = 319,5 de 640 (49,92 %), y = 229 de 460 (49,78 %).
+ * Como la caja mantiene la proporción 640/460, el centrado se conserva en cualquier ancho.
+ */
+function SceneArt({ tone, card }: { tone: "calido" | "frio"; card?: SceneCard }) {
   const warm = tone === "calido";
   return (
     <div className="relative aspect-[640/460] w-full">
@@ -298,11 +302,14 @@ function SceneArt({ tone, withCard }: { tone: "calido" | "frio"; withCard: boole
           />
         </g>
       </svg>
-      {withCard && (
-        <div className="hero-card absolute top-1/2 left-1/2 w-[min(343px,86%)] -translate-x-1/2 -translate-y-1/2 rounded-[18px] bg-white px-5.5 py-5 shadow-[0_24px_48px_rgba(11,42,79,.12)] xl:top-[37%] xl:left-[27.2%] xl:w-[min(343px,72%)] xl:translate-0">
-          <p className="text-xs font-extrabold tracking-[.1em] text-naranja-texto uppercase">{MINISTRY_CARD.kicker}</p>
-          <p className="mt-1.5 text-lg leading-[1.15] font-extrabold text-azul md:text-[21px]">{MINISTRY_CARD.title}</p>
-          <p className="mt-2.5 text-[13px] text-texto-2">{MINISTRY_CARD.detail}</p>
+      {card && (
+        // Envoltorio posicionado aparte: GSAP anima el transform de .hero-card sin romper el centrado.
+        <div className="absolute top-[49.78%] left-[49.92%] w-[min(343px,86%)] -translate-x-1/2 -translate-y-1/2 xl:w-[min(343px,62%)]">
+          <div className="hero-card rounded-[18px] bg-white px-5.5 py-5 shadow-[0_24px_48px_rgba(11,42,79,.12)]">
+            <p className="text-xs font-extrabold tracking-[.1em] text-naranja-texto uppercase">{card.kicker}</p>
+            <p className="mt-1.5 text-lg leading-[1.15] font-extrabold text-azul md:text-[21px]">{card.title}</p>
+            {card.detail && <p className="mt-2.5 text-[13px] text-texto-2">{card.detail}</p>}
+          </div>
         </div>
       )}
     </div>

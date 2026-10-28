@@ -73,12 +73,24 @@ export const HERO_SCENES: HeroScene[] = [
   },
 ];
 
+/** Tarjeta blanca sobre la intersección de los círculos del hero. */
+export type SceneCard = { kicker: string; title: string; detail?: string };
+
 /** Tarjeta institucional flotante de la escena Conciliación (obligatoria). */
-export const MINISTRY_CARD = {
+export const MINISTRY_CARD: SceneCard = {
   kicker: "Adscrito al",
   title: "Ministerio de Justicia y del Derecho",
   detail: "Resolución 0026 del 16 de enero de 2014",
-} as const;
+};
+
+/** Escenas con tarjeta (textos entregados por la Fundación). */
+export const SCENE_CARDS: Partial<Record<HeroScene["id"], SceneCard>> = {
+  conciliacion: MINISTRY_CARD,
+  diplomados: {
+    kicker: "Formación para transformar",
+    title: "Educación de calidad, oportunidades para todos.",
+  },
+};
 
 /* ---------- Accesos rápidos (bajo el hero) ---------- */
 export const QUICK_LINKS = [
