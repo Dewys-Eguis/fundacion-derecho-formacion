@@ -198,7 +198,7 @@ export const FOCUS = {
 /* ---------- Galería «El tejido en imágenes» (PDF pág. 1) ---------- */
 export type GalleryItem = { caption: string; image?: SiteImage; pos?: string; alt?: string };
 
-export const GALLERY_STAFF_PHOTO = {
+const GALLERY_STAFF_PHOTO = {
   src: "/images/Dr-jesus-enrique.png",
   width: 1145,
   height: 1374,

@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { GALLERY_STAFF_PHOTO } from "@/content/home";
-import type { SiteImage } from "@/content/images";
 import { staffById, type StaffMember } from "@/content/interior";
 
 /** Por debajo de este ancho la foto original no admite ocupar todo el marco sin pixelarse. */
@@ -54,11 +52,11 @@ export function StaffPhoto({
 }
 
 /**
- * Encuadre del collage: Jesús Enrique con su foto de primer plano (la misma de la galería del
- * Inicio); las otras dos se acercan desde arriba para que las tres cabezas queden a la misma altura.
+ * Encuadre del collage: la foto de Jesús Enrique es de primer plano; las otras dos se acercan
+ * desde arriba para que las tres cabezas queden a la misma altura.
  */
-const COLLAGE: { id: string; photo?: SiteImage; x: string; zoom?: number }[] = [
-  { id: "jesus-enrique-archila-guio", photo: GALLERY_STAFF_PHOTO, x: "37%" },
+const COLLAGE: { id: string; x: string; zoom?: number }[] = [
+  { id: "jesus-enrique-archila-guio", x: "37%" },
   { id: "leydi-yesenia-ramirez-aristizabal", x: "47%", zoom: 1.3 },
   { id: "jose-ricardo-archila-guio", x: "46%", zoom: 1.3 },
 ];
@@ -67,8 +65,8 @@ const COLLAGE: { id: string; photo?: SiteImage; x: string; zoom?: number }[] = [
 export function StaffCollage() {
   return (
     <span className="grid h-full grid-cols-3 gap-1.5 bg-white">
-      {COLLAGE.map(({ id, photo, x, zoom = 1 }) => {
-        const p = photo ?? staffById(id).photo;
+      {COLLAGE.map(({ id, x, zoom = 1 }) => {
+        const p = staffById(id).photo;
         return (
           <span key={id} className="relative block h-full overflow-hidden">
             <Image
