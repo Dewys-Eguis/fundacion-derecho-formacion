@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { GALLERY_STAFF_PHOTO } from "@/content/home";
+import type { SiteImage } from "@/content/images";
 import { staffById, type StaffMember } from "@/content/interior";
 
 /** Por debajo de este ancho la foto original no admite ocupar todo el marco sin pixelarse. */
@@ -51,16 +53,36 @@ export function StaffPhoto({
   );
 }
 
+/**
+ * Encuadre del collage: Jesús Enrique con su foto de primer plano (la misma de la galería del
+ * Inicio); las otras dos se acercan desde arriba para que las tres cabezas queden a la misma altura.
+ */
+const COLLAGE: { id: string; photo?: SiteImage; x: string; zoom?: number }[] = [
+  { id: "jesus-enrique-archila-guio", photo: GALLERY_STAFF_PHOTO, x: "37%" },
+  { id: "leydi-yesenia-ramirez-aristizabal", x: "47%", zoom: 1.3 },
+  { id: "jose-ricardo-archila-guio", x: "46%", zoom: 1.3 },
+];
+
 /** Composición editorial del banner: tres retratos reales (dirección de la Fundación y del Centro). */
 export function StaffCollage() {
-  const ids = ["jesus-enrique-archila-guio", "leydi-yesenia-ramirez-aristizabal", "jose-ricardo-archila-guio"];
   return (
     <span className="grid h-full grid-cols-3 gap-1.5 bg-white">
-      {ids.map((id) => (
-        <span key={id} className="relative block h-full overflow-hidden">
-          <StaffPhoto member={staffById(id)} sizes="(min-width: 1280px) 160px, 33vw" />
-        </span>
-      ))}
+      {COLLAGE.map(({ id, photo, x, zoom = 1 }) => {
+        const p = photo ?? staffById(id).photo;
+        return (
+          <span key={id} className="relative block h-full overflow-hidden">
+            <Image
+              src={p.src}
+              width={p.width}
+              height={p.height}
+              alt={p.alt}
+              sizes="(min-width: 1280px) 200px, 45vw"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: `${x} 0%`, transform: `scale(${zoom})`, transformOrigin: `${x} 0%` }}
+            />
+          </span>
+        );
+      })}
     </span>
   );
 }
