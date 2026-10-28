@@ -57,9 +57,18 @@ const WHATSAPP_MESSAGE =
   "Hola, Fundación Derecho y Formación. Deseo agendar una cita de asesoría o conciliación. ¿Me pueden indicar la disponibilidad?";
 export const WHATSAPP_AGENDA = `https://wa.me/573209038228?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-/** Acciones principales del Header: Donar lleva a Contáctenos; Agenda tu cita abre WhatsApp. */
+/**
+ * Donaciones (única configuración para todos los botones «Donar» y el enlace «Donaciones» del pie).
+ * Pegar aquí el enlace de pago DEFINITIVO de Wompi cuando la Fundación lo entregue
+ * (p. ej. "https://checkout.wompi.co/l/XXXXXX"). Mientras esté vacío, «Donar» lleva a
+ * Contáctenos › Donaciones, como hasta ahora.
+ */
+export const WOMPI_DONATION_URL = "";
+const DONATION_HREF = WOMPI_DONATION_URL || `${ROUTES.contacto}#donaciones`;
+
+/** Acciones principales del Header: Donar (Wompi o Contáctenos › Donaciones); Agenda tu cita abre WhatsApp. */
 export const CTA = {
-  donar: { label: "Donar", href: `${ROUTES.contacto}#donaciones` },
+  donar: { label: "Donar", href: DONATION_HREF },
   agenda: { label: "Agenda tu cita", href: WHATSAPP_AGENDA },
 } as const;
 
@@ -151,7 +160,7 @@ export const FOOTER_COLUMNS = [
       { label: "Planta solar San Francisco", href: ROUTES.proyectoSolar },
       { label: "Proyectos y publicaciones", href: ROUTES.proyectos },
       { label: "Diplomados", href: ROUTES.diplomados },
-      { label: "Donaciones", href: `${ROUTES.contacto}#donaciones` },
+      { label: "Donaciones", href: DONATION_HREF },
     ],
   },
 ] as const;

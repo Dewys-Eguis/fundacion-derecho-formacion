@@ -63,10 +63,14 @@ function Inner({ icon, arrow, children }: Pick<CommonProps, "icon" | "arrow" | "
 
 type ButtonLinkProps = CommonProps & { href: string } & Omit<ComponentProps<"a">, "href" | "className" | "children">;
 
-/** Enlace con aspecto de botón. Rutas internas usan next/link; tel:, mailto: y externas usan <a>. */
+/**
+ * Enlace con aspecto de botón. Rutas internas usan next/link; tel:, mailto:, externas y documentos
+ * propios (/documentos/*.pdf, ya con basePath) usan <a>; externas y PDF abren en pestaña nueva.
+ */
 export function ButtonLink({ href, variant, size, arrow, icon, className, children, ...rest }: ButtonLinkProps) {
   const cls = buttonClasses(variant, size, className);
-  const internal = href.startsWith("/") || href.startsWith("#");
+  const file = /\.pdf$/i.test(href);
+  const internal = !file && (href.startsWith("/") || href.startsWith("#"));
   if (internal) {
     return (
       <Link href={href} className={cls} {...rest}>
@@ -76,7 +80,7 @@ export function ButtonLink({ href, variant, size, arrow, icon, className, childr
       </Link>
     );
   }
-  const external = /^https?:/.test(href);
+  const external = file || /^https?:/.test(href);
   return (
     <a href={href} className={cls} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} {...rest}>
       <Inner icon={icon} arrow={arrow}>

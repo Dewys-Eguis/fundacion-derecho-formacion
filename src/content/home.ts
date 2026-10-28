@@ -9,8 +9,8 @@ import { OFFICE_PHOTOS, staffById } from "./interior";
 import { ROUTES } from "./routes";
 import { WHATSAPP_AGENDA } from "./site";
 
-export const PDF_PLANTA_SOLAR =
-  "https://allianceedu.co/wp-content/uploads/2026/04/2.2-PROYECTO-PLANTA-SOLAR-FOTOVOLTAICA-CIUDAD-BOLIVAR-BOGOTA-.pdf";
+/** Documento del proyecto solar (public/documentos). Archivo estático: el basePath de GitHub Pages se antepone a mano. */
+export const PDF_PLANTA_SOLAR = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/documentos/Proyecto_Planta_Solar_Fundacion_Rediseno.pdf`;
 
 /* ---------- Hero: 3 escenas (pestañas del PDF: Proyecto solar · Conciliación · Diplomados) ---------- */
 export type HeroScene = {
