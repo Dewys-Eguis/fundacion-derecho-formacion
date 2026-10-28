@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Draggable } from "gsap/Draggable";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
@@ -17,6 +18,7 @@ if (typeof window !== "undefined") gsap.registerPlugin(Draggable, InertiaPlugin)
  * suaves arriba y abajo, tarjetas redondeadas con la foto disponible y
  * placeholders celestes para las fotos pendientes. Flechas + arrastre con inercia
  * y ajuste a cada tarjeta. Los rótulos quedan siempre por encima de la curva.
+ * Si la tarjeta tiene `href`, pulsarla (sin arrastrar) lleva a su página.
  */
 const PORTRAIT = {
   desktop: { cardW: 320, cardH: 400, gap: 14, offset: 48, height: 420, top: 10, depth: 45 },
@@ -188,6 +190,15 @@ export function CurvedGallery({
                   aria-label={`Fotografía pendiente: ${g.caption}`}
                   data-pending=""
                   className="h-full w-full marcador-foto"
+                />
+              )}
+              {g.href && (
+                <Link
+                  href={g.href}
+                  draggable={false}
+                  aria-label={`${g.caption}: ir a la página`}
+                  onClick={(e) => moved.current && e.preventDefault()}
+                  className="absolute inset-0 rounded-[20px] focus-visible:outline-offset-[-4px]"
                 />
               )}
               {onOpen && g.image && (

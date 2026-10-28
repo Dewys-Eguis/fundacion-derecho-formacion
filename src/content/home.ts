@@ -196,7 +196,8 @@ export const FOCUS = {
 } as const;
 
 /* ---------- Galería «El tejido en imágenes» (PDF pág. 1) ---------- */
-export type GalleryItem = { caption: string; image?: SiteImage; pos?: string; alt?: string };
+/** `href`: página a la que lleva la tarjeta al pulsarla (sin arrastrar). */
+export type GalleryItem = { caption: string; image?: SiteImage; pos?: string; alt?: string; href?: string };
 
 export const GALLERY_STAFF_PHOTO = {
   src: "/images/Dr-jesus-enrique.png",
@@ -210,18 +211,21 @@ export const GALLERY_STAFF_PHOTO = {
 export const GALLERY: GalleryItem[] = [
   {
     caption: "Planta solar · energía renovable",
+    href: ROUTES.proyectoSolar,
     image: ILLUSTRATIVE.solar,
     pos: ILLUSTRATIVE.solar.pos,
     alt: ILLUSTRATIVE.solar.alt,
   },
   {
     caption: "Centro de Conciliación",
+    href: ROUTES.conciliacion,
     image: ILLUSTRATIVE.conciliacion,
     pos: ILLUSTRATIVE.conciliacion.pos,
     alt: ILLUSTRATIVE.conciliacion.alt,
   },
   {
     caption: "Diplomado Fuerza Pública y Construcción de Paz",
+    href: ROUTES.diplomados,
     image: ILLUSTRATIVE.fuerzaPublica,
     pos: ILLUSTRATIVE.fuerzaPublica.pos,
     alt: ILLUSTRATIVE.fuerzaPublica.alt,
@@ -229,12 +233,19 @@ export const GALLERY: GalleryItem[] = [
   // Fotografía real (media/staff/Dr jesus enrique.png), solo para esta tarjeta de la galería.
   {
     caption: "Staff jurídico",
+    href: ROUTES.staff,
     image: GALLERY_STAFF_PHOTO,
     pos: GALLERY_STAFF_PHOTO.pos,
     alt: GALLERY_STAFF_PHOTO.alt,
   },
   // Fotografía real de la sede (media/Oficinas)
-  { caption: "Oficinas en Bogotá", image: OFFICE_PHOTOS[0].image, pos: "50% 50%", alt: OFFICE_PHOTOS[0].image.alt },
+  {
+    caption: "Oficinas en Bogotá",
+    href: ROUTES.oficinas,
+    image: OFFICE_PHOTOS[0].image,
+    pos: "50% 50%",
+    alt: OFFICE_PHOTOS[0].image.alt,
+  },
 ];
 
 /* ---------- Proyectos ---------- */
