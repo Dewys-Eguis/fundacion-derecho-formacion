@@ -201,7 +201,7 @@ export function HeroSlider() {
         </div>
 
         {/* Arte de la escena (círculos + tarjeta del Ministerio). Escritorio: a la derecha; móvil/tableta: debajo. */}
-        <div className="relative mx-auto mt-auto grid w-full max-w-90 px-4 pt-4 pb-22 md:max-w-140 md:px-5.5 md:pt-6 md:pb-28 xl:absolute xl:top-1/2 xl:right-5 xl:m-0 xl:block xl:aspect-[640/460] xl:w-[min(640px,calc(100%-810px))] xl:max-w-none xl:-translate-y-1/2 xl:p-0 2xl:right-0">
+        <div className="relative mx-auto mt-auto grid w-full max-w-96 px-4 pt-4 pb-22 md:max-w-150 md:px-5.5 md:pt-6 md:pb-28 xl:absolute xl:top-1/2 xl:right-5 xl:m-0 xl:block xl:aspect-[640/460] xl:w-[min(700px,calc(100%-790px))] xl:max-w-none xl:-translate-y-1/2 xl:p-0 2xl:right-0">
           {HERO_SCENES.map((s, i) =>
             s.bg === "ilustracion" ? null : (
               <div
@@ -287,14 +287,14 @@ function SceneArt({ tone, card }: { tone: "calido" | "frio"; card?: SceneCard })
     <div className="relative aspect-[640/460] w-full">
       <svg aria-hidden viewBox="0 0 640 460" className="absolute inset-0 h-full w-full overflow-visible" fill="none">
         <g className="hero-float-a">
-          <circle className="hero-circle" cx="228" cy="229" r="208" fill="#FFFFFF" stroke="#0B2A4F" strokeWidth="2" />
+          <circle className="hero-circle" cx="228" cy="229" r="226" fill="#FFFFFF" stroke="#0B2A4F" strokeWidth="2" />
         </g>
         <g className="hero-float-b">
           <circle
             className="hero-circle"
             cx="411"
             cy="229"
-            r="208"
+            r="226"
             fill={warm ? "#F4914D" : "#1E64C8"}
             fillOpacity={warm ? 0.22 : 0.12}
             stroke={warm ? "#F4914D" : "#1E64C8"}
@@ -304,10 +304,10 @@ function SceneArt({ tone, card }: { tone: "calido" | "frio"; card?: SceneCard })
       </svg>
       {card && (
         // Envoltorio posicionado aparte: GSAP anima el transform de .hero-card sin romper el centrado.
-        <div className="absolute top-[49.78%] left-[49.92%] w-[min(343px,86%)] -translate-x-1/2 -translate-y-1/2 xl:w-[min(343px,62%)]">
-          <div className="hero-card rounded-[18px] bg-white px-5.5 py-5 shadow-[0_24px_48px_rgba(11,42,79,.12)]">
+        <div className="absolute top-[49.78%] left-[49.92%] w-[min(300px,78%)] -translate-x-1/2 -translate-y-1/2 xl:w-[min(300px,52%)]">
+          <div className="hero-card rounded-[18px] bg-white px-5 py-4 shadow-[0_24px_48px_rgba(11,42,79,.12)]">
             <p className="text-xs font-extrabold tracking-[.1em] text-naranja-texto uppercase">{card.kicker}</p>
-            <p className="mt-1.5 text-lg leading-[1.15] font-extrabold text-azul md:text-[21px]">{card.title}</p>
+            <p className="mt-1.5 text-[17px] leading-[1.15] font-extrabold text-azul md:text-[19px]">{card.title}</p>
             {card.detail && <p className="mt-2.5 text-[13px] text-texto-2">{card.detail}</p>}
           </div>
         </div>
