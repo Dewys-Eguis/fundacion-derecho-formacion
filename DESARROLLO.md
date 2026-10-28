@@ -135,10 +135,10 @@ los logotipos; CECOLI sigue mencionado en Litigio estratégico y en el proyecto 
   (`WHATSAPP_AGENDA` en `src/content/site.ts`). La pestaña «Agenda tu cita» de Contáctenos ofrece WhatsApp y,
   como alternativa, el calendario actual `https://fundacionderechoyformacion.org/wp-booking-calendar/`
   (dejará de existir si se retira WordPress: definir reemplazo).
-- Donaciones: sin montos ni pasarela (pendiente de la Fundación). Configuración única preparada:
-  `WOMPI_DONATION_URL` en `src/content/site.ts`. Vacía, todos los «Donar» (Header, cierre de Inicio, pie móvil)
-  y el enlace «Donaciones» del pie llevan a `/contactenos/#donaciones`; al pegar el enlace definitivo de Wompi,
-  todos abren ese pago. No se ha activado el enlace genérico recibido.
+- Donaciones: enlace de pago de Wompi `https://checkout.wompi.co/l/VPOS_sUGqKF` activo (oct. 2026), en una sola
+  configuración: `WOMPI_DONATION_URL` en `src/content/site.ts`. Todos los «Donar» (Header, cierre de Inicio, pie
+  móvil), el enlace «Donaciones» del pie y el botón «Donar con Wompi» de Contáctenos › Donaciones abren ese pago
+  en pestaña nueva. Si se vacía, vuelven a `/contactenos/#donaciones` y la pestaña muestra el aviso pendiente.
 - Proyecto solar: todos los botones de descarga del proyecto (Inicio, Proyectos y publicaciones, página del
   proyecto) usan `PDF_PLANTA_SOLAR` → `public/documentos/Proyecto_Planta_Solar_Fundacion_Rediseno.pdf`.
 - Gobierno corporativo: los 10 documentos se listan «Por cargar» (añadir `href` en `DOCUMENTS`).

@@ -6,6 +6,9 @@ import { MinjusticiaBadge } from "@/components/ui/MinjusticiaBadge";
 import { CTA, FOOTER_COLUMNS, PRIVACY_POLICY, SITE, SOCIAL } from "@/content/site";
 import { FooterWaves } from "./FooterWaves";
 
+/** Enlaces externos del pie (p. ej. «Donaciones» → Wompi) en pestaña nueva. */
+const newTab = (href: string) => (/^https?:/.test(href) ? { target: "_blank", rel: "noopener noreferrer" } : {});
+
 /**
  * Pie de página: bloque azul redondeado (Footer.dc.html) en tableta y escritorio;
  * versión compacta de Mobile.dc.html en móvil.
@@ -33,7 +36,7 @@ export function Footer() {
               <ul className="mt-2.5 flex flex-col gap-2">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <Link href={l.href} className="text-texto-claro no-underline active:text-white">
+                    <Link href={l.href} {...newTab(l.href)} className="text-texto-claro no-underline active:text-white">
                       {l.label}
                     </Link>
                   </li>
@@ -119,6 +122,7 @@ export function Footer() {
                   <li key={l.label}>
                     <Link
                       href={l.href}
+                      {...newTab(l.href)}
                       className="group inline-flex items-center text-texto-claro no-underline transition-colors duration-200 hover:text-white"
                     >
                       <span className="w-0 overflow-hidden text-naranja transition-[width] duration-300 group-hover:w-3.5">

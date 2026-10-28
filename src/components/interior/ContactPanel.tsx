@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { PillGroup, tabPanelProps } from "@/components/ui/PillGroup";
 import { Pending } from "@/components/ui/typography";
 import { BOOKING_URL, CONTACT_PENDING } from "@/content/interior";
-import { CONTACT_FORM, PRIVACY_POLICY, SITE, WHATSAPP_AGENDA } from "@/content/site";
+import { CONTACT_FORM, PRIVACY_POLICY, SITE, WHATSAPP_AGENDA, WOMPI_DONATION_URL } from "@/content/site";
 
 type Tab = "escribanos" | "agenda" | "donaciones";
 const TABS: { value: Tab; label: string }[] = [
@@ -286,15 +286,38 @@ export function ContactPanel() {
         {tab === "donaciones" && (
           <div className="rounded-3xl bg-durazno p-6 md:p-8">
             <h3 className="text-2xl font-extrabold">Apoye la labor de la Fundación</h3>
-            <p className="mt-3 text-[15px] leading-[1.6] text-texto-cuerpo">
-              <Pending>{CONTACT_PENDING.donations}</Pending>.
-            </p>
-            <p className="mt-3 text-[15px] leading-[1.6] text-texto-cuerpo">
-              Si desea apoyar a la Fundación, escríbanos y le indicaremos cómo hacerlo.
-            </p>
-            <ButtonLink href={SITE.email.href} variant="dark" className="mt-6">
-              Escribir a {SITE.email.label}
-            </ButtonLink>
+            {WOMPI_DONATION_URL ? (
+              <>
+                <p className="mt-3 text-[15px] leading-[1.6] text-texto-cuerpo">
+                  Puede hacer su donación en línea de forma segura a través de Wompi. Si tiene alguna pregunta,
+                  escríbanos.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-3">
+                  <ButtonLink
+                    href={WOMPI_DONATION_URL}
+                    variant="primary"
+                    aria-label="Donar con Wompi (se abre en una pestaña nueva)"
+                  >
+                    Donar con Wompi
+                  </ButtonLink>
+                  <ButtonLink href={SITE.email.href} variant="dark">
+                    Escribir a {SITE.email.label}
+                  </ButtonLink>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="mt-3 text-[15px] leading-[1.6] text-texto-cuerpo">
+                  <Pending>{CONTACT_PENDING.donations}</Pending>.
+                </p>
+                <p className="mt-3 text-[15px] leading-[1.6] text-texto-cuerpo">
+                  Si desea apoyar a la Fundación, escríbanos y le indicaremos cómo hacerlo.
+                </p>
+                <ButtonLink href={SITE.email.href} variant="dark" className="mt-6">
+                  Escribir a {SITE.email.label}
+                </ButtonLink>
+              </>
+            )}
           </div>
         )}
       </div>

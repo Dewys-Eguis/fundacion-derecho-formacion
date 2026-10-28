@@ -60,10 +60,10 @@ export const WHATSAPP_AGENDA = `https://wa.me/573209038228?text=${encodeURICompo
 /**
  * Donaciones (única configuración para todos los botones «Donar» y el enlace «Donaciones» del pie).
  * Pegar aquí el enlace de pago DEFINITIVO de Wompi cuando la Fundación lo entregue
- * (p. ej. "https://checkout.wompi.co/l/XXXXXX"). Mientras esté vacío, «Donar» lleva a
- * Contáctenos › Donaciones, como hasta ahora.
+ * (p. ej. "https://checkout.wompi.co/l/XXXXXX"). Si se deja vacío, «Donar» vuelve a llevar a
+ * Contáctenos › Donaciones.
  */
-export const WOMPI_DONATION_URL = "";
+export const WOMPI_DONATION_URL = "https://checkout.wompi.co/l/VPOS_sUGqKF";
 const DONATION_HREF = WOMPI_DONATION_URL || `${ROUTES.contacto}#donaciones`;
 
 /** Acciones principales del Header: Donar (Wompi o Contáctenos › Donaciones); Agenda tu cita abre WhatsApp. */
