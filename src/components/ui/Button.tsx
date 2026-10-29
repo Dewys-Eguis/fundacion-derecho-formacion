@@ -9,9 +9,10 @@ import { ArrowRight } from "./icons";
  *  secondary borde 1,5 px #C9DBEF sobre blanco
  *  light     blanco sobre fondos oscuros
  *  ghost     borde translúcido sobre fondos oscuros
+ *  glass     cristal translúcido sobre la portada oscura (portada de impacto)
  * Hover: barrido de color desde la izquierda + flecha que avanza; pulsación con leve escala.
  */
-export type ButtonVariant = "primary" | "dark" | "secondary" | "light" | "ghost";
+export type ButtonVariant = "primary" | "dark" | "secondary" | "light" | "ghost" | "glass";
 export type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 const VARIANT: Record<ButtonVariant, string> = {
@@ -20,6 +21,8 @@ const VARIANT: Record<ButtonVariant, string> = {
   secondary: "border-[1.5px] border-borde-boton text-azul font-bold before:bg-bruma hover:border-azul/40",
   light: "bg-white text-azul font-bold before:bg-durazno",
   ghost: "border-[1.5px] border-white/40 text-white font-bold before:bg-white/10 hover:border-white/70",
+  glass:
+    "bg-white/8 text-white font-bold shadow-[inset_0_0_0_1px_rgba(255,255,255,.24)] backdrop-blur-md before:bg-white/10",
 };
 
 // Alturas del diseño: 46 (header) · 54 (secciones) · 58 (bandas) · 62 (hero)

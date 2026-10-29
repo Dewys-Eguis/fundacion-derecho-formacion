@@ -19,13 +19,17 @@ import { TopBar } from "./TopBar";
  *  · Móvil y tableta: logo, acceso al proyecto destacado y botón de menú (76 px).
  *  · Fijo: la barra superior sale de pantalla y la navegación queda anclada; al bajar
  *    se oculta y reaparece al subir (solo si se permite movimiento).
+ *  · Inicio: versión de cristal oscuro sobre la portada de impacto (portada-impacto/ESPECIFICACION.md
+ *    · §3); al pasar la portada el cristal se vuelve casi opaco para mantener la lectura.
  */
 export function Header() {
   const pathname = usePathname();
   const active = sectionForPath(pathname);
+  const dark = pathname === ROUTES.inicio;
   const [mega, setMega] = useState<MegaKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [pastHero, setPastHero] = useState(false);
   const [hidden, setHidden] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
@@ -51,6 +55,7 @@ export function Header() {
       onUpdate: (self) => {
         const y = self.scroll();
         setScrolled(y > 8);
+        setPastHero(y > 640);
         if (!window.matchMedia(MOTION_OK).matches) return setHidden(false);
         if (lockRef.current || y < 240) return setHidden(false);
         if (self.direction === 1) setHidden(true);
@@ -123,13 +128,17 @@ export function Header() {
       <header
         ref={headerRef}
         onFocusCapture={() => setHidden(false)}
-        className={`sticky -top-9 z-50 transition-transform duration-500 ease-(--ease-salida) md:-top-11 ${
-          hidden ? "-translate-y-full" : "translate-y-0"
-        }`}
+        className={`sticky z-50 transition-transform duration-500 ease-(--ease-salida) md:-top-11 ${
+          dark ? "sobre-oscuro top-0" : "-top-9"
+        } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
       >
-        <TopBar />
+        <TopBar dark={dark} />
         <div
-          className={`border-b border-linea bg-white transition-shadow duration-300 ${scrolled ? "shadow-header" : ""}`}
+          className={
+            dark
+              ? `border-b border-white/8 backdrop-blur-[14px] transition-colors duration-500 ${pastHero ? "bg-noche/92" : "bg-noche/35"}`
+              : `border-b border-linea bg-white transition-shadow duration-300 ${scrolled ? "shadow-header" : ""}`
+          }
         >
           <div ref={navRef} className="relative mx-auto max-w-360">
             {/* ---------- Escritorio (≥ 1280) ----------
@@ -137,7 +146,7 @@ export function Header() {
                 Todos los elementos en una sola línea; por debajo de 1280 se usa el menú hamburguesa. */}
             <nav
               aria-label="Principal"
-              className="hidden h-21 items-center justify-between gap-6 px-8 xl:flex 2xl:gap-8 2xl:px-12"
+              className={`hidden items-center justify-between gap-6 px-8 xl:flex 2xl:gap-8 2xl:px-12 ${dark ? "h-22.5" : "h-21"}`}
             >
               <Link
                 href={ROUTES.inicio}
@@ -145,16 +154,16 @@ export function Header() {
                 className="group flex shrink-0 items-center no-underline"
               >
                 <span className="2xl:hidden">
-                  <Logo tone="light" size="sm" decorative />
+                  <Logo tone={dark ? "dark" : "light"} size="sm" decorative />
                 </span>
                 <span className="hidden 2xl:block">
-                  <Logo tone="light" size="md" decorative />
+                  <Logo tone={dark ? "dark" : "light"} size="md" decorative />
                 </span>
               </Link>
 
               <ul className="flex min-w-0 items-center text-sm font-semibold whitespace-nowrap 2xl:text-[14.5px]">
                 <li>
-                  <NavLink href={ROUTES.inicio} section="inicio" active={active}>
+                  <NavLink href={ROUTES.inicio} section="inicio" active={active} dark={dark}>
                     Inicio
                   </NavLink>
                 </li>
@@ -163,6 +172,7 @@ export function Header() {
                     which="quienes"
                     label="Quiénes somos"
                     active={active}
+                    dark={dark}
                     open={mega === "quienes"}
                     onToggle={() => setMega(mega === "quienes" ? null : "quienes")}
                     onPointerEnter={hoverOpen("quienes")}
@@ -184,6 +194,7 @@ export function Header() {
                     which="que"
                     label="Qué hacemos"
                     active={active}
+                    dark={dark}
                     open={mega === "que"}
                     onToggle={() => setMega(mega === "que" ? null : "que")}
                     onPointerEnter={hoverOpen("que")}
@@ -200,17 +211,17 @@ export function Header() {
                   />
                 </li>
                 <li>
-                  <NavLink href={ROUTES.proyectos} section="proyectos" active={active}>
+                  <NavLink href={ROUTES.proyectos} section="proyectos" active={active} dark={dark}>
                     Proyectos
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink href={ROUTES.diplomados} section="diplomados" active={active}>
+                  <NavLink href={ROUTES.diplomados} section="diplomados" active={active} dark={dark}>
                     Diplomados
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink href={ROUTES.contacto} section="contacto" active={active}>
+                  <NavLink href={ROUTES.contacto} section="contacto" active={active} dark={dark}>
                     Contáctenos
                   </NavLink>
                 </li>
@@ -219,7 +230,7 @@ export function Header() {
               <div className="flex shrink-0 items-center gap-2 2xl:gap-2.5">
                 <ButtonLink
                   href={CTA.donar.href}
-                  variant="secondary"
+                  variant={dark ? "glass" : "secondary"}
                   size="sm"
                   icon={<HeartIcon />}
                   className="px-4 2xl:px-5"
@@ -233,17 +244,20 @@ export function Header() {
             </nav>
 
             {/* ---------- Móvil y tableta ---------- */}
-            <nav aria-label="Principal" className="flex h-19 items-center justify-between px-4 md:px-8 xl:hidden">
+            <nav
+              aria-label="Principal"
+              className={`flex items-center justify-between px-4 md:px-8 xl:hidden ${dark ? "h-18 md:h-19" : "h-19"}`}
+            >
               <Link
                 href={ROUTES.inicio}
                 aria-label="Fundación Derecho y Formación — Inicio"
                 className="group flex items-center no-underline"
               >
                 <span className="md:hidden">
-                  <Logo tone="light" size="xs" decorative />
+                  <Logo tone={dark ? "dark" : "light"} size="xs" decorative />
                 </span>
                 <span className="hidden md:block">
-                  <Logo tone="light" size="md" decorative />
+                  <Logo tone={dark ? "dark" : "light"} size="md" decorative />
                 </span>
               </Link>
               <span className="flex gap-2">
@@ -253,7 +267,9 @@ export function Header() {
                   aria-expanded={mobileOpen}
                   aria-controls="menu-movil"
                   onClick={() => setMobileOpen(true)}
-                  className="flex size-11 cursor-pointer items-center justify-center rounded-pildora bg-azul text-white transition-[transform,background-color] duration-300 hover:bg-accion active:scale-95"
+                  className={`flex size-11 cursor-pointer items-center justify-center rounded-pildora text-white transition-[transform,background-color] duration-300 active:scale-95 ${
+                    dark ? "bg-white/10 hover:bg-white/20" : "bg-azul hover:bg-accion"
+                  }`}
                 >
                   <MenuIcon />
                 </button>
@@ -268,25 +284,34 @@ export function Header() {
 }
 
 const linkBase =
-  "relative flex items-center gap-1.5 px-2 py-3 no-underline transition-colors duration-200 hover:text-accion after:absolute after:inset-x-2 after:bottom-0 2xl:px-2.5 2xl:after:inset-x-2.5 after:h-0.5 after:origin-left after:rounded-full after:bg-naranja after:transition-transform after:duration-300";
+  "relative flex items-center gap-1.5 px-2 py-3 no-underline transition-colors duration-200 after:absolute after:inset-x-2 after:bottom-0 2xl:px-2.5 2xl:after:inset-x-2.5 after:h-0.5 after:origin-left after:rounded-full after:bg-naranja after:transition-transform after:duration-300";
+
+/** Colores del enlace [activo, reposo]: encabezado claro o de cristal oscuro (Inicio). */
+const linkTone = (dark: boolean) =>
+  dark
+    ? (["text-durazno-claro", "text-white hover:text-durazno-claro"] as const)
+    : (["text-accion", "text-azul hover:text-accion"] as const);
 
 function NavLink({
   href,
   section,
   active,
+  dark,
   children,
 }: {
   href: string;
   section: NavSection;
   active: NavSection | null;
+  dark: boolean;
   children: ReactNode;
 }) {
   const isActive = active === section;
+  const [on, off] = linkTone(dark);
   return (
     <Link
       href={href}
       aria-current={isActive ? "page" : undefined}
-      className={`${linkBase} ${isActive ? "text-accion after:scale-x-100" : "text-azul after:scale-x-0 hover:after:scale-x-100"}`}
+      className={`${linkBase} ${isActive ? `${on} after:scale-x-100` : `${off} after:scale-x-0 hover:after:scale-x-100`}`}
     >
       {children}
     </Link>
@@ -297,6 +322,7 @@ function MegaTrigger({
   which,
   label,
   active,
+  dark,
   open,
   onToggle,
   onPointerEnter,
@@ -305,12 +331,14 @@ function MegaTrigger({
   which: MegaKey;
   label: string;
   active: NavSection | null;
+  dark: boolean;
   open: boolean;
   onToggle: () => void;
   onPointerEnter: (e: RPointerEvent) => void;
   onPointerLeave: (e: RPointerEvent) => void;
 }) {
   const isActive = active === which;
+  const [on, off] = linkTone(dark);
   return (
     <button
       id={`trigger-${which}`}
@@ -321,7 +349,7 @@ function MegaTrigger({
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
       className={`${linkBase} cursor-pointer ${
-        isActive || open ? "text-accion" : "text-azul"
+        isActive || open ? on : off
       } ${isActive ? "after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"}`}
     >
       {label}

@@ -83,14 +83,46 @@ export const MINISTRY_CARD: SceneCard = {
   detail: "Resolución 0026 del 16 de enero de 2014",
 };
 
+/** Tarjeta de la escena Diplomados (texto entregado por la Fundación). */
+const DIPLOMADOS_CARD: SceneCard = {
+  kicker: "Formación para transformar",
+  title: "Educación de calidad, oportunidades para todos.",
+};
+
 /** Escenas con tarjeta (textos entregados por la Fundación). */
 export const SCENE_CARDS: Partial<Record<HeroScene["id"], SceneCard>> = {
   conciliacion: MINISTRY_CARD,
-  diplomados: {
-    kicker: "Formación para transformar",
-    title: "Educación de calidad, oportunidades para todos.",
-  },
+  diplomados: DIPLOMADOS_CARD,
 };
+
+/* ---------- Portada de impacto (portada-impacto/ESPECIFICACION.md) ----------
+ * Usa las mismas escenas, textos, botones y enlaces del hero actual (HERO_SCENES): donde la
+ * propuesta visual difiere, manda el contenido vigente del sitio. */
+
+/** Tarjeta de cristal de la escena solar: cifras del proyecto ya publicadas en el sitio (PROJECT_KPIS). */
+export const SOLAR_CARD: SceneCard = {
+  kicker: "Planta solar",
+  title: "11,05 MWp · 23,1 ha",
+  detail: "Ciudad Bolívar, sur de Bogotá D.C.",
+};
+
+/** Tarjeta flotante de cada escena de la portada. */
+export const IMPACT_CARDS: Record<HeroScene["id"], SceneCard> = {
+  solar: SOLAR_CARD,
+  conciliacion: MINISTRY_CARD,
+  diplomados: DIPLOMADOS_CARD,
+};
+
+/** Cinta naranja en movimiento bajo la portada. */
+export const IMPACT_RIBBON = [
+  "Justicia",
+  "Formación",
+  "Cultura de paz",
+  "Conciliación",
+  "Litigio estratégico",
+  "De Washington a Ciudad Bolívar",
+  "Formación para transformar",
+] as const;
 
 /* ---------- Accesos rápidos (bajo el hero) ---------- */
 export const QUICK_LINKS = [

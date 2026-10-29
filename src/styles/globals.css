@@ -257,3 +257,92 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ---------- Portada de impacto (portada-impacto/ESPECIFICACION.md · §5) ----------
+ * Todo el contenido termina visible: con prefers-reduced-motion la regla global de arriba
+ * reduce cada animación a su estado final (sin autoplay, giro, cinta ni Ken Burns). */
+@keyframes pi-palabra {
+  from {
+    opacity: 0;
+    transform: translateY(60%) rotate(4deg);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+@keyframes pi-sube {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pi-kenburns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes pi-progreso {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes pi-flota {
+  50% {
+    transform: translateY(-14px);
+  }
+}
+@keyframes pi-raton {
+  50% {
+    transform: translateY(8px);
+    opacity: 0.4;
+  }
+}
+@keyframes pi-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pi-cinta {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@utility pi-palabra {
+  display: inline-block;
+  animation: pi-palabra 1s cubic-bezier(0.16, 0.84, 0.24, 1) both;
+}
+@utility pi-sube {
+  animation: pi-sube 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@utility pi-kenburns {
+  animation: pi-kenburns 14s ease-out both;
+}
+@utility pi-progreso {
+  transform-origin: left;
+  animation: pi-progreso 7s linear both;
+}
+@utility pi-flota {
+  animation: pi-flota 7s ease-in-out infinite;
+}
+@utility pi-raton {
+  animation: pi-raton 2s ease-in-out infinite;
+}
+@utility pi-gira {
+  animation: pi-gira 22s linear infinite;
+}
+@utility pi-cinta {
+  animation: pi-cinta 40s linear infinite;
+}

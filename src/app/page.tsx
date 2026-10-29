@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { CurvedGallery } from "@/components/home/CurvedGallery";
 import { FocusBand } from "@/components/home/FocusBand";
-import { HeroSlider } from "@/components/home/HeroSlider";
+import { HeroImpacto } from "@/components/home/HeroImpacto";
 import {
   AboutUs,
   Allies,
@@ -26,14 +26,14 @@ export const metadata: Metadata = {
 
 /**
  * Inicio — referencia: «Tejido Humano — Sitio completo.pdf» (pág. 1 escritorio, pág. 4 móvil).
- * Orden: hero · (cifras, solo móvil) · accesos rápidos · confianza · quiénes somos · manifiesto ·
+ * Orden: portada de impacto + cinta (portada-impacto/) · (cifras, solo móvil) · accesos rápidos · confianza · quiénes somos · manifiesto ·
  * servicios · Washington → Ciudad Bolívar · galería · proyectos · staff · diplomados · aliados ·
  * cierre. Las mismas secciones existen en móvil, reorganizadas para pantallas pequeñas.
  */
 export default function Home() {
   return (
     <>
-      <HeroSlider />
+      <HeroImpacto />
       <MobileKpis />
       <QuickLinks />
       <Trust />
