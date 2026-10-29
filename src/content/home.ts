@@ -12,7 +12,7 @@ import { WHATSAPP_AGENDA } from "./site";
 /** Documento del proyecto solar (public/documentos). Archivo estático: el basePath de GitHub Pages se antepone a mano. */
 export const PDF_PLANTA_SOLAR = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/documentos/Proyecto_Planta_Solar_Fundacion_Rediseno.pdf`;
 
-/* ---------- Hero: 3 escenas (pestañas del PDF: Proyecto solar · Conciliación · Diplomados) ---------- */
+/* ---------- Hero: 3 escenas (orden pedido por la Fundación: Conciliación · Proyecto solar · Diplomados) ---------- */
 export type HeroScene = {
   id: "solar" | "conciliacion" | "diplomados";
   tab: string;
@@ -31,20 +31,6 @@ export type HeroScene = {
 
 export const HERO_SCENES: HeroScene[] = [
   {
-    // Ilustración de ProyectoSolar.dc.html (PDF pág. 2) + textos del proyecto destacado.
-    id: "solar",
-    tab: "Proyecto solar",
-    tabMobile: "Solar",
-    chips: ["Proyecto destacado", "Presentación en Washington D.C."],
-    chipTone: "naranja",
-    t1: "De Washington a",
-    t2: "Ciudad Bolívar.",
-    body: "Planta solar fotovoltaica San Francisco: energía renovable con carácter social para la población vulnerable de la localidad.",
-    cta1: { label: "Conocer el proyecto", href: ROUTES.proyectoSolar },
-    cta2: { label: "Descargar documento", href: PDF_PLANTA_SOLAR },
-    bg: "ilustracion",
-  },
-  {
     // PDF pág. 1 (escena activa en la referencia de escritorio).
     id: "conciliacion",
     tab: "Conciliación",
@@ -57,6 +43,20 @@ export const HERO_SCENES: HeroScene[] = [
     cta1: { label: "Agenda tu cita", href: WHATSAPP_AGENDA },
     cta2: { label: "Conocer el centro", href: ROUTES.conciliacion },
     bg: "durazno",
+  },
+  {
+    // Ilustración de ProyectoSolar.dc.html (PDF pág. 2) + textos del proyecto destacado.
+    id: "solar",
+    tab: "Proyecto solar",
+    tabMobile: "Solar",
+    chips: ["Proyecto destacado", "Presentación en Washington D.C."],
+    chipTone: "naranja",
+    t1: "De Washington a",
+    t2: "Ciudad Bolívar.",
+    body: "Planta solar fotovoltaica San Francisco: energía renovable con carácter social para la población vulnerable de la localidad.",
+    cta1: { label: "Conocer el proyecto", href: ROUTES.proyectoSolar },
+    cta2: { label: "Descargar documento", href: PDF_PLANTA_SOLAR },
+    bg: "ilustracion",
   },
   {
     // PDF pág. 4 (escena activa en la referencia móvil).
